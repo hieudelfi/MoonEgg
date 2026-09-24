@@ -7,6 +7,8 @@ kit/
 ├── CLAUDE.md              # Hướng dẫn thường trực cho Claude Code (đọc tự động)
 ├── README.md
 ├── docs/                  # 9 tài liệu dự án (Markdown, xuất từ bản sống)
+│   ├── tasks/             # Plan/Flow/Result mỗi task + 3 template (CLAUDE.md §7)
+│   └── Delivery/          # Gói bằng chứng cho người kiểm, dựng ở Cổng B
 ├── prompts/               # Prompt cho từng task, theo giai đoạn
 │   ├── 00-START.md        # Prompt khởi động phiên đầu tiên
 │   ├── phase-P/           # P.1–P.10  chuẩn bị hạ tầng + dữ liệu thô
@@ -17,8 +19,7 @@ kit/
 │   └── phase-5/           # 5.1–5.7   đợt 2–5, mở rộng sau 5.000 từ
 ├── records/               # Bản ghi kết quả từng task + bảng theo dõi
 │   ├── TEMPLATE.md
-│   ├── TRACKING.md
-│   └── drops/             # Plan + outcome đẩy lên yawasa (CLAUDE.md §7)
+│   └── TRACKING.md
 ├── tools/
 │   ├── pipeline/          # build_lexicon.py (đã chạy thử 30 từ)
 │   └── checks/            # verify_pack.py, sdk-allowlist.md, license-allowlist.txt

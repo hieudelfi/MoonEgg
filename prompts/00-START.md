@@ -8,15 +8,15 @@ Bạn đang ở repo dự án "App học từ vựng tiếng Anh". Đọc `CLAUD
 
 1. Đọc `docs/09-ke-hoach.md` §1–§3P và `records/TRACKING.md`. Liệt kê các task ở trạng thái "Chưa" mà không còn phụ thuộc chưa xong; đề xuất task tiếp theo (mặc định P.1 nếu chưa có gì).
 2. ⏸ Hỏi tôi xác nhận task. Không bắt đầu khi chưa xác nhận.
-3. Mở `prompts/<phase>/<id>.md` của task đó. Viết `records/drops/<id>-plan.md` từ `records/drops/TEMPLATE-plan.md`, đọc lại nguội theo 4 câu ở CLAUDE.md §7.3, đẩy lên yawasa (CLAUDE.md §7.2), báo link.
-4. ⏸ **CỔNG A.** Chờ tôi đọc plan trên hub và duyệt. Chưa duyệt thì chưa viết mã, chưa tải dữ liệu. Tôi yêu cầu sửa → sửa file rồi đẩy lại cùng slug kèm `--update`.
-5. Tạo `records/<id>.md` từ `records/TEMPLATE.md`, điền tham chiếu, link plan drop và ngày bắt đầu; đổi trạng thái trong `records/TRACKING.md` thành "Đang làm".
-6. Thực hiện checklist từng bước. Sau mỗi bước: ghi "kết quả: …" vào bản ghi. Gặp phụ thuộc thiếu → trạng thái "Chặn", ghi lý do, ⏸ hỏi tôi. Kế hoạch đổi giữa chừng → sửa plan drop, đẩy lại `--update`, nói rõ chỗ đổi; không lặng lẽ đi hướng khác.
-7. Chạy phần "Kiểm tra" của prompt. Ghi bảng kết quả với số thật.
-8. Chạy phần "Xác minh output trước khi đóng" (CLAUDE.md §3). Bất kỳ lỗi nào → sửa, chạy lại; không đóng task khi còn lỗi.
-9. Ghi "Bằng chứng", "Giải thích", "Câu hỏi mở". Nếu task đổi quyết định, sửa `docs/` đúng mục và ghi vào bản ghi.
-10. Viết `records/drops/<id>-outcome.md` từ `records/drops/TEMPLATE-outcome.md`, đẩy lên yawasa, báo link.
-11. ⏸ **CỔNG B.** Trình bày tóm tắt ≤ 15 dòng: đã làm gì, test đạt/không, file đầu ra, câu hỏi mở, hai link hub. Chờ tôi kiểm rồi mới đổi trạng thái sang "Xong" và ghi người kiểm/ngày.
+3. Mở `prompts/<phase>/<id>.md`. Phân loại Type / Level / Repro theo CLAUDE.md §7.1. Level L3 → dừng, báo cáo, mở task riêng, không code. Cắt nhánh `feature|fix|chore/<id>-<slug>` từ `main`.
+4. **CỔNG A.** Viết `docs/tasks/<id>/Plan.md`, và `Flow.md` nếu không thuộc diện bỏ ở §7.2. Bằng chứng về mã và dữ liệu lấy từ grep chạy hôm nay kèm `File.ext:dòng`. Đọc lại nguội 4 câu (§7.3). Đẩy lên yawasa, mở trang dự án kiểm bằng mắt, báo link.
+5. ⏸ Chờ tôi đọc trên hub và duyệt. Chưa duyệt thì chưa chạm mã, chưa tải dữ liệu. Tôi yêu cầu sửa → sửa cả hai tệp cho khớp nhau, ghi dòng có ngày vào Decisions log, đẩy lại cùng slug kèm `--update`.
+6. Tạo `records/<id>.md` từ `records/TEMPLATE.md`: ngày bắt đầu, nhánh, link Plan và Flow. `records/TRACKING.md` chuyển "Đang làm".
+7. Thực hiện checklist từng bước. Sau mỗi bước ghi "kết quả: …" vào bản ghi. Phụ thuộc thiếu → "Chặn", ghi lý do, ⏸ hỏi tôi. Kế hoạch đổi giữa chừng → sửa Plan.md, ghi Decisions log, đẩy lại `--update`, nói rõ chỗ đổi.
+8. Chạy phần "Kiểm tra" của prompt. Ghi bảng kết quả với số thật.
+9. Chạy phần "Xác minh output trước khi đóng" (CLAUDE.md §3). Bất kỳ lỗi nào → sửa, chạy lại; không đóng task khi còn lỗi. Nếu task đổi quyết định, sửa `docs/` đúng mục và ghi vào bản ghi.
+10. **CỔNG B.** Viết `docs/tasks/<id>/Result.md`, đẩy lên yawasa. Dựng `docs/Delivery/<ngày>_<id>/`, quét bằng chứng tìm khoá, token, dữ liệu người thật trước khi đẩy.
+11. ⏸ Trình bày tóm tắt ≤ 15 dòng: đã làm gì, test đạt/không, file đầu ra, câu hỏi mở, link hub, và câu lệnh commit dự định. Chờ tôi duyệt rồi mới commit, đẩy Delivery, đổi trạng thái sang "Xong" và ghi người kiểm/ngày.
 
 Quy tắc trong suốt phiên:
 - Không tải nội dung không có giấy phép mở (CLAUDE.md §4). Nếu một bước cần dữ liệu ngoài allowlist, dừng và hỏi.
@@ -24,6 +24,8 @@ Quy tắc trong suốt phiên:
 - Không sửa `golden/` trừ khi task nói rõ.
 - Hai drop viết tiếng Anh B1/B2; `docs/` và `records/` giữ tiếng Việt (CLAUDE.md §7.4).
 - Mọi lần đẩy đều kèm `--project "moonegg"`, nếu không bản đẩy rơi vào thư mục nháp chỉ mình tôi thấy. Không dùng `--folder` thay thế.
+- Ba tệp Plan/Flow/Result viết tiếng Anh B1/B2; `docs/01..09`, `records/` và trao đổi giữ tiếng Việt.
+- Không làm task trên `main`. Commit `<type>(<id>): <việc>`, không ghi công công cụ, không emoji.
 - Commit theo `<id>: <việc>` sau mỗi bước hoàn chỉnh, build được.
 
 Bắt đầu bằng bước 1.
@@ -33,7 +35,7 @@ Bắt đầu bằng bước 1.
 ## Prompt rút gọn cho phiên tiếp theo
 
 ```
-Đọc CLAUDE.md. Tiếp tục task <ID> theo prompts/<phase>/<ID>.md và records/<ID>.md; nếu chưa có bản ghi thì tạo. Làm theo quy trình 11 bước trong prompts/00-START.md, dừng ở các ⏸ (Cổng A trước khi làm, Cổng B trước khi đóng).
+Đọc CLAUDE.md. Tiếp tục task <ID> theo prompts/<phase>/<ID>.md và records/<ID>.md; nếu chưa có bản ghi thì tạo. Làm theo quy trình 11 bước trong prompts/00-START.md, dừng ở các ⏸ (Cổng A trước khi làm, Cổng B trước khi commit).
 ```
 
 ## Prompt cho phiên rà soát cuối tuần

@@ -1,6 +1,10 @@
 # <ID> — <Tên task>
 
 Bắt đầu: <ngày>  Kết thúc: <ngày>  Công thực tế: <nđ> (ước: <nđ>)
+Type: <INFRA | DATA | FEATURE | ISSUE | REFACTOR>  Level: <L1 | L2 | L3>  Repro (ISSUE): <Confirmed | Trace-confirmed | Unconfirmed>
+Người kiểm: <tên hoặc "tự kiểm">  Nhánh: <feature|fix|chore/<id>-<slug>>
+Plan: <link hub>  Flow: <link hub hoặc "bỏ, lý do">  Result: <link hub>
+Delivery: `docs/Delivery/<ngày>_<id>/`
 Tham chiếu: FR-xx · Kiến trúc §x.y · Test TC-xx-nn · Mockup màn n
 Phụ thuộc: <ID đã Xong>
 
@@ -22,6 +26,7 @@ Phụ thuộc: <ID đã Xong>
 - Commit/PR: 
 - File đầu ra: 
 - Ảnh/số đo: 
+- Delivery đã quét khoá/token/dữ liệu người thật: <ngày, kết quả>
 
 ## Giải thích
 <quyết định trong task, vì sao; khác kế hoạch chỗ nào; tài liệu nào đã cập nhật>
