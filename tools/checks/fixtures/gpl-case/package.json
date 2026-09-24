@@ -1,0 +1,7 @@
+{
+  "name": "gpl-case",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Fixture: mot goi GPL gia de chung minh cong giay phep chan duoc. Khong phai app.",
+  "dependencies": { "fake-gpl-pkg": "1.0.0" }
+}

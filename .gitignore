@@ -8,3 +8,4 @@ tools/pipeline/.venv/
 node_modules/
 web/dist/
 .env
+web/node_modules/

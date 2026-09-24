@@ -1,0 +1,4 @@
+1 gói · 1 lỗi giấy phép · 1 gói thiếu dòng SDK
+LỖI fake-gpl-pkg@1.0.0: GPL-3.0 ngoài allowlist
+LỖI fake-gpl-pkg: chưa có dòng trong tools/checks/sdk-allowlist.md
+exit=1

@@ -1,0 +1,3 @@
+hooksPath : C:/Users/HughNguyen/.config/devgate/hooks
+repo      : D:/Projects/MoonEgg
+cong repo : tools/checks/gate.sh

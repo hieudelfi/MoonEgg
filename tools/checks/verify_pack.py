@@ -3,6 +3,12 @@
 Dùng: python tools/checks/verify_pack.py content/lexicon/lexicon_raw_test.csv [--strict]
 Thoát mã 1 nếu có lỗi. Mở rộng dần theo docs/08-kiem-thu.md §6.1."""
 import csv, sys, sqlite3, os, collections
+
+# Console Windows mặc định cp1252 không mã hoá được tiếng Việt: print sẽ ném
+# UnicodeEncodeError và script thoát 1 dù dữ liệu không lỗi. Ép UTF-8 cho đầu ra
+# của chính script để mã thoát nói về dữ liệu, không nói về code page.
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 ALLOW = {l.strip() for l in open(os.path.join(os.path.dirname(__file__),'license-allowlist.txt')) if l.strip()}
 VISEMES = {'sil','PP','FF','TH','DD','SS','CH','aa','E','I','O','U'}
 

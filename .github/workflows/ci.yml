@@ -1,0 +1,72 @@
+name: CI
+
+# Cong kiem tra that chay o MAY, khong o day: tools/checks/gate.sh, goi qua
+# ~/.config/devgate/hooks. Workflow nay giu lai lam ban du phong, chi chay khi
+# bam tay tren GitHub. Ly do: Actions cua tai khoan dang bi chan thanh toan, va
+# cong o may xong trong ~5 giay thay vi cho runner. Xem CLAUDE.md muc 7.8.
+on:
+  workflow_dispatch:
+
+jobs:
+  python:
+    name: python checks
+    runs-on: ubuntu-latest
+    env:
+      PYTHONIOENCODING: utf-8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip pytest
+      - run: python -m pytest tools/checks -q
+      - name: verify_pack tren du lieu test
+        run: python tools/checks/verify_pack.py content/lexicon/lexicon_raw_test.csv
+
+  web:
+    name: web tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - run: npm test
+
+  mobile:
+    name: mobile tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Co pubspec.yaml chua
+        id: check
+        run: echo "exists=$([ -f mobile/pubspec.yaml ] && echo yes || echo no)" >> "$GITHUB_OUTPUT"
+      - if: steps.check.outputs.exists == 'no'
+        run: echo "mobile/pubspec.yaml chua co - bo qua. Xem mobile/README.md"
+      - if: steps.check.outputs.exists == 'yes'
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - if: steps.check.outputs.exists == 'yes'
+        run: flutter test
+        working-directory: mobile
+
+  license:
+    name: licence gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+        working-directory: web
+      - run: node tools/checks/check_licenses.mjs
