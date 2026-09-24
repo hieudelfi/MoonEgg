@@ -1,6 +1,6 @@
 # P.1 — Repo, CI, quét giấy phép
 
-Bắt đầu: 2026-09-24  Kết thúc: <chưa>  Công thực tế: 0.9 nđ (ước: 1.5 nđ)
+Bắt đầu: 2026-09-24  Kết thúc: 2026-09-24  Công thực tế: 0.9 nđ (ước: 1.5 nđ)
 Type: INFRA  Level: L2  Repro: không áp dụng
 Người kiểm: tự kiểm  Nhánh: `chore/p1-repo-ci`
 Plan: https://hub.yawasa.com/app/p/moonegg-p1-plan  Flow: bỏ — Type INFRA, chưa có màn hình  Result: https://hub.yawasa.com/app/p/moonegg-p1-result
@@ -8,7 +8,7 @@ Delivery: `docs/Delivery/2026-09-24_P.1/`
 Tham chiếu: docs/09 §3P.1 P.1 · docs/07 §2 · docs/01 §13.2 · Test TC-CP-01, TC-CP-02
 Phụ thuộc: không có, task đầu của giai đoạn P
 
-**Trạng thái: Chờ kiểm (Cổng B)** — chặn cũ đã gỡ bằng cách chuyển cổng về chạy ở máy. Xem Giải thích, mục "Đổi hướng giữa chừng".
+**Trạng thái: Xong** — Cổng B duyệt ngày 2026-09-24. Chặn cũ (GitHub Actions) đã gỡ bằng cách chuyển cổng về chạy ở máy; xem Giải thích, mục "Đổi hướng giữa chừng".
 
 ## Checklist
 
@@ -79,4 +79,4 @@ Chưa cập nhật tài liệu nào trong `docs/01..09` — task này không đ�
 2. Actions trên GitHub vẫn đang bị chặn thanh toán. Không còn chặn việc gì, nhưng nếu ngày nào muốn CI đám mây trở lại thì phải sửa billing trước, rồi đổi `on:` trong `.github/workflows/ci.yml`.
 3. Cổng hiện chưa kiểm `tsc` và `oxlint` của `web/`. Chưa thêm vì `web/` mới chỉ có scaffold, thêm lúc này chỉ tốn giây mà chưa bắt được gì. Đề xuất thêm ở task 2.1 khi bắt đầu viết mã thật.
 
-## Người kiểm: tự kiểm  Ngày: 2026-09-24  Kết luận: **Chờ kiểm** — mọi mục Definition of Done đã đạt, chờ Cổng B
+## Người kiểm: tự kiểm  Ngày: 2026-09-24  Kết luận: **Xong** — mọi mục Definition of Done đạt, Cổng B duyệt
