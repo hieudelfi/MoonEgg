@@ -129,8 +129,20 @@ dòng cũ. Đẩy lại kèm `--update` để giữ nguyên link. Vẫn chưa đ
 **7.5 Hub của dự án**
 
 - Trang dự án: https://hub.yawasa.com/app/projects/moonegg
-- Mọi lần đẩy kèm `--project "moonegg"`. Thiếu nó thì bản đẩy rơi vào thư mục nháp `Unpublished`
-  chỉ mình thấy, trang dự án trống.
+- Mọi lần đẩy kèm **ba** cờ, không thiếu cờ nào:
+  `--project "moonegg" --no-share-project --visibility private`
+  - `--project` nối bản đẩy vào trang dự án. Thiếu nó thì bản đẩy rơi vào thư mục nháp
+    `Unpublished` chỉ mình thấy, trang dự án trống.
+  - `--no-share-project` **bắt buộc**. Mặc định của `--project` là chia sẻ bản đẩy cho mọi thành
+    viên của project (hub tự gắn audience của project vào drop). Không truyền cờ này thì script
+    không gửi trường `share_with_project` và hub áp mặc định chia sẻ của nó.
+  - `--visibility private` chốt lại quyền xem. Hub tự lật visibility sang `shared` khi có bất kỳ
+    nhóm hay audience nào được gắn, nên phải nói rõ.
+- **Mặc định của dự án này là riêng tư, chỉ chủ sở hữu.** Muốn ai đó xem thì chia sẻ tay trên giao
+  diện hub, từng bản một, có chủ đích. Không bao giờ để mặc định của công cụ quyết định việc này.
+- API của hub **không có endpoint đọc trạng thái chia sẻ**. Chỉ `/api/upload`, `/api/drop/<slug>/md`
+  và `/api/drop/<slug>/prompt`. Nghĩa là không tự kiểm được bằng lệnh: sau khi đẩy phải **mở giao
+  diện hub nhìn bằng mắt**, cả vị trí project lẫn quyền xem.
 - **Không dùng `--folder` thay cho `--project`**: `--folder` là thư mục trong thư viện cá nhân.
   Đẩy nhầm cờ thì hub vẫn báo thành công nhưng trang dự án không có gì.
 - Cờ `--project` có từ bản exp-publish 19/09/2026. Script báo `unknown option` → chạy skill
@@ -145,7 +157,7 @@ bash ~/.claude/skills/exp-publish/scripts/exp-publish.sh \
   --slug "moonegg-<task-id>-plan" \
   --title "MoonEgg <task-id> - <ten task> - plan" \
   --tags "moonegg,plan,<phase>,<task-id>" \
-  --project "moonegg"
+  --project "moonegg" --no-share-project --visibility private
 ```
 
 Flow và Result đổi `plan` thành `flow` / `result` ở cả ba chỗ. Sửa một drop đã đẩy: thêm `--update`
