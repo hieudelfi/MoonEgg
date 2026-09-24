@@ -21,6 +21,14 @@ anything in the schema turns out to need a change, that change is L3 and gets it
 **Decisions log (2026-09-24):**
 1. 2026-09-24 - Reviewer confirmed they already hold Cloudflare and Supabase accounts, so this task
    configures existing accounts rather than creating them.
+2. 2026-09-24 - **The reviewer clicks the dashboards.** No access token and no API token change
+   hands. This task writes the SQL file and a numbered click list; the reviewer runs them.
+3. 2026-09-24 - Supabase region stays **Singapore, `ap-southeast-1`**.
+4. 2026-09-24 - Names: Supabase project `moonegg`, Pages project `moonegg`, R2 bucket
+   `vocab-content` as the task prompt already fixes it.
+5. 2026-09-24 - **Keep-alive runs from Windows Task Scheduler on this machine**, not from GitHub
+   Actions. Section 4.7 rewritten. The task prompt asks for a GitHub Action, so this is a
+   deliberate deviation, taken because Actions is blocked at the account level (P.1 record).
 
 Out of scope: writing any sync code (task 2.9), the backup file format (2.10), image sync, the
 analytics pipeline, buying an Apple Developer account.
@@ -121,18 +129,16 @@ Bucket `vocab-content`, public read, proven with one `curl` against a real uploa
 project pointing at `web/dist`, deployed empty, proven by a URL that answers 200. Nothing else is
 configured: caching, custom domains and cache headers belong to task 1.11 and 2.11.
 
-### 4.5 Who clicks - proposal, needs the reviewer's answer
+### 4.5 Who clicks - decided, the reviewer does
 
-Two ways to do the dashboard work:
+No access token and no API token change hands. This task produces two things the reviewer runs:
 
-| Way | What it costs | What it risks |
-| --- | --- | --- |
-| The reviewer clicks, following a written script | a few minutes of their time | nothing; they see what is created under their name |
-| I run it with a Supabase access token and a Cloudflare API token | faster | two long-lived credentials handed over for a one-time setup |
+- `supabase/schema.sql` - pasted into the Supabase SQL editor, run twice to prove it repeats.
+- `docs/tasks/P.2/click-list.md` - numbered steps for the Supabase dashboard and for the Cloudflare
+  dashboard, each step naming what to click and what should be on screen afterwards.
 
-Proposal: the reviewer clicks. This task runs once, the steps are short, and the alternative means
-sharing credentials that would outlive the task. `supabase/schema.sql` and a numbered click list go
-in the repo so the steps are exact and repeatable.
+The click list also carries the two test-user steps for test 1, and the step that deletes them at
+the end. Anything the reviewer copies back to me is a URL or the public anon key, never a secret.
 
 ### 4.6 `.env.example` and secret handling - required
 
@@ -140,12 +146,23 @@ in the repo so the steps are exact and repeatable.
 `VITE_SUPABASE_ANON_KEY`, `R2_PUBLIC_BASE`. The real `.env` is already ignored by `.gitignore:10`.
 No real key goes into the repo, into a task record, into a drop, or into this conversation.
 
-### 4.7 Keep-alive - required
+### 4.7 Keep-alive - runs on this machine, not on GitHub
 
-A GitHub Action every three days that reads one row through the REST API with the anon key. A free
-Supabase project pauses after a week of no activity, which `docs/03` section 3 records as a known
-risk. **This is the one piece that needs GitHub Actions**, and Actions is blocked on this account
-(P.1 record, evidence). Section 5 row 6 handles it.
+A free Supabase project sleeps after a week with no activity.
+`docs/03-bang-chung-xac-thuc.md:34` records it: 500 MB and 50,000 monthly users, but the project
+pauses when idle.
+
+- `tools/ops/ping-supabase.sh` - one REST read of a single row with the anon key. Prints the HTTP
+  code and the date, and appends one line to a log so a missed run is visible later.
+- `tools/ops/register-ping-task.ps1` - registers a Windows scheduled task that runs the ping every
+  three days. Written as a script, not as a list of clicks, so the machine can be rebuilt.
+- `.github/workflows/ping-supabase.yml` - committed with `on: workflow_dispatch` only, the same way
+  `ci.yml` was handled in P.1. It never runs by itself and never shows red. If the billing is fixed
+  one day, the trigger is one line. This keeps the task prompt's requirement visible rather than
+  quietly dropped.
+
+The ping reads through the anon key and through RLS, so it proves the public path still works, not
+only that the server is awake.
 
 ### Options considered, not chosen
 
@@ -171,7 +188,8 @@ risk. **This is the one piece that needs GitHub Actions**, and Actions is blocke
 | 3 | Supabase project lost or rebuilt | `schema.sql` from the repo rebuilds it without the dashboard |
 | 4 | Free project pauses after a week idle | the ping brings it back; if the ping cannot run, the record says so |
 | 5 | Anon key leaks | it is a public key by design; RLS is what protects the data, not the key |
-| 6 | GitHub Actions still blocked | the ping is committed but cannot run. Fall back to a local scheduled task, or accept the pause and wake the project by hand. Written into the record either way, never left as a silent gap |
+| 6 | The machine is off when the ping is due | the scheduled task is set to run at the next start-up if a run was missed. A ping three hours late still beats a project that slept a week |
+| 6b | The scheduled task stops without saying so | the ping appends to a log, so a gap between dates is visible. The task record carries the first two lines |
 | 7 | Apple sign-in asked for later | one provider switched on, no schema change |
 | 8 | Two test users are needed for test 1 | created by hand in the Supabase dashboard with email and password, not through magic link, so no real mailbox is involved |
 | 9 | Test users left behind after testing | both deleted at the end of the task, and the record says so. A test account in a real project is a real account |
@@ -186,7 +204,9 @@ risk. **This is the one piece that needs GitHub Actions**, and Actions is blocke
 | R2 bucket `vocab-content` | tasks P.10, 1.7, 1.11 | new; content packs are uploaded there |
 | Pages project | task 2.11 | new; the PWA is deployed there |
 | `.env.example` | every later web task | new |
-| `.github/workflows/` | the ping action | second workflow next to the dormant `ci.yml` |
+| `tools/ops/ping-supabase.sh` | the scheduled task on this machine | new |
+| `.github/workflows/ping-supabase.yml` | nobody yet, dormant | new, `workflow_dispatch` only |
+| `docs/tasks/P.2/click-list.md` | the reviewer, and anyone rebuilding the project | new |
 
 Found by reading `prompts/phase-P/P.2.md`, `docs/07` section 7.2, and the P.10, 1.11 and 2.9 rows
 of `records/TRACKING.md`.
@@ -201,7 +221,8 @@ of `records/TRACKING.md`.
 | 4 | R2 is readable | `curl -I` a file uploaded to the bucket | HTTP 200 and the right content type |
 | 5 | Pages answers | `curl -I` the Pages URL | HTTP 200 |
 | 6 | Unique event id | insert the same `event_id` twice | second insert rejected |
-| 7 | Ping works | run the ping request by hand with the anon key | one row returned, HTTP 200 |
+| 7 | Ping works by hand | `bash tools/ops/ping-supabase.sh` | HTTP 200, one row, one line added to the log |
+| 7b | The scheduled task fires | register it, then run it on demand from Task Scheduler | the log gains a second line with the right date |
 | 8 | No secret in the repo | the gate, plus a grep for key patterns | 0 findings |
 | 9 | `server_seq` cannot be set by a client | insert an event with `server_seq = 999999` using a user token | the stored row has the server's next sequence, not 999999 |
 | 10 | Test users cleaned up | list auth users at the end | the two test accounts are gone |
@@ -216,7 +237,8 @@ of `records/TRACKING.md`.
 - [ ] Google and magic link sign-in work; Apple is off with a written reason
 - [ ] R2 bucket answers a public `curl`; Pages URL answers 200
 - [ ] `.env.example` has names and no values; no real key anywhere in the repo
-- [ ] The ping either runs, or the record says exactly why it cannot and what replaces it
+- [ ] The ping runs by hand and from the scheduled task, proven by two log lines
+- [ ] `click-list.md` is complete enough that someone else could rebuild the project from it
 - [ ] `records/P.2.md` has a result line per step and the test table with real output
 - [ ] The branch is merged into `main` with `gate.sh merge`, and deleted
 
@@ -227,7 +249,7 @@ Planned commit messages:
 ```
 feature(P.2): add supabase schema with row level security
 docs(P.2): add env example and the dashboard click list
-feature(P.2): add supabase keep-alive action
+feature(P.2): add supabase keep-alive ping and scheduled task
 ```
 
 Then close on this machine with `bash ~/.config/devgate/gate.sh merge chore/p2-supabase-r2-pages`,
@@ -235,14 +257,12 @@ delete the branch on both sides, and update `records/TRACKING.md`.
 
 ## 9. Open questions for the reviewer
 
-1. **Who clicks the dashboards?** Section 4.5 proposes that you do it, following a written list, so
-   no long-lived credentials change hands. Say the word if you would rather hand over tokens.
-2. **Supabase region.** Singapore, `ap-southeast-1`, is the closest to Vietnam. Confirm, or name
-   another.
-3. **Project and bucket names.** Proposal: Supabase project `moonegg`, R2 bucket `vocab-content`
-   as the prompt says, Pages project `moonegg`. Confirm or rename now, because renaming later
-   changes every URL.
-4. **The keep-alive, given Actions is blocked.** Three ways: fix the GitHub billing; run the ping
-   from a Windows scheduled task on this machine; or accept that the project pauses and wake it by
-   hand while there are no real users. Proposal: the third, for now, with the action committed and
-   ready. It costs nothing and there is no user to disturb yet.
+None. All four were answered on 2026-09-24 and moved into the Decisions log above.
+
+Two notes, not questions:
+
+- The keep-alive now depends on **this machine** being switched on now and then. That is fine while
+  there are no users. Once there are, the ping belongs somewhere that does not sleep, and that is a
+  task of its own, not a quiet change here.
+- The reviewer pastes the Supabase URL and the anon key into a local `.env`. Both are public values
+  by design, but they still do not belong in the repo, in a task record, or in chat.
