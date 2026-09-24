@@ -16,7 +16,7 @@ Bạn đang ở repo dự án "App học từ vựng tiếng Anh". Đọc `CLAUD
 8. Chạy phần "Kiểm tra" của prompt. Ghi bảng kết quả với số thật.
 9. Chạy phần "Xác minh output trước khi đóng" (CLAUDE.md §3). Bất kỳ lỗi nào → sửa, chạy lại; không đóng task khi còn lỗi. Nếu task đổi quyết định, sửa `docs/` đúng mục và ghi vào bản ghi.
 10. **CỔNG B.** Viết `docs/tasks/<id>/Result.md`, đẩy lên yawasa. Dựng `docs/Delivery/<ngày>_<id>/`, quét bằng chứng tìm khoá, token, dữ liệu người thật trước khi đẩy.
-11. **DỪNG.** Trình bày tóm tắt ≤ 15 dòng: đã làm gì, test đạt/không, file đầu ra, câu hỏi mở, link hub, và câu lệnh commit dự định. Chờ tôi duyệt rồi mới commit, đẩy Delivery, đổi trạng thái sang "Xong" và ghi người kiểm/ngày.
+11. **DỪNG.** Trình bày tóm tắt ≤ 15 dòng: đã làm gì, test đạt/không, file đầu ra, câu hỏi mở, link hub, và câu lệnh commit dự định. Chờ tôi duyệt rồi mới commit, gộp nhánh vào `main`, đẩy Delivery, đổi trạng thái sang "Xong" và ghi người kiểm/ngày.
 
 Quy tắc trong suốt phiên:
 - Không tải nội dung không có giấy phép mở (CLAUDE.md §4). Nếu một bước cần dữ liệu ngoài allowlist, dừng và hỏi.

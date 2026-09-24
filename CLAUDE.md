@@ -27,7 +27,7 @@ Mockup: https://claude.ai/artifact/BJJpsvciECNVUK4VocwWUq (15 màn). Tài liệu
 7. **Xác minh output trước khi đóng** (mục 3 dưới). Không đạt → ghi lý do, sửa, chạy lại; không đóng task.
 8. **Tài liệu**: nếu task thay đổi một quyết định, sửa đúng mục trong `docs/` và ghi "đã cập nhật docs/xx §y" vào bản ghi.
 9. **CỔNG B** (mục 7.4). Viết `docs/tasks/<task-id>/Result.md`, đẩy lên yawasa. Dựng `docs/Delivery/<ngày>_<task-id>/`, quét bằng chứng tìm khoá và dữ liệu người thật. Trình bày câu lệnh commit dự định. Báo link. **DỪNG, chờ nghiệm thu.**
-10. Được duyệt mới commit, đẩy Delivery, cập nhật `records/TRACKING.md` (trạng thái, thực tế nđ, kết quả test, người kiểm, ngày). Chỉ khi 1–9 xong mới báo "Xong". Nếu chỉ có một người, ghi "tự kiểm" và ngày.
+10. Được duyệt mới commit, gộp nhánh vào `main`, đẩy Delivery, cập nhật `records/TRACKING.md` (trạng thái, thực tế nđ, kết quả test, người kiểm, ngày). Chỉ khi 1–9 xong mới báo "Xong". Nếu chỉ có một người, ghi "tự kiểm" và ngày.
 
 ## 3. Xác minh output — không đóng gói khi chưa qua
 
@@ -124,6 +124,7 @@ dòng cũ. Đẩy lại kèm `--update` để giữ nguyên link. Vẫn chưa đ
    HTML đóng băng, đẩy rồi không rút lại được.
 3. Trình bày câu lệnh commit dự định và ghi chú cho bản ghi. **DỪNG.** Chờ duyệt.
 4. Được duyệt mới đẩy Delivery, commit, cập nhật `records/<task-id>.md` và `records/TRACKING.md`.
+5. **Gộp nhánh vào `main`** rồi mới sang task khác. Không để hai task cùng mở nhánh. Nhánh chưa gộp thì task chưa đóng.
 
 **7.5 Hub của dự án**
 

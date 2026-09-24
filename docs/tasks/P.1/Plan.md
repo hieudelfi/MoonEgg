@@ -16,6 +16,14 @@ Depends on: none. First task of phase P.
    process, at commit `1736b31`. Agreed with the reviewer: this Plan records it as done and P.1
    covers only what is left. The repo is not re-initialised.
 2. 2026-09-24 - Commit tag set fixed at `feature` / `bug` / `docs`. This task uses `feature`.
+3. 2026-09-24 - CI pins Python to **3.11**, not the 3.14 on this machine. Reviewer chose the safe
+   option: Kokoro and torch, needed at P.3, may not have wheels for 3.14 yet. CI should run the
+   version the pipeline tasks can certainly use.
+4. 2026-09-24 - Vitest goes into `sdk-allowlist.md` with a **dev only** note. The file stays the
+   single list, and the note says the package never reaches the bundle.
+5. 2026-09-24 - Branch protection stays off, reason recorded. Instead, a task closes by merging its
+   branch into `main` after the tests pass, before the next task starts. Added to `CLAUDE.md`
+   section 7.4.
 
 Out of scope: any content pipeline work (P.3), the Supabase and R2 setup (P.2), writing real tests.
 CI runs empty test suites on purpose; real tests arrive with the tasks that need them.
@@ -91,8 +99,8 @@ before CI is written, because CI will call this script.
 
 `npm create vite@latest web -- --template react-ts`, then add Vitest with one test that asserts
 `true`. Dependencies must stay inside `tools/checks/sdk-allowlist.md`: react, react-dom, vite,
-typescript are listed; vitest is a dev tool, not shipped, so the allowlist gains one row with a
-note that it never reaches the bundle.
+typescript are listed. Vitest gains a row in the same file marked **dev only**, so the allowlist
+stays the single list and a reader can see at a glance that it never reaches the bundle.
 
 ### 4.3 `mobile/` - placeholder only
 
@@ -106,7 +114,7 @@ Four jobs, each able to run alone:
 
 | Job | Runs | Fails when |
 | --- | --- | --- |
-| `python` | `pytest tools/checks` with `PYTHONIOENCODING=utf-8` | a check fails |
+| `python` | `pytest tools/checks` on **Python 3.11**, with `PYTHONIOENCODING=utf-8` | a check fails |
 | `web` | `npm ci`, then `npx vitest run` in `web/` | a test fails |
 | `mobile` | guarded, skipped while there is no `mobile/pubspec.yaml` | never, for now |
 | `license` | `npm ci`, then `npx license-checker --json` in `web/`, compared with the allowlist | a package is outside the allowlist, or reports `UNKNOWN` |
@@ -180,6 +188,8 @@ Found by reading `CLAUDE.md` section 3, `tools/checks/`, and `prompts/phase-P/P.
 - [ ] `mobile/README.md` says what is missing and which task fills it
 - [ ] Branch protection: the refusal is recorded in `records/P.1.md` with the API message
 - [ ] `records/P.1.md` carries a result line per step and the table above with real numbers
+- [ ] CI runs on Python 3.11, not on whatever the runner defaults to
+- [ ] `chore/p1-repo-ci` is merged into `main` once the tests pass
 
 ## 8. After Gate B
 
@@ -192,16 +202,16 @@ feature(P.1): add ci workflow with licence gate
 docs(P.1): record mobile placeholder and branch protection limit
 ```
 
+Then merge `chore/p1-repo-ci` into `main`, so the next task starts from a trunk that already has CI.
+
 Record note: `records/P.1.md` gets the CI run links, the licence-checker output, the red run from
 test 3, and the branch-protection refusal message. `records/TRACKING.md` gets status, real effort
 and the test result.
 
 ## 9. Open questions for the reviewer
 
-1. Python here is 3.14.2. `CLAUDE.md` section 5 asks for 3.11 or newer, so it passes. But Kokoro
-   and torch, needed at P.3, may not have wheels for 3.14 yet. Should P.1 pin CI to 3.11 so the
-   pipeline tasks have a version they can certainly use, or leave CI on 3.14 and let P.3 decide?
-2. Vitest is a dev dependency and never ships. Add it to `sdk-allowlist.md` with a "dev only" note,
-   or keep that file for shipped packages and let the licence job ignore dev dependencies?
-3. Branch protection is refused on this plan. Leave it, or make protection a later task if the repo
-   ever goes public?
+None. All three were answered on 2026-09-24 and moved into the Decisions log above.
+
+One note, not a question: the machine runs Python 3.14 and CI will run 3.11. A check can pass in
+one place and fail in the other. Test 4 runs the checker locally on 3.14 and test 5 runs it in CI
+on 3.11, so the gap is covered by the test list rather than assumed away.
