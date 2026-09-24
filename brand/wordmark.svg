@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560">
+<rect width="1200" height="560" fill="#FFF8EE"/>
+<g transform="translate(60,24) scale(1)">
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#162038"/><stop offset="1" stop-color="#2B3A5C"/></linearGradient>
+ <radialGradient id="vis" cx="0.35" cy="0.3" r="0.8"><stop offset="0" stop-color="#FFD98A"/><stop offset="0.6" stop-color="#F6B24C"/><stop offset="1" stop-color="#C97A1A"/></radialGradient>
+ <clipPath id="r"><rect width="512" height="512" rx="114"/></clipPath>
+</defs>
+<g clip-path="url(#r)">
+ <rect width="512" height="512" fill="url(#sky)"/>
+ <circle cx="80" cy="90" r="4" fill="#FFF8EE" opacity=".9"/><circle cx="430" cy="70" r="3" fill="#FFF8EE" opacity=".8"/><circle cx="380" cy="150" r="2.5" fill="#FFF8EE" opacity=".7"/><circle cx="130" cy="180" r="2" fill="#FFF8EE" opacity=".6"/><circle cx="460" cy="230" r="2.5" fill="#FFF8EE" opacity=".6"/>
+ <path d="M60,80 l4,-14 4,14 14,4 -14,4 -4,14 -4,-14 -14,-4 Z" fill="#E8735A" opacity=".95"/>
+ <!-- mặt trăng -->
+ <path d="M-40,420 Q256,330 552,420 L552,540 L-40,540 Z" fill="#8D93A8"/>
+ <path d="M-40,440 Q256,360 552,440 L552,540 L-40,540 Z" fill="#6F7590" opacity=".6"/>
+ <ellipse cx="120" cy="450" rx="26" ry="9" fill="#6F7590"/><ellipse cx="410" cy="470" rx="34" ry="11" fill="#6F7590"/><ellipse cx="300" cy="500" rx="20" ry="7" fill="#6F7590"/>
+ <!-- vỏ trứng dưới -->
+ <path d="M150,300 L150,330 Q150,430 256,432 Q362,430 362,330 L362,300 L340,318 L318,292 L296,318 L274,290 L256,316 L236,290 L214,316 L192,292 L172,318 Z" fill="#FFF3E0" stroke="#2B2622" stroke-width="10" stroke-linejoin="round"/>
+ <path d="M172,318 Q256,360 340,318" fill="none" stroke="#E3D2B8" stroke-width="8" opacity=".6"/>
+ <!-- mũ bảo hiểm ló lên -->
+ <circle cx="256" cy="232" r="96" fill="#F2F2F0" stroke="#2B2622" stroke-width="10"/>
+ <ellipse cx="262" cy="236" rx="66" ry="60" fill="url(#vis)" stroke="#2B2622" stroke-width="9"/>
+ <path d="M215,205 Q240,190 268,196" fill="none" stroke="#FFF" stroke-width="9" stroke-linecap="round" opacity=".85"/>
+ <circle cx="290" cy="252" r="7" fill="#FFF" opacity=".7"/>
+ <!-- tai mũ -->
+ <circle cx="164" cy="238" r="16" fill="#F2F2F0" stroke="#2B2622" stroke-width="8"/><circle cx="348" cy="238" r="16" fill="#F2F2F0" stroke="#2B2622" stroke-width="8"/>
+</g>
+</g>
+<text x="640" y="250" font-family="Arial Rounded MT Bold, Arial, sans-serif" font-size="150" font-weight="700" fill="#2B2622">Trứng</text>
+<text x="640" y="400" font-family="Arial Rounded MT Bold, Arial, sans-serif" font-size="150" font-weight="700" fill="#E8735A">Trăng</text>
+<text x="644" y="470" font-family="Arial, sans-serif" font-size="40" fill="#7A6A62">Mỗi ngày nở một từ</text>
+</svg>

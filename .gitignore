@@ -1,0 +1,10 @@
+content/raw/*
+!content/raw/SOURCES.md
+content/pack/audio*/
+content/pack/*.sqlite
+*.opus
+*.wav
+tools/pipeline/.venv/
+node_modules/
+web/dist/
+.env

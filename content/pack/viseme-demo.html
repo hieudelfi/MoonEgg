@@ -1,0 +1,31 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demo khẩu hình</title>
+<style>body{font-family:Inter,Arial,sans-serif;background:#FFF9F2;margin:0;padding:24px;color:#3B2E2A;text-align:center}
+svg{width:min(90vw,360px);height:auto} button{margin:4px;padding:10px 16px;border:2px solid #3B2E2A;border-radius:10px;background:#fff;font-size:16px;cursor:pointer}
+button:active{background:#F6D9C4} #cur{font-size:20px;margin:8px}</style></head><body>
+<h2>Demo chuyển khẩu hình (chưa có audio)</h2>
+<svg viewBox="0 0 200 230"><rect x="6" y="6" width="188" height="218" rx="14" fill="#FFF9F2" stroke="#E7DED4"/>
+<path d="M22.0,128 A78,78 0 0 1 178.0,128" fill="#F2F2F0" stroke="#3B2E2A" stroke-width="3"/>
+<path d="M22.0,128 A78,78 0 0 1 178.0,128" fill="none" stroke="#C9C9C4" stroke-width="10" stroke-linecap="round" transform="translate(0,-6)"/>
+<circle cx="100.0" cy="118" r="62" fill="#F6D9C4" stroke="#3B2E2A" stroke-width="3"/>
+<path d="M45.0,180 Q100.0,198 155.0,180 L170.0,216 L30.0,216 Z" fill="#F2F2F0" stroke="#3B2E2A" stroke-width="3"/>
+<ellipse cx="78.0" cy="104" rx="9" ry="11" fill="#3B2E2A"/>
+<circle cx="81.0" cy="100" r="3.2" fill="#fff"/>
+<ellipse cx="122.0" cy="104" rx="9" ry="11" fill="#3B2E2A"/>
+<circle cx="125.0" cy="100" r="3.2" fill="#fff"/>
+<path d="M68.0,86 q10,-6 20,-2 M112.0,84 q10,-4 20,2" fill="none" stroke="#3B2E2A" stroke-width="3" stroke-linecap="round"/>
+<path d="M97.0,120 q3,5 6,0" fill="none" stroke="#3B2E2A" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="60.0" cy="128" r="7" fill="#F5B9B0" opacity=".7"/><circle cx="140.0" cy="128" r="7" fill="#F5B9B0" opacity=".7"/>
+<g transform="translate(100.0,144)"><g id="mouth"></g></g>
+<text x="100.0" y="24" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle" fill="#3B2E2A"></text>
+<text x="100.0" y="40" font-family="Inter, Arial, sans-serif" font-size="12" text-anchor="middle" fill="#7A6A62"></text></svg>
+<div id="cur">—</div>
+<div><button onclick="play('think')">think</button><button onclick="play('mother')">mother</button><button onclick="play('fish')">fish</button><button onclick="play('world')">world</button><button onclick="play('hello')">hello</button></div>
+<script>
+const M={"sil":`<path d="M-18,0 Q0,8 18,0" fill="none" stroke="#3B2E2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`,"PP":`<path d="M-20,-2 Q0,-6 20,-2 Q0,6 -20,-2 Z" fill="#E8877A" stroke="#3B2E2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M-20,-2 Q0,2 20,-2" fill="none" stroke="#C9605A" stroke-width="2"/>`,"FF":`<path d="M-22,-4 Q0,-8 22,-4 L20,4 Q0,10 -20,4 Z" fill="#7A2F3A" stroke="#3B2E2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M-16,-4 L16,-4 L14,3 L-14,3 Z" fill="#FFFFFF"/><path d="M-20,4 Q0,12 20,4 Q0,16 -20,4 Z" fill="#E8877A" stroke="#3B2E2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`,"TH":`<path d="M-22,-6 Q0,-12 22,-6 L22,6 Q0,14 -22,6 Z" fill="#7A2F3A" stroke="#3B2E2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M-16,-6 L16,-6 L14,-1 L-14,-1 Z" fill="#FFFFFF"/><path d="M-9,-2 Q0,-9 9,-2 Q0,6 -9,-2 Z" fill="#E06B7C" stroke="#C9605A" stroke-width="1.5"/><path d="M-14,4 L14,4 L12,8 L-12,8 Z" fill="#FFFFFF"/>`,"DD":`<path d="M-20,-4 Q0,-9 20,-4 Q0,12 -20,-4 Z" fill="#7A2F3A" stroke="#3B2E2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M-14,-4 L14,-4 L12,0 L-12,0 Z" fill="#FFFFFF"/><path d="M-8,4 Q0,-4 8,4 Q0,8 -8,4 Z" fill="#E06B7C"/>`,"SS":`<path d="M-24,-3 Q0,-8 24,-3 Q0,7 -24,-3 Z" fill="#7A2F3A" stroke="#3B2E2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M-19,-3 L19,-3 L18,0 L-18,0 Z" fill="#FFFFFF"/><path d="M-18,0 L18,0 L17,3 L-17,3 Z" fill="#FFFFFF"/>`,"CH":`<path d="M-16,-8 Q0,-12 16,-8 Q22,0 16,8 Q0,12 -16,8 Q-22,0 -16,-8 Z" fill="#7A2F3A" stroke="#3B2E2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M-11,-6 L11,-6 L10,-1 L-10,-1 Z" fill="#FFFFFF"/><path d="M-10,2 L10,2 L9,6 L-9,6 Z" fill="#FFFFFF"/><path d="M-16,-8 Q0,-14 16,-8" fill="none" stroke="#C9605A" stroke-width="3"/>`,"aa":`<path d="M-20,-8 Q0,-13 20,-8 Q24,10 0,20 Q-24,10 -20,-8 Z" fill="#7A2F3A" stroke="#3B2E2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M-15,-8 L15,-8 L13,-3 L-13,-3 Z" fill="#FFFFFF"/><path d="M-12,14 Q0,4 12,14 Q0,20 -12,14 Z" fill="#E06B7C"/>`,"E":`<path d="M-26,-4 Q0,-10 26,-4 Q0,14 -26,-4 Z" fill="#7A2F3A" stroke="#3B2E2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M-20,-4 L20,-4 L18,1 L-18,1 Z" fill="#FFFFFF"/><path d="M-12,8 Q0,3 12,8 Q0,12 -12,8 Z" fill="#E06B7C"/>`,"I":`<path d="M-28,-2 Q0,-7 28,-2 Q0,8 -28,-2 Z" fill="#7A2F3A" stroke="#3B2E2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M-22,-2 L22,-2 L21,2 L-21,2 Z" fill="#FFFFFF"/>`,"O":`<ellipse cx="0" cy="2" rx="13" ry="14" fill="#7A2F3A" stroke="#3B2E2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M-8,-9 L8,-9 L7,-5 L-7,-5 Z" fill="#FFFFFF"/><ellipse cx="0" cy="2" rx="17" ry="17" fill="none" stroke="#C9605A" stroke-width="3"/>`,"U":`<ellipse cx="0" cy="2" rx="8" ry="9" fill="#7A2F3A" stroke="#3B2E2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="0" cy="2" rx="14" ry="13" fill="#E8877A" fill-opacity=".55" stroke="#C9605A" stroke-width="3"/><ellipse cx="0" cy="2" rx="8" ry="9" fill="#7A2F3A"/>`};
+const WORDS={"think": ["TH", "I", "DD", "DD", "sil"], "mother": ["PP", "aa", "TH", "E", "sil"], "fish": ["FF", "I", "CH", "sil"], "world": ["U", "O", "DD", "DD", "sil"], "hello": ["E", "DD", "O", "U", "sil"]};
+const g=document.getElementById("mouth"),cur=document.getElementById("cur");
+function set(v){g.innerHTML=M[v];cur.textContent=v;}
+set("sil");
+async function play(w){for(const v of WORDS[w]){set(v);await new Promise(r=>setTimeout(r,180));}}
+</script></body></html>
