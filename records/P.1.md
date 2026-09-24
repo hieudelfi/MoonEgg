@@ -4,7 +4,7 @@ Bắt đầu: 2026-09-24  Kết thúc: 2026-09-24  Công thực tế: 0.9 nđ (�
 Type: INFRA  Level: L2  Repro: không áp dụng
 Người kiểm: tự kiểm  Nhánh: `chore/p1-repo-ci`
 Plan: https://hub.yawasa.com/app/p/moonegg-p1-plan  Flow: bỏ — Type INFRA, chưa có màn hình  Result: https://hub.yawasa.com/app/p/moonegg-p1-result
-Delivery: `docs/Delivery/2026-09-24_P.1/`
+Delivery: `docs/Delivery/2026-09-24_P.1/` · https://hub.yawasa.com/app/p/moonegg-p1-delivery
 Tham chiếu: docs/09 §3P.1 P.1 · docs/07 §2 · docs/01 §13.2 · Test TC-CP-01, TC-CP-02
 Phụ thuộc: không có, task đầu của giai đoạn P
 
@@ -50,7 +50,7 @@ Phụ thuộc: không có, task đầu của giai đoạn P
 
 ## Bằng chứng
 
-- Commit: `9813fbb` verify_pack + test khói · `c59bcc1` web + vitest · `9f14e01` CI + cổng giấy phép · `40874c7` mobile placeholder
+- Commit: `9813fbb` verify_pack + test khói · `c59bcc1` web + vitest · `9f14e01` CI + cổng giấy phép · `40874c7` mobile placeholder · `1b60303` cổng chạy ở máy · `13705b5` đóng task · gộp `3378960`
 - File đầu ra: `.github/workflows/ci.yml`, `tools/checks/check_licenses.mjs`, `tools/checks/test_smoke.py`, `tools/checks/test_licenses.py`, `tools/checks/fixtures/gpl-case/`, `web/`, `mobile/README.md`
 - Lần chạy CI: https://github.com/hieudelfi/MoonEgg/actions/runs/35976963632 — 4 job `failure`
 - Nguyên văn GitHub trả về (annotation của check-run 107559618956): `The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings`

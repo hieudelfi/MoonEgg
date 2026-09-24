@@ -1,10 +1,10 @@
 # P.1 - repo, a gate that runs on this machine, and a licence scan
 
 Task: `P.1` · Plan: https://hub.yawasa.com/app/p/moonegg-p1-plan · Flow: skipped, Type is INFRA
-Record: `records/P.1.md` · Delivery: `docs/Delivery/2026-09-24_P.1/`
-Commits: `9813fbb`, `c59bcc1`, `9f14e01`, `40874c7`, `e571539`, plus the gate commit at the close
-Branch: `chore/p1-repo-ci` · Effort: 0.9 nd (estimate: 1.5 nd)
-Finished: 2026-09-24 · Checked by: `self`
+Record: `records/P.1.md` · Delivery: https://hub.yawasa.com/app/p/moonegg-p1-delivery
+Commits: `9813fbb`, `c59bcc1`, `9f14e01`, `40874c7`, `e571539`, `1b60303`, `13705b5`
+Merged: `3378960` into `main`, branch `chore/p1-repo-ci` deleted on both sides
+Effort: 0.9 nd (estimate: 1.5 nd) · Finished: 2026-09-24 · Checked by: `self`
 
 ---
 
