@@ -27,9 +27,19 @@ Depends on: none. First task of phase P.
 6. 2026-09-24 - Closing a task now goes through a **pull request**, not a local merge: open the PR
    after Gate B, wait for CI, merge with a merge commit, delete the branch. Written as
    `CLAUDE.md` section 7.8 with a PR template at `.github/pull_request_template.md`.
-7. 2026-09-24 - This branch carries two process changes as well as P.1 itself, because the rules
-   were written while the branch was already open. Its PR therefore contains both. From P.2 on,
-   a process change gets its own branch.
+7. 2026-09-24 - This branch carries the process changes as well as P.1 itself, because the rules
+   were written while the branch was already open. From P.2 on, a process change gets its own branch.
+8. 2026-09-24 - **The gate moves off GitHub and onto this machine.** GitHub Actions refused to run
+   every job: `The job was not started because recent account payments have failed or your spending
+   limit needs to be increased`. Rather than wait on an account fix, the reviewer chose to run the
+   checks locally through git hooks, which is also faster. Section 4.4 is rewritten below. The
+   workflow file stays but only runs when a human presses the button.
+9. 2026-09-24 - No pull request. The branch is merged on this machine after the gate passes, then
+   pushed. Review happens on the hub through Plan and Result, not through a diff on GitHub. The PR
+   template added earlier is removed.
+10. 2026-09-24 - The gate is built as a **machine-wide** tool at `~/.config/devgate/`, not as a
+   MoonEgg script, so later projects on this machine reuse it. A repo opts in by having
+   `tools/checks/gate.sh`; a repo without one is ignored.
 
 Out of scope: any content pipeline work (P.3), the Supabase and R2 setup (P.2), writing real tests.
 CI runs empty test suites on purpose; real tests arrive with the tasks that need them.
@@ -114,19 +124,33 @@ Flutter is not installed, so `flutter create` cannot run. `mobile/README.md` rec
 folder will hold and which task fills it. The CI job exists but is skipped by a guard, so turning
 it on later is one line, not a new job.
 
-### 4.4 `.github/workflows/ci.yml` - required
+### 4.4 The gate - rewritten, see Decisions log 8
 
-Four jobs, each able to run alone:
+The checks run on this machine, not on a runner. Two layers:
 
-| Job | Runs | Fails when |
+**Machine layer**, `~/.config/devgate/` - shared by every repo on this machine:
+
+| Piece | What it does |
+| --- | --- |
+| `gate.sh` | finds the repo, runs its gate file, prints a pass or fail line with timing |
+| `hooks/pre-commit` | runs the gate at `quick` level before every commit |
+| `hooks/pre-push` | runs the gate at `full` level before every push |
+| `gate.sh merge <branch>` | pull, merge with `--no-ff`, run the gate, undo the merge if it fails, push if it passes |
+| `gate.sh doctor` | prints the current configuration |
+
+`git config --global core.hooksPath` points at those hooks, so every repo passes through. A repo
+with no gate file is ignored without a word. A repo's own `.git/hooks/` still runs afterwards, so
+the global setting takes nothing away.
+
+**Project layer**, `tools/checks/gate.sh` - what MoonEgg actually checks:
+
+| Level | Runs | Measured |
 | --- | --- | --- |
-| `python` | `pytest tools/checks` on **Python 3.11**, with `PYTHONIOENCODING=utf-8` | a check fails |
-| `web` | `npm ci`, then `npx vitest run` in `web/` | a test fails |
-| `mobile` | guarded, skipped while there is no `mobile/pubspec.yaml` | never, for now |
-| `license` | `npm ci`, then `npx license-checker --json` in `web/`, compared with the allowlist | a package is outside the allowlist, or reports `UNKNOWN` |
+| `quick` | pytest, then `verify_pack` on the sample data | about 2 seconds |
+| `full` | quick, plus `npm ci` if needed, vitest, and the licence gate | about 5 seconds |
 
-The licence job reads `tools/checks/license-allowlist.txt` rather than holding its own copy, so
-the list has one home.
+`.github/workflows/ci.yml` stays in the repo with `on: workflow_dispatch`, so it never runs by
+itself and never shows red. Switching back to cloud CI means editing one line.
 
 ### 4.5 Branch protection - record the reason, do not buy
 
@@ -166,7 +190,8 @@ one at Gate B; protection can be turned on later if the repo goes public or the 
 
 | Thing changed | Consumer | Effect |
 | --- | --- | --- |
-| `.github/pull_request_template.md` | every PR from now on | new, added on this branch |
+| `~/.config/devgate/` | every repo on this machine | new, machine-wide |
+| `core.hooksPath` (global git config) | every repo on this machine | now points at the shared hooks |
 | `verify_pack.py` output encoding | every DATA task, and `CLAUDE.md` section 3 | fixed for all of them |
 | `tools/checks/license-allowlist.txt` | the new licence job, P.7 source records | read, not changed |
 | `tools/checks/sdk-allowlist.md` | the new licence job, every later web task | gains one row for vitest |
@@ -179,25 +204,26 @@ Found by reading `CLAUDE.md` section 3, `tools/checks/`, and `prompts/phase-P/P.
 
 | # | Test | How to run | Expected result |
 | --- | --- | --- | --- |
-| 1 | TC-CP-01 | `npx license-checker --json` in `web/` | 0 packages outside the allowlist |
+| 1 | TC-CP-01 | `node tools/checks/check_licenses.mjs` | 0 packages outside the allowlist |
 | 2 | TC-CP-02 | compare `web/package.json` with `sdk-allowlist.md` | every dependency has a row |
-| 3 | Licence gate really bites | install a GPL package, push, then remove it | the run fails on that commit and passes after removal |
+| 3 | Licence gate really bites | run the checker against an offline GPL fixture | exit 1, and the message names the package and its licence |
 | 4 | Checker on Windows | `python tools/checks/verify_pack.py content/lexicon/lexicon_raw_test.csv` | `30 bản ghi · 0 lỗi · 2 cảnh báo`, exit 0, no traceback |
-| 5 | Checker in CI | the python job | same output, exit 0 |
-| 6 | Empty suites pass | the python and web jobs on this branch | both green |
+| 5 | Checker inside the gate | `bash tools/checks/gate.sh quick` | same output, exit 0 |
+| 6 | Empty suites pass | `pytest tools/checks -q`, `npm test` | both exit 0 |
+| 7 | The gate refuses a bad commit | add a failing test, try to commit | commit rejected, `HEAD` unchanged |
 
 **Definition of done:**
 
-- [ ] All four jobs appear in one CI run, three green and one skipped
-- [ ] Test 3 shows a real red run, with its link recorded, before the package is removed
+- [ ] `bash tools/checks/gate.sh full` passes and takes under 30 seconds
+- [ ] The gate refuses a commit that breaks a test, proven once, with the output recorded
+- [ ] Test 3 shows the licence gate rejecting a GPL package, as an automated test, not by hand
 - [ ] `verify_pack.py` exits 0 on Windows with no traceback
 - [ ] `web/` builds and `npm test` passes
 - [ ] `mobile/README.md` says what is missing and which task fills it
 - [ ] Branch protection: the refusal is recorded in `records/P.1.md` with the API message
 - [ ] `records/P.1.md` carries a result line per step and the table above with real numbers
-- [ ] CI runs on Python 3.11, not on whatever the runner defaults to
-- [ ] `chore/p1-repo-ci` is merged into `main` through a PR, with CI green on that PR, and the
-      branch deleted afterwards
+- [ ] `~/.config/devgate/` works for a repo that is not MoonEgg, or is proven to ignore it silently
+- [ ] `chore/p1-repo-ci` is merged into `main` with `gate.sh merge`, and the branch deleted
 
 ## 8. After Gate B
 
@@ -210,9 +236,9 @@ feature(P.1): add ci workflow with licence gate
 docs(P.1): record mobile placeholder and branch protection limit
 ```
 
-Then close the task through a pull request: push the branch, open the PR with the title
-`feature(P.1): add CI, licence gate and web scaffold`, wait for the CI run to go green, merge with
-a merge commit, delete the branch. The next task then starts from a trunk that already has CI.
+Then close the task on this machine: `bash ~/.config/devgate/gate.sh merge chore/p1-repo-ci`,
+which pulls, merges with `--no-ff`, runs the gate, and pushes only if it passes. Delete the branch
+locally and on the remote. The next task then starts from a trunk that already has the gate.
 
 Record note: `records/P.1.md` gets the CI run links, the licence-checker output, the red run from
 test 3, and the branch-protection refusal message. `records/TRACKING.md` gets status, real effort

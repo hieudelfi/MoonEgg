@@ -1,10 +1,11 @@
 name: CI
 
+# Cong kiem tra that chay o MAY, khong o day: tools/checks/gate.sh, goi qua
+# ~/.config/devgate/hooks. Workflow nay giu lai lam ban du phong, chi chay khi
+# bam tay tren GitHub. Ly do: Actions cua tai khoan dang bi chan thanh toan, va
+# cong o may xong trong ~5 giay thay vi cho runner. Xem CLAUDE.md muc 7.8.
 on:
-  push:
-    branches: ['**']
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
   python:

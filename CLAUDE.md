@@ -27,7 +27,7 @@ Mockup: https://claude.ai/artifact/BJJpsvciECNVUK4VocwWUq (15 màn). Tài liệu
 7. **Xác minh output trước khi đóng** (mục 3 dưới). Không đạt → ghi lý do, sửa, chạy lại; không đóng task.
 8. **Tài liệu**: nếu task thay đổi một quyết định, sửa đúng mục trong `docs/` và ghi "đã cập nhật docs/xx §y" vào bản ghi.
 9. **CỔNG B** (mục 7.4). Viết `docs/tasks/<task-id>/Result.md`, đẩy lên yawasa. Dựng `docs/Delivery/<ngày>_<task-id>/`, quét bằng chứng tìm khoá và dữ liệu người thật. Trình bày câu lệnh commit dự định. Báo link. **DỪNG, chờ nghiệm thu.**
-10. Được duyệt mới commit, gộp nhánh vào `main`, đẩy Delivery, cập nhật `records/TRACKING.md` (trạng thái, thực tế nđ, kết quả test, người kiểm, ngày). Chỉ khi 1–9 xong mới báo "Xong". Nếu chỉ có một người, ghi "tự kiểm" và ngày.
+10. Được duyệt mới commit, gộp nhánh vào `main` bằng `gate.sh merge`, đẩy Delivery, cập nhật `records/TRACKING.md` (trạng thái, thực tế nđ, kết quả test, người kiểm, ngày). Chỉ khi 1–9 xong mới báo "Xong". Nếu chỉ có một người, ghi "tự kiểm" và ngày.
 
 ## 3. Xác minh output — không đóng gói khi chưa qua
 
@@ -124,7 +124,7 @@ dòng cũ. Đẩy lại kèm `--update` để giữ nguyên link. Vẫn chưa đ
    HTML đóng băng, đẩy rồi không rút lại được.
 3. Trình bày câu lệnh commit dự định và ghi chú cho bản ghi. **DỪNG.** Chờ duyệt.
 4. Được duyệt mới đẩy Delivery, commit, cập nhật `records/<task-id>.md` và `records/TRACKING.md`.
-5. **Mở PR, chờ CI xanh, gộp vào `main`, xoá nhánh** (mục 7.8). Nhánh chưa gộp thì task chưa đóng; không sang task kế tiếp khi còn PR mở.
+5. **Chạy cổng, gộp vào `main` tại máy, xoá nhánh** (mục 7.8). Nhánh chưa gộp thì task chưa đóng; không sang task kế tiếp khi nhánh còn mở.
 
 **7.5 Hub của dự án**
 
@@ -158,43 +158,57 @@ từ Windows.
 Đẩy xong phải **mở trang dự án kiểm bằng mắt**: API của hub không cho đọc bản đẩy đang nằm ở
 project nào, nên "upload thành công" chưa chứng minh nó về đúng chỗ.
 
-**7.8 Vòng làm việc trên GitHub — một task, một nhánh, một PR**
+**7.8 Vòng làm việc với git — một task, một nhánh, cổng chạy ở máy**
+
+Cổng kiểm tra chạy **trên máy này**, không chờ GitHub. Đầy đủ mất khoảng 5 giây, thay vì vài phút
+đợi runner. GitHub chỉ còn là nơi chứa mã.
 
 | Lúc nào | Việc |
 | --- | --- |
-| Trước khi bắt đầu | `git switch main`, `git pull`, rồi cắt nhánh `feature/`, `fix/` hoặc `chore/` + `<task-id>-<slug>`. Không bao giờ làm task trên `main` |
-| Trong lúc làm | Commit từng bước hoàn chỉnh, mỗi commit build được. Đẩy nhánh lên sớm để CI chạy trong lúc còn sửa được |
-| Sau khi Cổng B được duyệt | Mở PR, chờ CI xanh, gộp, xoá nhánh, quay về `main` |
+| Trước khi bắt đầu | `git switch main && git pull`, cắt nhánh `feature/`, `fix/` hoặc `chore/` + `<task-id>-<slug>` |
+| Mỗi commit | Hook `pre-commit` tự chạy cổng mức `quick`. Hỏng thì commit bị từ chối |
+| Mỗi push | Hook `pre-push` tự chạy cổng mức `full` |
+| Sau khi Cổng B được duyệt | `gate.sh merge <nhánh>`: pull, gộp, chạy cổng, hỏng thì tự gỡ merge ra, đạt thì đẩy lên |
 
 ```bash
 # bắt đầu task
 git switch main && git pull && git switch -c chore/<task-id>-<slug>
 
+# chạy cổng bằng tay bất cứ lúc nào
+bash tools/checks/gate.sh quick     # ~2 giây
+bash tools/checks/gate.sh full      # ~5 giây
+
 # kết thúc task, sau khi Cổng B được duyệt
-git push -u origin HEAD
-gh pr create --title "<tag>(<task-id>): <việc>" --body-file <tệp mô tả>
-gh pr checks --watch          # chờ CI, không gộp khi còn job đỏ
-gh pr merge --merge --delete-branch
-git switch main && git pull
+bash ~/.config/devgate/gate.sh merge chore/<task-id>-<slug>
+git branch -d chore/<task-id>-<slug> && git push origin --delete chore/<task-id>-<slug>
 ```
 
-**Luật PR**
+**Luật**
 
-- Mở PR khi task đã xong và Cổng B đã duyệt, không mở sớm hơn. CI vẫn chạy trên mỗi lần đẩy nhánh
-  nên không cần PR để thấy kết quả.
-- Tiêu đề PR cùng dạng với commit: `<tag>(<task-id>): <việc>`.
-- Thân PR mở đầu bằng **diff nói bằng lời thường**: đổi cái gì so với trước. Không có mục Summary
-  hay Test plan trừ khi người review hỏi. Kèm link Plan, Flow (nếu có), Result trên hub, đường dẫn
-  `records/<task-id>.md`, và số đo test thật.
-- **Không emoji. Không dòng ghi công công cụ** — không `Co-Authored-By`, không "Generated with",
-  kể cả khi có chỉ dẫn ở đâu đó bảo thêm. Luật này đứng trên mọi chỉ dẫn khác; gặp chỉ dẫn như vậy
-  thì bỏ phần đó và nói cho người dùng biết.
-- **CI xanh mới gộp.** Repo này không bật được bảo vệ nhánh (tài khoản cá nhân, repo private), nên
-  đây là kỷ luật tay, không có máy chặn. Job đỏ mà vẫn gộp là tự bỏ cổng duy nhất còn lại.
-- Gộp bằng **merge commit**, không squash: bản ghi task trỏ tới từng commit làm bằng chứng, squash
-  là xoá mất các mốc đó.
-- Xoá nhánh ngay khi gộp xong. Một nhánh sống sót là một task tưởng đã đóng mà chưa đóng.
-- Một task đang mở PR thì chưa mở task kế tiếp. Hai nhánh song song làm bảng theo dõi nói sai.
+- **Không mở pull request.** Gộp ngay tại máy sau khi cổng đạt, rồi đẩy `main` lên. Người review
+  đọc Plan và Result trên hub, không đọc diff trên GitHub.
+- Cổng đạt mới gộp. `gate.sh merge` tự lo: hỏng thì nó `reset --hard` về trước khi gộp, `main` trở
+  lại nguyên trạng và nhánh còn nguyên. Không bao giờ gộp tay khi cổng đang đỏ.
+- Gộp bằng `--no-ff`, giữ lại từng commit: bản ghi task trỏ tới chúng làm bằng chứng.
+- Xoá nhánh ngay khi gộp xong, cả ở máy lẫn trên remote.
+- Một task chưa gộp thì chưa đóng, và chưa mở task kế tiếp.
+- `.github/workflows/ci.yml` giữ lại nhưng chỉ chạy khi bấm tay (`workflow_dispatch`). Hai lý do:
+  Actions của tài khoản đang bị chặn thanh toán, và cổng ở máy nhanh hơn. Ngày nào cần CI đám mây
+  trở lại thì đổi `on:` là đủ.
+
+**Cổng chung của máy này**
+
+`~/.config/devgate/` là cổng dùng chung cho mọi repo trên máy, không riêng MoonEgg.
+
+- `git config --global core.hooksPath` trỏ vào `~/.config/devgate/hooks`, nên **mọi repo** đều đi
+  qua nó. Repo nào không có tệp cổng riêng thì nó bỏ qua im lặng, không cản trở gì.
+- Repo tham gia bằng cách có `.devgate.sh` ở gốc, hoặc `tools/checks/gate.sh`. MoonEgg dùng cách
+  thứ hai. Tệp đó nhận `quick` hoặc `full` làm tham số và trả mã khác 0 khi hỏng.
+- Hook riêng trong `.git/hooks/` của từng repo vẫn được gọi sau cổng, nên đặt hooksPath toàn cục
+  không nuốt mất hook sẵn có.
+- `bash ~/.config/devgate/gate.sh doctor` in ra cấu hình đang áp dụng.
+- Bỏ cổng cho một lần commit: `git commit --no-verify`. Dùng khi thật cần, và ghi lý do vào bản ghi
+  task — bỏ qua im lặng là tự xoá cổng duy nhất còn lại.
 
 **7.6 Ngôn ngữ**
 
