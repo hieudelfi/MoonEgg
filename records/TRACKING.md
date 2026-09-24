@@ -4,7 +4,7 @@ Cập nhật mỗi thứ hai (trạng thái, thực tế) và mỗi lần đóng
 
 | ID | Task | Ước (nđ) | Thực (nđ) | Trạng thái | Bắt đầu | Kết thúc | Test đối chiếu | Kết quả test | Bản ghi | Người kiểm |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| P.1 | Repo, CI, quét giấy phép | 1.5 | | Chưa | | | CP-01/02 | | records/P.1.md | |
+| P.1 | Repo, CI, quét giấy phép | 1.5 | 0.6 | Chặn | 2026-09-24 | | CP-01/02 | CP-01 Đạt, CP-02 Đạt; CI không chạy (chặn thanh toán tài khoản) | records/P.1.md | tự kiểm |
 | P.2 | Supabase, R2, Pages | 1.5 | | Chưa | | | AU-04 | | records/P.2.md | |
 | P.3 | Môi trường pipeline | 1.5 | | Chưa | | | — | | records/P.3.md | |
 | P.4 | Chốt giọng đọc | 0.5 | | Chưa | | | — | | records/P.4.md | |
