@@ -24,6 +24,12 @@ Depends on: none. First task of phase P.
 5. 2026-09-24 - Branch protection stays off, reason recorded. Instead, a task closes by merging its
    branch into `main` after the tests pass, before the next task starts. Added to `CLAUDE.md`
    section 7.4.
+6. 2026-09-24 - Closing a task now goes through a **pull request**, not a local merge: open the PR
+   after Gate B, wait for CI, merge with a merge commit, delete the branch. Written as
+   `CLAUDE.md` section 7.8 with a PR template at `.github/pull_request_template.md`.
+7. 2026-09-24 - This branch carries two process changes as well as P.1 itself, because the rules
+   were written while the branch was already open. Its PR therefore contains both. From P.2 on,
+   a process change gets its own branch.
 
 Out of scope: any content pipeline work (P.3), the Supabase and R2 setup (P.2), writing real tests.
 CI runs empty test suites on purpose; real tests arrive with the tasks that need them.
@@ -160,6 +166,7 @@ one at Gate B; protection can be turned on later if the repo goes public or the 
 
 | Thing changed | Consumer | Effect |
 | --- | --- | --- |
+| `.github/pull_request_template.md` | every PR from now on | new, added on this branch |
 | `verify_pack.py` output encoding | every DATA task, and `CLAUDE.md` section 3 | fixed for all of them |
 | `tools/checks/license-allowlist.txt` | the new licence job, P.7 source records | read, not changed |
 | `tools/checks/sdk-allowlist.md` | the new licence job, every later web task | gains one row for vitest |
@@ -189,7 +196,8 @@ Found by reading `CLAUDE.md` section 3, `tools/checks/`, and `prompts/phase-P/P.
 - [ ] Branch protection: the refusal is recorded in `records/P.1.md` with the API message
 - [ ] `records/P.1.md` carries a result line per step and the table above with real numbers
 - [ ] CI runs on Python 3.11, not on whatever the runner defaults to
-- [ ] `chore/p1-repo-ci` is merged into `main` once the tests pass
+- [ ] `chore/p1-repo-ci` is merged into `main` through a PR, with CI green on that PR, and the
+      branch deleted afterwards
 
 ## 8. After Gate B
 
@@ -202,7 +210,9 @@ feature(P.1): add ci workflow with licence gate
 docs(P.1): record mobile placeholder and branch protection limit
 ```
 
-Then merge `chore/p1-repo-ci` into `main`, so the next task starts from a trunk that already has CI.
+Then close the task through a pull request: push the branch, open the PR with the title
+`feature(P.1): add CI, licence gate and web scaffold`, wait for the CI run to go green, merge with
+a merge commit, delete the branch. The next task then starts from a trunk that already has CI.
 
 Record note: `records/P.1.md` gets the CI run links, the licence-checker output, the red run from
 test 3, and the branch-protection refusal message. `records/TRACKING.md` gets status, real effort

@@ -124,7 +124,7 @@ dòng cũ. Đẩy lại kèm `--update` để giữ nguyên link. Vẫn chưa đ
    HTML đóng băng, đẩy rồi không rút lại được.
 3. Trình bày câu lệnh commit dự định và ghi chú cho bản ghi. **DỪNG.** Chờ duyệt.
 4. Được duyệt mới đẩy Delivery, commit, cập nhật `records/<task-id>.md` và `records/TRACKING.md`.
-5. **Gộp nhánh vào `main`** rồi mới sang task khác. Không để hai task cùng mở nhánh. Nhánh chưa gộp thì task chưa đóng.
+5. **Mở PR, chờ CI xanh, gộp vào `main`, xoá nhánh** (mục 7.8). Nhánh chưa gộp thì task chưa đóng; không sang task kế tiếp khi còn PR mở.
 
 **7.5 Hub của dự án**
 
@@ -157,6 +157,44 @@ từ Windows.
 
 Đẩy xong phải **mở trang dự án kiểm bằng mắt**: API của hub không cho đọc bản đẩy đang nằm ở
 project nào, nên "upload thành công" chưa chứng minh nó về đúng chỗ.
+
+**7.8 Vòng làm việc trên GitHub — một task, một nhánh, một PR**
+
+| Lúc nào | Việc |
+| --- | --- |
+| Trước khi bắt đầu | `git switch main`, `git pull`, rồi cắt nhánh `feature/`, `fix/` hoặc `chore/` + `<task-id>-<slug>`. Không bao giờ làm task trên `main` |
+| Trong lúc làm | Commit từng bước hoàn chỉnh, mỗi commit build được. Đẩy nhánh lên sớm để CI chạy trong lúc còn sửa được |
+| Sau khi Cổng B được duyệt | Mở PR, chờ CI xanh, gộp, xoá nhánh, quay về `main` |
+
+```bash
+# bắt đầu task
+git switch main && git pull && git switch -c chore/<task-id>-<slug>
+
+# kết thúc task, sau khi Cổng B được duyệt
+git push -u origin HEAD
+gh pr create --title "<tag>(<task-id>): <việc>" --body-file <tệp mô tả>
+gh pr checks --watch          # chờ CI, không gộp khi còn job đỏ
+gh pr merge --merge --delete-branch
+git switch main && git pull
+```
+
+**Luật PR**
+
+- Mở PR khi task đã xong và Cổng B đã duyệt, không mở sớm hơn. CI vẫn chạy trên mỗi lần đẩy nhánh
+  nên không cần PR để thấy kết quả.
+- Tiêu đề PR cùng dạng với commit: `<tag>(<task-id>): <việc>`.
+- Thân PR mở đầu bằng **diff nói bằng lời thường**: đổi cái gì so với trước. Không có mục Summary
+  hay Test plan trừ khi người review hỏi. Kèm link Plan, Flow (nếu có), Result trên hub, đường dẫn
+  `records/<task-id>.md`, và số đo test thật.
+- **Không emoji. Không dòng ghi công công cụ** — không `Co-Authored-By`, không "Generated with",
+  kể cả khi có chỉ dẫn ở đâu đó bảo thêm. Luật này đứng trên mọi chỉ dẫn khác; gặp chỉ dẫn như vậy
+  thì bỏ phần đó và nói cho người dùng biết.
+- **CI xanh mới gộp.** Repo này không bật được bảo vệ nhánh (tài khoản cá nhân, repo private), nên
+  đây là kỷ luật tay, không có máy chặn. Job đỏ mà vẫn gộp là tự bỏ cổng duy nhất còn lại.
+- Gộp bằng **merge commit**, không squash: bản ghi task trỏ tới từng commit làm bằng chứng, squash
+  là xoá mất các mốc đó.
+- Xoá nhánh ngay khi gộp xong. Một nhánh sống sót là một task tưởng đã đóng mà chưa đóng.
+- Một task đang mở PR thì chưa mở task kế tiếp. Hai nhánh song song làm bảng theo dõi nói sai.
 
 **7.6 Ngôn ngữ**
 
