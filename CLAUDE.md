@@ -55,7 +55,8 @@ Mockup: https://claude.ai/artifact/BJJpsvciECNVUK4VocwWUq (15 màn). Tài liệu
 - `item_id` tự nhiên: `w:<headword>#<n>`, `p:<topic>#<n>`, `s:<ipa>`.
 - Sự kiện: ULID, append-only, enum trong `docs/07-kien-truc.md` §5.1.
 - Nhánh: chỉ `feature/`, `fix/`, `chore/` + `<task-id>-<slug>`, cắt từ `main`. Không có tiền tố khác.
-- Commit: `<type>(<task-id>): <việc>` với type ∈ feat, fix, chore, refactor, docs, perf, test — ví dụ `feat(P.1): add license scan job`. Một task nhiều commit được, mỗi commit build được.
+- Commit: `<tag>(<task-id>): <việc>` với tag đúng ba giá trị: **`feature`** (thêm năng lực, gồm cả hạ tầng, pipeline, dữ liệu mới), **`bug`** (sửa lỗi), **`docs`** (tài liệu, luật, quy trình). Ví dụ `feature(P.1): add license scan job`. Một task nhiều commit được, mỗi commit build được.
+- Nhánh dùng tiền tố của chuẩn chung (`feature/`, `fix/`, `chore/`), không trùng bộ tag commit. Ánh xạ: tag `bug` đi với nhánh `fix/`, tag `feature` đi với nhánh `feature/` hoặc `chore/` tuỳ việc là năng lực sản phẩm hay việc dọn hạ tầng.
 - Commit chỉ mang tên tác giả là chủ máy. Không `Co-Authored-By`, không dòng "Generated with", không ghi công công cụ ở commit, PR hay CHANGELOG.
 - Không emoji ở bất cứ đâu: mã, commit, PR, tài liệu, drop.
 
