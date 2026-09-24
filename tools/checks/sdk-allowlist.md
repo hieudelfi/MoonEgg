@@ -13,3 +13,15 @@
 | rive | mobile | MIT | không | kiểm logo gói Free |
 | supabase_flutter | mobile | MIT | như trên | khai báo |
 | firebase_messaging, flutter_local_notifications | mobile | Apache-2.0/BSD | token thiết bị | khai báo |
+
+## Công cụ dev — không vào bundle, không phát hành
+
+Các gói dưới đây chỉ chạy lúc dev và lúc build. Không gói nào đi vào tệp người dùng tải về, nên
+không có dòng Data Safety. Vẫn phải nằm trong allowlist giấy phép như mọi gói khác.
+
+| Gói | Nền tảng | Giấy phép | Vai trò |
+| --- | --- | --- | --- |
+| vitest | web | MIT | chạy test, `npm test` = `vitest run` |
+| @vitejs/plugin-react | web | MIT | plugin build của Vite cho React |
+| oxlint | web | MIT | lint, do Vite scaffold thêm |
+| @types/react, @types/react-dom, @types/node | web | MIT | khai báo kiểu, biến mất sau khi biên dịch |
