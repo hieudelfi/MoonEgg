@@ -82,6 +82,13 @@ Quyết định trong lúc làm:
 - 2026-09-25 — **Kiểm thêm ngoài danh sách test: nhật ký có thật sự chỉ-ghi-thêm không.** Token A gọi
   PATCH và DELETE lên chính sự kiện của mình: cả hai HTTP 403. Đúng chủ ý — không viết policy update
   và delete thì hai hành động đó bị từ chối, không cần luật riêng.
+- 2026-09-25 — **R2 đòi gắn thẻ thanh toán; giữ nguyên R2.** Cloudflare bắt xác minh thẻ mới mở được
+  R2, kể cả ở gói miễn phí. Đã trình bày bốn đường: gắn thẻ, repo GitHub công khai cộng jsDelivr,
+  Cloudflare Pages phục vụ luôn nội dung, Supabase Storage. Người review chọn **gắn thẻ, giữ R2**.
+  Không phải sửa `docs/07` §2, không ảnh hưởng P.10, 1.7, 1.11, 2.11. Căn cứ: hạn mức 10 GB và băng
+  thông ra miễn phí, trong khi cả 5 đợt nội dung khoảng 150 MB.
+  Không tìm cách đi vòng qua bước xác minh của nhà cung cấp — vi phạm điều khoản, và tài khoản bị
+  khoá sẽ kéo theo cả Pages.
 
 ## Câu hỏi mở
 - Chưa có. Bốn câu của Cổng A đã trả lời trong Decisions log.
