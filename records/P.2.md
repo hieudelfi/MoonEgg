@@ -56,6 +56,15 @@ Quyết định trong lúc làm:
   cấm commit trên nhánh. Chọn commit từng bước vì hook `pre-commit` chạy cổng mỗi lần, phát hiện hỏng
   sớm hơn là dồn một cục. Nhánh vẫn không gộp trước khi Cổng B duyệt.
 
+- 2026-09-25 — **RLS của `sync_cursor` đi vòng qua bảng `device`, không thêm cột.** `docs/07` §7.2 cho
+  bảng này ba cột `device_id`, `pulled_seq`, `pushed_seq`, không có `user_id`, nên không viết thẳng
+  được policy `user_id = auth.uid()`. Hai lựa chọn: thêm cột `user_id`, hoặc hỏi chủ sở hữu qua
+  `device`. Chọn cách thứ hai vì thêm cột là sửa hợp đồng dữ liệu, tức là L3 và phải mở task riêng.
+  Đánh đổi: policy chậm hơn một chút vì có subquery, chấp nhận được với bảng một dòng mỗi thiết bị.
+- 2026-09-25 — **Không có policy update và delete cho mọi bảng.** RLS bật mà thiếu policy thì hành
+  động đó bị từ chối, nên nhật ký sự kiện thành chỉ-ghi-thêm mà không cần luật riêng. Đây là chủ ý,
+  không phải bỏ sót.
+
 ## Câu hỏi mở
 - Chưa có. Bốn câu của Cổng A đã trả lời trong Decisions log.
 
