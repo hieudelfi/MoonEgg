@@ -180,6 +180,13 @@ create policy analytics_daily_insert on public.analytics_daily
 -- above cannot stop it, because the policy only checks user_id. This trigger
 -- overwrites whatever the client sent. Test 9 of the plan proves it.
 
+-- bigserial puts a default on the column, and the trigger below overwrites whatever
+-- that default produced. Both call nextval, so each insert burned two numbers. Gaps do
+-- no harm, because a pull asks for "events after N" and never assumes the numbers run
+-- without holes (docs/07 section 5.4). Still, there is no reason to keep the waste.
+-- Dropping the default leaves the trigger as the only writer.
+alter table public.review_event alter column server_seq drop default;
+
 create or replace function public.review_event_force_server_seq()
 returns trigger
 language plpgsql
