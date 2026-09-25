@@ -14,7 +14,7 @@ Phụ thuộc: P.1 (Xong 2026-09-24)
 - [x] B3 `docs/tasks/P.2/click-list.md`: bước bấm Supabase + Cloudflare — kết quả: 5 phần (A Supabase, B R2, C Pages, D gửi lại gì, E dọn người dùng thử), 6+3+1 bước đánh số, mỗi bước có dòng "trên màn hình sau đó". Commit `975fbc6`.
 - [x] B4 `tools/ops/ping-supabase.sh` + `register-ping-task.ps1` — kết quả: `bash -n` sạch; chạy khi thiếu biến trả exit 2 kèm thông báo đúng; PowerShell parse sạch. Log `tools/ops/ping-supabase.log` thêm vào `.gitignore:12`. Commit `2dd673e`.
 - [x] B5 `.github/workflows/ping-supabase.yml` (workflow_dispatch, ngủ) — kết quả: chỉ `workflow_dispatch`, khối `schedule` để dạng comment, theo đúng cách `ci.yml` xử ở P.1. Commit `2dd673e`.
-- [ ] B6 Người review chạy click-list: Supabase project, Auth, SQL — kết quả: **Chặn** 2026-09-25, chờ người review bấm dashboard (Cổng A quyết định 2).
+- [ ] B6 Người review chạy click-list: Supabase project, Auth, SQL — kết quả: project `rxnhounlifmydmdemzok` ở Singapore, 7 bảng + 13 policy + 1 trigger đúng kỳ vọng, 2 người dùng thử đã tạo. **Còn thiếu**: bật Google và magic link (chặng 6).
 - [ ] B7 Người review chạy click-list: R2 bucket, Pages project — kết quả: **Chặn** 2026-09-25, cùng lý do B6.
 - [ ] B8 Test 1–10 chạy thật, ghi số vào bảng dưới — kết quả:
 - [ ] B9 Xoá 2 người dùng thử — kết quả:
@@ -23,16 +23,16 @@ Phụ thuộc: P.1 (Xong 2026-09-24)
 ## Kiểm tra
 | Test | Cách chạy | Input | Output thật | Đạt? |
 | --- | --- | --- | --- | --- |
-| 1 TC-AU-04 | token user A select review_event | 2 user, 1 event mỗi user | chưa chạy | |
-| 2 RLS thật bật | query `pg_tables`, `pg_policies` | 7 bảng | chưa chạy | |
-| 3 Schema lặp lại được | chạy `schema.sql` hai lần | project sạch | chưa chạy, cần project | |
+| 1 TC-AU-04 | token A gọi `GET /rest/v1/review_event` | A và B mỗi người 1 sự kiện | HTTP 200, 1 dòng, chủ sở hữu A; 0 dòng của B | Đạt |
+| 2 RLS thật bật | query `pg_class` + `pg_policy` trong SQL Editor | 7 bảng public | 7/7 `rls_bat = true`; policy: analytics_daily 1, sáu bảng còn lại 2 | Đạt |
+| 3 Schema lặp lại được | Run trong SQL Editor | tệp 220 dòng | chạy 3 lần (2 lần bản đầu, 1 lần sau khi sửa), cả 3 `Success. No rows returned` | Đạt |
 | 4 R2 đọc được | `curl -I` một file đã upload | 1 file thử | chưa chạy | |
 | 5 Pages trả lời | `curl -I` URL Pages | — | chưa chạy | |
-| 6 event_id duy nhất | insert trùng `event_id` | 1 event | chưa chạy | |
+| 6 event_id duy nhất | POST lại `event_id` đã có | `p2-a-1` | HTTP 409 `duplicate key value violates unique constraint "review_event_pkey"` | Đạt |
 | 7 Ping chạy tay | `bash tools/ops/ping-supabase.sh` | — | chưa chạy | |
 | 7b Task Scheduler bắn | đăng ký rồi Run on demand | — | chưa chạy | |
 | 8 Không có khoá trong repo | `gate.sh full` + grep `eyJ…`, `AKIA…`, `service_role`, PEM | 5 tệp mới | cổng 4 mục Đạt trong 21,6 s; grep 0 tệp khớp | Đạt |
-| 9 `server_seq` client không đặt được | insert `server_seq = 999999` | token user | chưa chạy | |
+| 9 `server_seq` client không đặt được | POST kèm `server_seq: 999999`, 3 lần | token A | máy chủ lưu 8, 9, 10; không lần nào là 999999; bước nhảy 1 | Đạt |
 | 10 Dọn người dùng thử | liệt kê auth users | — | chưa chạy | |
 
 ## Xác minh output trước khi đóng (CLAUDE.md §3)
@@ -72,6 +72,14 @@ Quyết định trong lúc làm:
   này, không phải lỗi có sẵn.
 - 2026-09-25 — **Khoá là JWT anon kiểu cũ, không phải publishable key kiểu mới.** Giải mã phần
   payload: `role: anon`, `ref: rxnhounlifmydmdemzok`, khớp URL. Dùng được, không cần đổi.
+- 2026-09-25 — **`bigserial` cộng trigger đốt hai số chuỗi mỗi lần ghi.** Đo thật: 2, 4, 7. Giá trị
+  mặc định của `bigserial` gọi `nextval` một lần, trigger gọi lần nữa rồi ghi đè. Không sai — `docs/07`
+  §5.4 kéo dữ liệu bằng con trỏ "sau số N", không giả định số liền nhau — nhưng lãng phí không có lý
+  do. Thêm `alter column server_seq drop default` để trigger là nơi duy nhất cấp số. Đo lại: 8, 9, 10,
+  bước nhảy 1.
+- 2026-09-25 — **Kiểm thêm ngoài danh sách test: nhật ký có thật sự chỉ-ghi-thêm không.** Token A gọi
+  PATCH và DELETE lên chính sự kiện của mình: cả hai HTTP 403. Đúng chủ ý — không viết policy update
+  và delete thì hai hành động đó bị từ chối, không cần luật riêng.
 
 ## Câu hỏi mở
 - Chưa có. Bốn câu của Cổng A đã trả lời trong Decisions log.
