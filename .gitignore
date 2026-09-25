@@ -9,3 +9,4 @@ node_modules/
 web/dist/
 .env
 web/node_modules/
+tools/ops/ping-supabase.log
