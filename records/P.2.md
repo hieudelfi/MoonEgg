@@ -9,13 +9,13 @@ Tham chiếu: FR-30, FR-44→47 · Kiến trúc §2, §7.2 · Test TC-AU-04 · K
 Phụ thuộc: P.1 (Xong 2026-09-24)
 
 ## Checklist
-- [ ] B1 `supabase/schema.sql`: 7 bảng, index, unique, RLS, trigger `server_seq` — kết quả:
-- [ ] B2 `.env.example`: 3 tên biến, không giá trị — kết quả:
-- [ ] B3 `docs/tasks/P.2/click-list.md`: bước bấm Supabase + Cloudflare — kết quả:
-- [ ] B4 `tools/ops/ping-supabase.sh` + `register-ping-task.ps1` — kết quả:
-- [ ] B5 `.github/workflows/ping-supabase.yml` (workflow_dispatch, ngủ) — kết quả:
-- [ ] B6 Người review chạy click-list: Supabase project, Auth, SQL — kết quả:
-- [ ] B7 Người review chạy click-list: R2 bucket, Pages project — kết quả:
+- [x] B1 `supabase/schema.sql`: 7 bảng, index, unique, RLS, trigger `server_seq` — kết quả: 213 dòng, commit `f5c9f0c`. 7 bảng, 3 index, 13 policy, 1 trigger, 4 lệnh grant. `event_id` là khoá chính nên ràng buộc duy nhất có sẵn, không thêm dòng riêng.
+- [x] B2 `.env.example`: 3 tên biến, không giá trị — kết quả: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `R2_PUBLIC_BASE`, tất cả rỗng. Commit `975fbc6`.
+- [x] B3 `docs/tasks/P.2/click-list.md`: bước bấm Supabase + Cloudflare — kết quả: 5 phần (A Supabase, B R2, C Pages, D gửi lại gì, E dọn người dùng thử), 6+3+1 bước đánh số, mỗi bước có dòng "trên màn hình sau đó". Commit `975fbc6`.
+- [x] B4 `tools/ops/ping-supabase.sh` + `register-ping-task.ps1` — kết quả: `bash -n` sạch; chạy khi thiếu biến trả exit 2 kèm thông báo đúng; PowerShell parse sạch. Log `tools/ops/ping-supabase.log` thêm vào `.gitignore:12`. Commit `2dd673e`.
+- [x] B5 `.github/workflows/ping-supabase.yml` (workflow_dispatch, ngủ) — kết quả: chỉ `workflow_dispatch`, khối `schedule` để dạng comment, theo đúng cách `ci.yml` xử ở P.1. Commit `2dd673e`.
+- [ ] B6 Người review chạy click-list: Supabase project, Auth, SQL — kết quả: **Chặn** 2026-09-25, chờ người review bấm dashboard (Cổng A quyết định 2).
+- [ ] B7 Người review chạy click-list: R2 bucket, Pages project — kết quả: **Chặn** 2026-09-25, cùng lý do B6.
 - [ ] B8 Test 1–10 chạy thật, ghi số vào bảng dưới — kết quả:
 - [ ] B9 Xoá 2 người dùng thử — kết quả:
 - [ ] B10 Cổng B: Result.md + Delivery + quét bằng chứng — kết quả:
@@ -25,13 +25,13 @@ Phụ thuộc: P.1 (Xong 2026-09-24)
 | --- | --- | --- | --- | --- |
 | 1 TC-AU-04 | token user A select review_event | 2 user, 1 event mỗi user | chưa chạy | |
 | 2 RLS thật bật | query `pg_tables`, `pg_policies` | 7 bảng | chưa chạy | |
-| 3 Schema lặp lại được | chạy `schema.sql` hai lần | project sạch | chưa chạy | |
+| 3 Schema lặp lại được | chạy `schema.sql` hai lần | project sạch | chưa chạy, cần project | |
 | 4 R2 đọc được | `curl -I` một file đã upload | 1 file thử | chưa chạy | |
 | 5 Pages trả lời | `curl -I` URL Pages | — | chưa chạy | |
 | 6 event_id duy nhất | insert trùng `event_id` | 1 event | chưa chạy | |
 | 7 Ping chạy tay | `bash tools/ops/ping-supabase.sh` | — | chưa chạy | |
 | 7b Task Scheduler bắn | đăng ký rồi Run on demand | — | chưa chạy | |
-| 8 Không có khoá trong repo | cổng + grep mẫu khoá | repo | chưa chạy | |
+| 8 Không có khoá trong repo | `gate.sh full` + grep `eyJ…`, `AKIA…`, `service_role`, PEM | 5 tệp mới | cổng 4 mục Đạt trong 21,6 s; grep 0 tệp khớp | Đạt |
 | 9 `server_seq` client không đặt được | insert `server_seq = 999999` | token user | chưa chạy | |
 | 10 Dọn người dùng thử | liệt kê auth users | — | chưa chạy | |
 
