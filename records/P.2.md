@@ -64,6 +64,14 @@ Quyết định trong lúc làm:
 - 2026-09-25 — **Không có policy update và delete cho mọi bảng.** RLS bật mà thiếu policy thì hành
   động đó bị từ chối, nên nhật ký sự kiện thành chỉ-ghi-thêm mà không cần luật riêng. Đây là chủ ý,
   không phải bỏ sót.
+- 2026-09-25 — **`.env.local` thay cho `.env`, và `.gitignore` phải sửa.** Người review điền giá trị
+  vào `.env.local` (đúng quy ước Vite). `.gitignore:10` chỉ có dòng `.env`, không khớp `.env.local`,
+  nên tệp chứa khoá thật đang ở trạng thái chưa được bỏ qua — chỉ cần một lệnh `git add .` là lọt vào
+  commit. Đã thêm `.env.*` cộng `!.env.example`, kiểm lại: `.env.local` bị bỏ qua, `.env.example` vẫn
+  được theo dõi. Script ping sửa để đọc cả hai tệp. Đây là lỗ hổng do P.2 tạo ra trong chính phiên
+  này, không phải lỗi có sẵn.
+- 2026-09-25 — **Khoá là JWT anon kiểu cũ, không phải publishable key kiểu mới.** Giải mã phần
+  payload: `role: anon`, `ref: rxnhounlifmydmdemzok`, khớp URL. Dùng được, không cần đổi.
 
 ## Câu hỏi mở
 - Chưa có. Bốn câu của Cổng A đã trả lời trong Decisions log.

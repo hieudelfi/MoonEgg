@@ -8,5 +8,7 @@ tools/pipeline/.venv/
 node_modules/
 web/dist/
 .env
+.env.*
+!.env.example
 web/node_modules/
 tools/ops/ping-supabase.log

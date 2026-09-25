@@ -163,22 +163,25 @@ takes a minute or two and should end green.
 
 ---
 
-## Part D - Send these back to me
+## Part D - Put the four public values in .env.local
 
-Paste this filled in:
+Copy `.env.example` to `.env.local` at the repo root and fill it in:
 
 ```
-SUPABASE_URL      = https://____.supabase.co
-SUPABASE_ANON_KEY = eyJ____
-R2_PUBLIC_BASE    = https://pub-____.r2.dev
-R2_TEST_OBJECT    = ping.txt
-PAGES_URL         = https://____.pages.dev
+VITE_SUPABASE_URL=https://____.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJ____
+R2_PUBLIC_BASE=https://pub-____.r2.dev
 ```
 
-Then I run tests 1, 2, 4, 5, 6, 7 and 9 and write the real numbers into `records/P.2.md`.
+`.env.local` is ignored by git (`.gitignore:11`), so nothing here reaches the repo. The ping
+script reads this file, and so will the web app from task 2.9. A file beats pasting the values
+into a chat: they stay on the machine that needs them.
 
-I do **not** want, and will not store: the database password, the `service_role` key, the Google
-client secret.
+Then say which parts are done. I read the file, run tests 1, 2, 4, 5, 6, 7 and 9, and write the
+real numbers into `records/P.2.md`.
+
+Never put in this file, or anywhere else in the repo: the database password, the `service_role`
+key, the Google client secret.
 
 ---
 

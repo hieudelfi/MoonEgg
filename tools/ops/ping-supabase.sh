@@ -12,27 +12,33 @@
 #   bash tools/ops/ping-supabase.sh
 #
 # Reads VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY from the environment, or from .env
-# at the repo root. Appends one line per run to tools/ops/ping-supabase.log, so a run
-# that never happened shows up later as a gap between dates.
+# and .env.local at the repo root. Both names are read because Vite treats .env.local as
+# the machine-local file, and the web app will read the same two variables later.
+# Appends one line per run to tools/ops/ping-supabase.log, so a run that never happened
+# shows up later as a gap between dates.
 
 set -uo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 LOG_FILE="$REPO_ROOT/tools/ops/ping-supabase.log"
 
-# .env wins only where the variable is not already set, so a scheduled task can
-# pass the values in without editing a file.
-if [ -f "$REPO_ROOT/.env" ]; then
+# A file only fills in a variable that is not already set, so a scheduled task can pass
+# the values in without editing anything. .env.local is read after .env, but the rule
+# above still means the first value found wins.
+for env_file in "$REPO_ROOT/.env" "$REPO_ROOT/.env.local"; do
+  [ -f "$env_file" ] || continue
   while IFS='=' read -r key value; do
     case "$key" in
       ''|\#*) continue ;;
     esac
+    key="${key// /}"
     value="${value%$'\r'}"
-    if [ -z "${!key:-}" ]; then
+    value="${value%\"}"; value="${value#\"}"
+    if [ -n "$key" ] && [ -z "${!key:-}" ]; then
       export "$key=$value"
     fi
-  done < "$REPO_ROOT/.env"
-fi
+  done < "$env_file"
+done
 
 URL="${VITE_SUPABASE_URL:-}"
 KEY="${VITE_SUPABASE_ANON_KEY:-}"
