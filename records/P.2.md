@@ -14,7 +14,7 @@ Phụ thuộc: P.1 (Xong 2026-09-24)
 - [x] B3 `docs/tasks/P.2/click-list.md`: bước bấm Supabase + Cloudflare — kết quả: 5 phần (A Supabase, B R2, C Pages, D gửi lại gì, E dọn người dùng thử), 6+3+1 bước đánh số, mỗi bước có dòng "trên màn hình sau đó". Commit `975fbc6`.
 - [x] B4 `tools/ops/ping-supabase.sh` + `register-ping-task.ps1` — kết quả: `bash -n` sạch; chạy khi thiếu biến trả exit 2 kèm thông báo đúng; PowerShell parse sạch. Log `tools/ops/ping-supabase.log` thêm vào `.gitignore:12`. Commit `2dd673e`.
 - [x] B5 `.github/workflows/ping-supabase.yml` (workflow_dispatch, ngủ) — kết quả: chỉ `workflow_dispatch`, khối `schedule` để dạng comment, theo đúng cách `ci.yml` xử ở P.1. Commit `2dd673e`.
-- [ ] B6 Người review chạy click-list: Supabase project, Auth, SQL — kết quả: project `rxnhounlifmydmdemzok` ở Singapore, 7 bảng + 13 policy + 1 trigger đúng kỳ vọng, 2 người dùng thử đã tạo. **Còn thiếu**: bật Google và magic link (chặng 6).
+- [x] B6 Người review chạy click-list: Supabase project, Auth, SQL — kết quả: project `rxnhounlifmydmdemzok` ở Singapore; 7 bảng + 13 policy + 1 trigger đúng kỳ vọng; 2 người dùng thử đã tạo; `email` và `google` bật, Apple tắt có lý do ghi sẵn.
 - [ ] B7 Người review chạy click-list: R2 bucket, Pages project — kết quả: **Chặn** 2026-09-25, cùng lý do B6.
 - [ ] B8 Test 1–10 chạy thật, ghi số vào bảng dưới — kết quả:
 - [ ] B9 Xoá 2 người dùng thử — kết quả:
@@ -34,6 +34,8 @@ Phụ thuộc: P.1 (Xong 2026-09-24)
 | 8 Không có khoá trong repo | `gate.sh full` + grep `eyJ…`, `AKIA…`, `service_role`, PEM | 5 tệp mới | cổng 4 mục Đạt trong 21,6 s; grep 0 tệp khớp | Đạt |
 | 9 `server_seq` client không đặt được | POST kèm `server_seq: 999999`, 3 lần | token A | máy chủ lưu 8, 9, 10; không lần nào là 999999; bước nhảy 1 | Đạt |
 | 10 Dọn người dùng thử | liệt kê auth users | — | chưa chạy | |
+| phụ: provider bật | `GET /auth/v1/settings` | — | `email` và `google` true, `apple` false | Đạt |
+| phụ: Google nối thật | `GET /auth/v1/authorize?provider=google` | — | HTTP 302 tới `accounts.google.com`, `client_id` `811115347643-fdd9vt0...`, `redirect_uri` khớp callback | Đạt |
 
 ## Xác minh output trước khi đóng (CLAUDE.md §3)
 - [ ] `bash tools/checks/gate.sh full` sạch: <lệnh và kết quả>
