@@ -1,6 +1,6 @@
 # Plan - P.2 Supabase, R2, Pages
 
-Status: **not started**, stopped at Gate A, waiting for review.
+Status: **in progress**. Gate A approved 2026-09-25. Gate B not reached.
 Task: `P.2` · Prompt: `prompts/phase-P/P.2.md` · Record: `records/P.2.md`
 Branch: `chore/p2-supabase-r2-pages`, cut from `main` at `789b9c4`.
 Reviewer: `self`
@@ -29,6 +29,12 @@ anything in the schema turns out to need a change, that change is L3 and gets it
 5. 2026-09-24 - **Keep-alive runs from Windows Task Scheduler on this machine**, not from GitHub
    Actions. Section 4.7 rewritten. The task prompt asks for a GitHub Action, so this is a
    deliberate deviation, taken because Actions is blocked at the account level (P.1 record).
+6. 2026-09-29 - **Test 7 expected the wrong number of rows.** The row said "HTTP 200, one row".
+   The anon key reads through row level security, so it sees no event at all. The real answer is
+   an empty list with HTTP 200. Section 4.7 and the script header already said zero rows, so two
+   parts of this plan disagreed. The test row now matches them. Only the wording moved: the check
+   was always the HTTP code, because only a 200 proves the project is awake and the public path
+   still answers. The measured value is in `records/P.2.md`.
 
 Out of scope: writing any sync code (task 2.9), the backup file format (2.10), image sync, the
 analytics pipeline, buying an Apple Developer account.
@@ -221,7 +227,7 @@ of `records/TRACKING.md`.
 | 4 | R2 is readable | `curl -I` a file uploaded to the bucket | HTTP 200 and the right content type |
 | 5 | Pages answers | `curl -I` the Pages URL | HTTP 200 |
 | 6 | Unique event id | insert the same `event_id` twice | second insert rejected |
-| 7 | Ping works by hand | `bash tools/ops/ping-supabase.sh` | HTTP 200, one row, one line added to the log |
+| 7 | Ping works by hand | `bash tools/ops/ping-supabase.sh` | HTTP 200, **zero rows**, one line added to the log. The HTTP code is what is checked |
 | 7b | The scheduled task fires | register it, then run it on demand from Task Scheduler | the log gains a second line with the right date |
 | 8 | No secret in the repo | the gate, plus a grep for key patterns | 0 findings |
 | 9 | `server_seq` cannot be set by a client | insert an event with `server_seq = 999999` using a user token | the stored row has the server's next sequence, not 999999 |
