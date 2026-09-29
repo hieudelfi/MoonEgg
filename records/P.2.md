@@ -15,7 +15,7 @@ Phụ thuộc: P.1 (Xong 2026-09-24)
 - [x] B4 `tools/ops/ping-supabase.sh` + `register-ping-task.ps1` — kết quả: `bash -n` sạch; chạy khi thiếu biến trả exit 2 kèm thông báo đúng; PowerShell parse sạch. Log `tools/ops/ping-supabase.log` thêm vào `.gitignore:12`. Commit `2dd673e`.
 - [x] B5 `.github/workflows/ping-supabase.yml` (workflow_dispatch, ngủ) — kết quả: chỉ `workflow_dispatch`, khối `schedule` để dạng comment, theo đúng cách `ci.yml` xử ở P.1. Commit `2dd673e`.
 - [x] B6 Người review chạy click-list: Supabase project, Auth, SQL — kết quả: project `rxnhounlifmydmdemzok` ở Singapore; 7 bảng + 13 policy + 1 trigger đúng kỳ vọng; 2 người dùng thử đã tạo; `email` và `google` bật, Apple tắt có lý do ghi sẵn.
-- [ ] B7 Người review chạy click-list: R2 bucket, Pages project — kết quả: **Chặn** 2026-09-25, cùng lý do B6.
+- [ ] B7 Người review chạy click-list: R2 bucket, Pages project — kết quả: R2 **Xong** (phần B của click-list): bucket `vocab-content` công khai, `R2_PUBLIC_BASE` đã điền vào `.env.local`, thẻ thanh toán đã gắn theo quyết định 2026-09-25. Pages (phần C) **chưa làm** — `moonegg.pages.dev` chưa phân giải được tên miền, kiểm 2026-09-29.
 - [ ] B8 Test 1–10 chạy thật, ghi số vào bảng dưới — kết quả:
 - [ ] B9 Xoá 2 người dùng thử — kết quả:
 - [ ] B10 Cổng B: Result.md + Delivery + quét bằng chứng — kết quả:
@@ -26,11 +26,11 @@ Phụ thuộc: P.1 (Xong 2026-09-24)
 | 1 TC-AU-04 | token A gọi `GET /rest/v1/review_event` | A và B mỗi người 1 sự kiện | HTTP 200, 1 dòng, chủ sở hữu A; 0 dòng của B | Đạt |
 | 2 RLS thật bật | query `pg_class` + `pg_policy` trong SQL Editor | 7 bảng public | 7/7 `rls_bat = true`; policy: analytics_daily 1, sáu bảng còn lại 2 | Đạt |
 | 3 Schema lặp lại được | Run trong SQL Editor | tệp 220 dòng | chạy 3 lần (2 lần bản đầu, 1 lần sau khi sửa), cả 3 `Success. No rows returned` | Đạt |
-| 4 R2 đọc được | `curl -I` một file đã upload | 1 file thử | chưa chạy | |
+| 4 R2 đọc được | `curl -I` một file đã upload | `ping.txt` trên bucket `vocab-content` | HTTP 200, `Content-Type: text/plain`, `Accept-Ranges: bytes`; 2026-09-29T01:09:23Z. Gọi vào gốc bucket trả 404 — đúng, R2 không liệt kê thư mục. **`Content-Length: 0`, tệp thử đang rỗng** | Đạt |
 | 5 Pages trả lời | `curl -I` URL Pages | — | chưa chạy | |
 | 6 event_id duy nhất | POST lại `event_id` đã có | `p2-a-1` | HTTP 409 `duplicate key value violates unique constraint "review_event_pkey"` | Đạt |
-| 7 Ping chạy tay | `bash tools/ops/ping-supabase.sh` | — | chưa chạy | |
-| 7b Task Scheduler bắn | đăng ký rồi Run on demand | — | chưa chạy | |
+| 7 Ping chạy tay | `bash tools/ops/ping-supabase.sh` | — | in `2026-09-29T01:01:10Z  http=200  ok`, exit 0, log thêm 1 dòng. Thân phản hồi là `[]`, tức **0 dòng** chứ không phải 1 — RLS chặn khoá anon, đúng chủ ý (xem quyết định 2026-09-29 dưới) | Đạt |
+| 7b Task Scheduler bắn | `pwsh -File tools/ops/register-ping-task.ps1` rồi `Start-ScheduledTask` | — | đăng ký được không cần quyền quản trị; `LastTaskResult 0`, `LastRunTime 29/09/2026 8:01:57`, `NumberOfMissedRuns 0`; log thêm dòng thứ ba `2026-09-29T01:01:58Z  http=200  ok`. Đọc lại tác vụ: chạy 3 ngày một lần lúc `09:00+07:00`, `StartWhenAvailable=True`, giới hạn 5 phút, thư mục làm việc `D:\Projects\MoonEgg` | Đạt |
 | 8 Không có khoá trong repo | `gate.sh full` + grep `eyJ…`, `AKIA…`, `service_role`, PEM | 5 tệp mới | cổng 4 mục Đạt trong 21,6 s; grep 0 tệp khớp | Đạt |
 | 9 `server_seq` client không đặt được | POST kèm `server_seq: 999999`, 3 lần | token A | máy chủ lưu 8, 9, 10; không lần nào là 999999; bước nhảy 1 | Đạt |
 | 10 Dọn người dùng thử | liệt kê auth users | — | chưa chạy | |
@@ -89,6 +89,16 @@ Quyết định trong lúc làm:
   thông ra miễn phí, trong khi cả 5 đợt nội dung khoảng 150 MB.
   Không tìm cách đi vòng qua bước xác minh của nhà cung cấp — vi phạm điều khoản, và tài khoản bị
   khoá sẽ kéo theo cả Pages.
+
+- 2026-09-29 — **Kỳ vọng của test 7 trong Plan §7 ghi "một dòng", thực tế đúng phải là không dòng
+  nào.** Khoá anon đi qua RLS nên nó không thấy sự kiện của ai cả: thân phản hồi là `[]`, HTTP 200.
+  Chính Plan §4.7 và phần chú thích đầu script đã nói như vậy ("the anon key sees zero rows"), nên
+  đây là hai chỗ trong cùng một tài liệu nói khác nhau, không phải kết quả sai. Cái cần kiểm là mã
+  HTTP, vì chỉ mã 200 mới chứng minh project còn thức và đường công khai còn trả lời. Ghi số thật
+  vào đây; chưa sửa Plan §7 vì đó là tệp đã qua Cổng A và đã đẩy lên hub — chờ người review quyết.
+- 2026-09-29 — **Tác vụ Windows đăng ký được mà không cần quyền quản trị.** Chạy dưới tài khoản
+  người dùng hiện tại là đủ, nên không phải mở PowerShell nâng quyền. Ghi lại để lần dựng máy sau
+  không ai đi tìm quyền admin một cách vô ích.
 
 ## Câu hỏi mở
 - Chưa có. Bốn câu của Cổng A đã trả lời trong Decisions log.
