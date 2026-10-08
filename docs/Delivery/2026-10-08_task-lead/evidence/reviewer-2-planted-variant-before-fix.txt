@@ -1,0 +1,18 @@
+gate-reviewer (opus) on the planted variant (scratchpad/planted/P4-Plan-variant.md). Tokens: 56029. Tool uses: 22. Duration: 100.1 s.
+Planted: the row "Voice files on this machine: 2 of 5" and the download assumption were removed; line 96 reads "Runs offline in about two minutes."; situation 1 (a voice does not download) was removed.
+
+COLD READ
+1. strong - goal stated at line 35.
+2. weak - sends the reader to the wrong row of docs/01; says "Kokoro fails on digits" where the evidence shows the project's num2words stand-in.
+3. weak - hidden: changing VOICES leaves P.3's names unchanged; Kokoro prints IPA; mismatch.csv keeps a hand-added line; raters never see key.csv; three raters exist.
+4. weak - smallest thing: setting VOICES to the winners renames every file tts_sample.py writes; test 7 fails unless the winners are af_heart and am_michael.
+
+DEFECTS: 16 rows. The planted assumption (three voice files not on the machine, "runs offline") is NOT among them.
+New defects not found in run 1, and later applied to the real plan:
+ - :121 Kokoro prints misaki symbols; misaki/en.py:43 writes /aɪ/ as the single letter I, so the verb reads wˈInd; a plain /waɪnd/ comparison would mark a correct reading wrong.
+ - :180 "code tests green" claimed but no pytest planned for score.py, voice_samples.py or the shared Kokoro code; gate.sh:15 runs only tools/checks.
+ - :110 no path to Piper if every Kokoro voice scores badly.
+ - :9   Level line counts "one new script, one new page"; section 4 adds two scripts, a page, a module, a refactor.
+ - :48  docs/08:55 does not say "written later".
+
+TEST 5 VERDICT: FAIL. The reader checked every cited claim against the files, but did not look for a resource the plan never mentioned.

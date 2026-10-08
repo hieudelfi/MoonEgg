@@ -18,7 +18,7 @@ Mockup: https://claude.ai/artifact/BJJpsvciECNVUK4VocwWUq (15 màn). Tài liệu
 
 ## 2. Quy trình một task — bắt buộc
 
-1. **Mở** `prompts/<phase>/<task-id>.md`. Đọc mục tài liệu được tham chiếu. Kiểm tra phụ thuộc đã Xong trong `records/TRACKING.md`. Phân loại Type / Level / Repro theo mục 7.1. Level `L3` → dừng, viết báo cáo, mở task riêng, không code.
+1. **Mở** `prompts/<phase>/<task-id>.md`. Đọc mục tài liệu được tham chiếu. Kiểm tra phụ thuộc đã Xong trong `records/TRACKING.md`. Phân loại Type / Level / Repro theo mục 7.1. Level `L3` → dừng, viết báo cáo, mở task riêng, không code. Có thể chạy task bằng `/task-lead <task-id>` (kỹ năng toàn cục, thêm ba trợ thủ: dò bằng chứng, dựng mã trong worktree, review nguội); cổng, đường dẫn và cờ đẩy hub không đổi khi dùng nó.
 2. **Cắt nhánh** `feature|fix|chore/<task-id>-<slug>` từ `main`. Không làm task trên `main`.
 3. **CỔNG A** (mục 7.3). Viết `docs/tasks/<task-id>/Plan.md`, và `Flow.md` nếu không thuộc diện bỏ ở mục 7.2. Đọc lại nguội 4 câu. Đẩy lên yawasa. Báo link. **DỪNG, chờ duyệt.** Chưa duyệt thì chưa chạm vào mã, chưa tải tệp dữ liệu nào.
 4. **Tạo bản ghi** `records/<task-id>.md` từ `records/TEMPLATE.md`; ghi ngày bắt đầu, nhánh, link Plan và Flow. Đổi trạng thái trong `records/TRACKING.md` thành "Đang làm".

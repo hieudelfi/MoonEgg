@@ -1,0 +1,12 @@
+Scout run 2, agent evidence-scout (sonnet), the real agent, loaded mid-session.
+Tokens reported by the tool: 31712. Tool uses: 3. Duration: 31.8 s.
+Answered all 5 questions. Key rows:
+| 2a | mock-pack table docs/08-kiem-thu.md:39-53; header at :39 |
+| 2b | lines 41-50 are 10 word rows incl. wind#1 and wind#2; :51 is a placeholder "... 20 từ còn lại" |
+| 2c | no list of example sentences in lines 33-88; :55 prose says 2 sentences per word; :52 has "I went to the market yesterday." |
+| 4  | wind#1/#2 at docs/08-kiem-thu.md:48,49,122,139,198,260 and prompts/phase-P/P.4.md:22 |
+| 5  | `import kokoro` in the venv fails: ModuleNotFoundError: No module named 'num2words'
+       (kokoro/__init__.py:23 -> kokoro/pipeline.py:5 -> misaki/en.py:4). No signatures printed. |
+Could not find: KPipeline signatures (import failed); a 30-row word table in docs/08 section 2
+(only 10 named); example sentences in docs/08 section 2.
+Commands run: 6.

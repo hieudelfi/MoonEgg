@@ -1,0 +1,7 @@
+  pytest tools/checks               dat
+  verify_pack tren du lieu mau      dat
+    30 bản ghi · 0 lỗi · 2 cảnh báo
+  vitest                            dat
+  cong giay phep (TC-CP-01/02)      dat
+    49 gói · 0 lỗi giấy phép · 0 gói thiếu dòng SDK
+gate exit=0

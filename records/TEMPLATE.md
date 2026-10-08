@@ -1,6 +1,7 @@
 # <ID> — <Tên task>
 
 Bắt đầu: <ngày>  Kết thúc: <ngày>  Công thực tế: <nđ> (ước: <nđ>)
+Token: <trợ thủ: model, số> (tổng: <n>) — chỉ khi chạy bằng `/task-lead`; thiếu số thì ghi "chưa đo"
 Type: <INFRA | DATA | FEATURE | ISSUE | REFACTOR>  Level: <L1 | L2 | L3>  Repro (ISSUE): <Confirmed | Trace-confirmed | Unconfirmed>
 Người kiểm: <tên hoặc "tự kiểm">  Nhánh: <feature|fix|chore/<id>-<slug>>
 Plan: <link hub>  Flow: <link hub hoặc "bỏ, lý do">  Result: <link hub>
