@@ -1,0 +1,24 @@
+schema.sql: 190 non-empty lines
+create table: 7
+create policy: 13 (lines that start a statement)
+enable row level security: 7
+create trigger: 1
+--- web/wrangler.jsonc
+{
+  // Static site on Cloudflare Workers. No Worker script: the build output is served as-is.
+  // "name" must match the Worker name in the Cloudflare dashboard, or the build is rejected.
+  "name": "moonegg",
+  "compatibility_date": "2026-10-08",
+  "assets": {
+    "directory": "./dist",
+    // A deep link such as /session/3 gets index.html, not a 404. Task 2.11 needs this.
+    "not_found_handling": "single-page-application"
+  }
+}
+--- .env.example, values must be empty
+VITE_SUPABASE_URL=
+VITE_SUPABASE_ANON_KEY=
+R2_PUBLIC_BASE=
+--- git check-ignore
+.gitignore:11:.env.*	.env.local
+.gitignore:14:tools/ops/ping-supabase.log	tools/ops/ping-supabase.log

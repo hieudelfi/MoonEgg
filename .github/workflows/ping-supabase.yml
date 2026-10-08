@@ -1,0 +1,30 @@
+name: Ping Supabase
+
+# Ping that chay o MAY, khong o day: tools/ops/ping-supabase.sh, goi qua Windows
+# Task Scheduler (tools/ops/register-ping-task.ps1). Workflow nay ngu, chi chay
+# khi bam tay. Ly do giong ci.yml: Actions cua tai khoan dang bi chan thanh toan.
+#
+# Prompt cua task P.2 yeu cau mot GitHub Action chay moi 3 ngay. Giu tep nay de
+# yeu cau do nhin thay duoc thay vi bi bo im lang. Ngay nao thanh toan thong thi
+# bo comment hai dong "schedule" duoi day la du.
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '0 2 */3 * *'
+
+jobs:
+  ping:
+    name: doc mot dong qua REST
+    runs-on: ubuntu-latest
+    env:
+      VITE_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      VITE_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Co secret chua
+        run: |
+          if [ -z "$VITE_SUPABASE_URL" ] || [ -z "$VITE_SUPABASE_ANON_KEY" ]; then
+            echo "Thieu secret SUPABASE_URL hoac SUPABASE_ANON_KEY trong repo settings."
+            exit 1
+          fi
+      - run: bash tools/ops/ping-supabase.sh

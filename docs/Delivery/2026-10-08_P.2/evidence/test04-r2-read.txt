@@ -1,0 +1,9 @@
+measured 2026-10-08T05:46:24Z
+--- object ping.txt
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 0
+Accept-Ranges: bytes
+Server: cloudflare
+--- bucket root, expected 404 because R2 does not list a bucket
+http=404

@@ -1,0 +1,2 @@
+measured 2026-10-08T05:46:31Z
+{'email': True, 'google': True, 'apple': False}

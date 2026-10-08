@@ -1,0 +1,7 @@
+Quet ngay 2026-10-08, thu muc evidence/ cua P.2.
+0 phat hien.
+Mau tim: JWT (eyJ...), AKIA, private key, gho_/ghp_, sk-, dia chi email, chuoi 9-12 chu so, URL.
+Khop nhung khong phai phat hien:
+- 2 dia chi p2-test-a/b@moonegg.invalid: tai khoan thu, ten mien .invalid khong nhan thu, da xoa.
+- chu "password" trong 2 cau canh bao trich tu click-list.md, khong co gia tri nao.
+Khong co URL nao trong evidence/: dia chi Supabase va R2 doc tu .env.local, khong ghi ra tep.
