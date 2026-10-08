@@ -1,0 +1,11 @@
+{
+  // Static site on Cloudflare Workers. No Worker script: the build output is served as-is.
+  // "name" must match the Worker name in the Cloudflare dashboard, or the build is rejected.
+  "name": "moonegg",
+  "compatibility_date": "2026-10-08",
+  "assets": {
+    "directory": "./dist",
+    // A deep link such as /session/3 gets index.html, not a 404. Task 2.11 needs this.
+    "not_found_handling": "single-page-application"
+  }
+}
