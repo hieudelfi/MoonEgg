@@ -29,7 +29,7 @@ flowchart TB
     P4 --> PK[Gói nội dung v.N: SQLite + assets + manifest]
     P5 --> PK
   end
-  PK --> CDN[(Cloudflare R2 + Pages<br/>tĩnh, egress miễn phí)]
+  PK --> CDN[(Cloudflare R2 + Workers<br/>tĩnh, egress miễn phí)]
   subgraph Device["Thiết bị (web PWA React · Flutter)"]
     C1[Kho nội dung cục bộ<br/>SQLite / IndexedDB] --> C2[Lõi học:<br/>dựng phiên · FSRS · cấp · cột mốc]
     C2 --> C3[UI màn hình]
@@ -69,7 +69,7 @@ Mỗi lựa chọn được chấm theo bốn tiêu chí lấy từ tài liệu 
 | Audio | Opus 24 kbps trong WebM (web) / OGG (Flutter); tốc độ chậm bằng playbackRate | \~9 KB/câu; đúng kết luận rà soát Đ2 | AAC: dung lượng lớn hơn; hai file cho hai tốc độ: gấp đôi lưu trữ |
 | Khẩu hình | Rive: một file .riv, input số `viseme` 0–11, `mouthOpen`; timeline JSON điều khiển | Runtime MIT trên cả hai nền tảng; state machine cho biểu cảm | Lottie: khó điều khiển theo thời gian thực; sprite PNG: nặng, không mượt |
 | Backend | Supabase: Postgres + Auth (Google, Apple, magic link) + REST; không dùng Realtime, không dùng Edge Functions ở MVP | Gói miễn phí đủ (500 MB, 50k MAU); Postgres cho phép truy vấn sự kiện theo con trỏ; Auth có sẵn 3 cách đăng nhập | Firebase: Firestore tính tiền theo lượt đọc, khó gộp sự kiện rẻ; tự host: tốn vận hành. Rủi ro Supabase tạm dừng khi 1 tuần không hoạt động → cron ping miễn phí hoặc chuyển Cloudflare D1 |
-| Hạ tầng tĩnh | Cloudflare Pages (web) + R2 (gói và assets) | Egress 0 đồng là điều kiện để 5.000 từ × audio không tốn tiền | GitHub Pages cho assets: giới hạn 1 GB và băng thông mềm |
+| Hạ tầng tĩnh | Cloudflare Workers static assets (web) + R2 (gói và assets) | Egress 0 đồng là điều kiện để 5.000 từ × audio không tốn tiền | GitHub Pages cho assets: giới hạn 1 GB và băng thông mềm |
 | Thông báo | FCM (Android, web push), APNs qua FCM (iOS khi có) | Miễn phí; lịch nhắc và nội dung do thiết bị tính rồi đặt lịch cục bộ (local notification), FCM chỉ cho web | OneSignal: thêm SDK bên thứ ba thu dữ liệu |
 | Đo lường | Sự kiện ẩn danh gộp theo ngày, ghi vào Postgres cùng dự án; bảng riêng | Không SDK thứ ba; tắt được | GA4/Mixpanel: gửi dữ liệu ra ngoài, khó tuân thủ Data Safety |
 | Pipeline nội dung | Python: pandas, kaikki, cmudict, Kokoro, MFA, ffmpeg, cairosvg | Chạy trên máy cá nhân; mọi thứ mã nguồn mở | — |

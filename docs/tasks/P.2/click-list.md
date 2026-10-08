@@ -9,7 +9,7 @@ Each step says what to click and what should be on screen afterwards. If a scree
 stop at that step and say which one. Do not guess your way past it.
 
 **What is safe to send back to me:** the project URL, the anon key, the R2 public base URL, the
-Pages URL. All four are public by design.
+`workers.dev` URL. All four are public by design.
 **What must never be sent:** the database password, the `service_role` key, any Google OAuth client
 secret. If one of those ends up in the chat by accident, rotate it in the dashboard.
 
@@ -138,28 +138,48 @@ test 4 is a `curl` I run from here.
 
 ---
 
-## Part C - Cloudflare Pages
+## Part C - Cloudflare Worker for the web app
 
-### C1. Create the Pages project
+Plan decision 7, 2026-10-08: the site is a Worker with static assets, not a Pages project.
+`web/wrangler.jsonc` in the repo tells Cloudflare what to upload.
 
-1. Cloudflare dashboard -> **Workers & Pages** -> **Create** -> **Pages** ->
-   **Connect to Git**.
+### C1. Create the Worker
+
+1. Cloudflare dashboard -> **Workers & Pages** -> **Create** -> **Import a repository**.
 2. Authorise the Cloudflare GitHub app for `hieudelfi/MoonEgg` if it asks. The repo is private;
    the app needs to be granted that one repo, not all of them.
-3. Project name: `moonegg`. Production branch: `main`.
-4. Build settings:
-   - Framework preset: **None**
-   - Root directory: `web`
-   - Build command: `npm run build`
-   - Build output directory: `dist`
-5. **Save and Deploy**.
+3. Project name: `moonegg`. It must be the same as `name` in `web/wrangler.jsonc`.
 
-**On screen after:** a build log. The first deploy builds the empty Vite starter from P.1, which
-takes a minute or two and should end green.
+### C2. Build settings
 
-6. Copy the URL. It looks like `https://moonegg.pages.dev`.
+Open the Worker -> **Settings** -> **Build**.
 
-**On screen after:** you hold the Pages URL. Test 5 is a `curl` I run from here.
+1. **Build command**: `npm ci && npm run build`
+2. **Deploy command**: `npx wrangler deploy`
+3. **Root directory**: `/web`. The build already runs inside `web`, so the build command has no
+   `cd web`.
+4. **Branch control**: `main`. For the first build only, see C3.
+5. **Build watch paths** -> **Include paths**: `web/*`. A commit that only changes documents then
+   starts no build.
+6. **API token**: leave the one Cloudflare made. It stays in the dashboard; it does not come to me.
+
+**On screen after:** the build card shows those five values.
+
+### C3. First build, before P.2 is merged
+
+`web/wrangler.jsonc` is on the task branch until P.2 closes, so a build of `main` fails today.
+
+1. Set **Branch control** to `chore/p2-supabase-r2-pages`.
+2. **Deployments** -> start a build, or wait for the next push to that branch.
+
+**On screen after:** a build log that ends green, with the line
+`Read 9 files from the assets directory`.
+
+3. Copy the URL. It looks like `https://moonegg.<your-subdomain>.workers.dev`.
+
+**On screen after:** you hold the `workers.dev` URL. Test 5 is a `curl` I run from here.
+
+4. When I say P.2 is merged, set **Branch control** back to `main`.
 
 ---
 

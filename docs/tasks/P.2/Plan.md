@@ -35,6 +35,14 @@ anything in the schema turns out to need a change, that change is L3 and gets it
    parts of this plan disagreed. The test row now matches them. Only the wording moved: the check
    was always the HTTP code, because only a 200 proves the project is awake and the public path
    still answers. The measured value is in `records/P.2.md`.
+7. 2026-10-08 - **The web address is a Cloudflare Worker with static assets, not a Pages
+   project.** The reviewer built the site under Workers Builds, and Cloudflare now sends new static
+   sites there. The reviewer chose to keep it. Same account, same free plan, same job: serve
+   `web/dist`. Three things change. The repo gains `web/wrangler.jsonc`, which is a deliberate
+   exception to "do not touch `web/`". The address ends in `workers.dev`, not `pages.dev`.
+   Section 4.4, test 5 and part C of the click list are rewritten. `wrangler` is not added to
+   `web/package.json`: the Cloudflare build fetches it with `npx`. `docs/07` section 2 now names
+   Workers. The name "Pages" stays in the task title and in `docs/09`, as the task's history.
 
 Out of scope: writing any sync code (task 2.9), the backup file format (2.10), image sync, the
 analytics pipeline, buying an Apple Developer account.
@@ -82,7 +90,7 @@ graph TB
     B --> C["7 tables, index, RLS"]:::purple
     C --> D["TC-AU-04: user A cannot read user B"]:::green
     E["R2 bucket vocab-content"]:::purple --> F["curl one public file"]:::green
-    G["Pages site, empty page"]:::purple --> H["URL answers 200"]:::green
+    G["Worker site, empty page"]:::purple --> H["URL answers 200"]:::green
     I["ping action every 3 days"]:::amber --> C
 
     classDef amber fill:transparent,stroke:#f4b860,stroke-width:2px,color:#fff
@@ -129,11 +137,29 @@ Google and email magic link get switched on. Apple is left off with a written re
 Apple Developer account at 99 USD a year, which `docs/02` section 4 records as not bought. The
 prompt for this task already allows this. A one-line TODO goes in the record, not a silent gap.
 
-### 4.4 Cloudflare R2 and Pages - required
+### 4.4 Cloudflare R2 and the web address - required
 
-Bucket `vocab-content`, public read, proven with one `curl` against a real uploaded file. Pages
-project pointing at `web/dist`, deployed empty, proven by a URL that answers 200. Nothing else is
-configured: caching, custom domains and cache headers belong to task 1.11 and 2.11.
+Bucket `vocab-content`, public read, proven with one `curl` against a real uploaded file.
+
+The web address is a Cloudflare Worker named `moonegg` that serves static files only (decision 7).
+Cloudflare builds it from the Git repo. The build settings are:
+
+| Setting | Value |
+| --- | --- |
+| Root directory | `/web` |
+| Build command | `npm ci && npm run build` |
+| Deploy command | `npx wrangler deploy` |
+| Branch | `main` |
+| Build watch paths | `web/*` |
+
+`web/wrangler.jsonc` tells the deploy what to upload: the `dist` folder, with no Worker script.
+It also sends unknown paths to `index.html`, which the app needs in task 2.11. The site is deployed
+empty and proven by a URL that answers 200. Nothing else is configured: caching, custom domains
+and cache headers belong to task 1.11 and 2.11.
+
+The build reads `main`, and `web/wrangler.jsonc` reaches `main` only when this task is merged. So
+for the first build the reviewer points the branch setting at this task's branch, then sets it
+back to `main` after the merge.
 
 ### 4.5 Who clicks - decided, the reviewer does
 
@@ -182,7 +208,7 @@ only that the server is awake.
 ### Do not touch
 
 - `docs/07` section 7.2. If the schema is wrong, that is an L3 task, not a quiet edit here.
-- `web/`, `tools/`, `golden/`, `content/`.
+- `web/`, `tools/`, `golden/`, `content/`. One exception: `web/wrangler.jsonc`, see decision 7.
 - Anything to do with sync logic. This task creates the place, not the traffic.
 
 ## 5. Situations and edge cases
@@ -208,7 +234,7 @@ only that the server is awake.
 | `supabase/schema.sql` | tasks 2.9, 2.10, 4.3 | new; the server contract for all of them |
 | Supabase project URL, anon key | `web/` from task 2.9 | new; read from `.env` |
 | R2 bucket `vocab-content` | tasks P.10, 1.7, 1.11 | new; content packs are uploaded there |
-| Pages project | task 2.11 | new; the PWA is deployed there |
+| Worker `moonegg` and `web/wrangler.jsonc` | task 2.11 | new; the PWA is deployed there |
 | `.env.example` | every later web task | new |
 | `tools/ops/ping-supabase.sh` | the scheduled task on this machine | new |
 | `.github/workflows/ping-supabase.yml` | nobody yet, dormant | new, `workflow_dispatch` only |
@@ -225,7 +251,7 @@ of `records/TRACKING.md`.
 | 2 | RLS really on | query `pg_tables` and `pg_policies` for the 7 tables | every user table has RLS on and at least one policy |
 | 3 | Schema is repeatable | run `schema.sql` twice on a clean project | no error, same tables |
 | 4 | R2 is readable | `curl -I` a file uploaded to the bucket | HTTP 200 and the right content type |
-| 5 | Pages answers | `curl -I` the Pages URL | HTTP 200 |
+| 5 | The web address answers | `curl -I` the `workers.dev` URL | HTTP 200 |
 | 6 | Unique event id | insert the same `event_id` twice | second insert rejected |
 | 7 | Ping works by hand | `bash tools/ops/ping-supabase.sh` | HTTP 200, **zero rows**, one line added to the log. The HTTP code is what is checked |
 | 7b | The scheduled task fires | register it, then run it on demand from Task Scheduler | the log gains a second line with the right date |
@@ -241,7 +267,7 @@ of `records/TRACKING.md`.
 - [ ] `server_seq` is server-assigned: a client value is overwritten, proven by test 9
 - [ ] The two test users are deleted before the task closes
 - [ ] Google and magic link sign-in work; Apple is off with a written reason
-- [ ] R2 bucket answers a public `curl`; Pages URL answers 200
+- [ ] R2 bucket answers a public `curl`; the `workers.dev` URL answers 200
 - [ ] `.env.example` has names and no values; no real key anywhere in the repo
 - [ ] The ping runs by hand and from the scheduled task, proven by two log lines
 - [ ] `click-list.md` is complete enough that someone else could rebuild the project from it

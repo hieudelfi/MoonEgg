@@ -15,7 +15,7 @@ Phụ thuộc: P.1 (Xong 2026-09-24)
 - [x] B4 `tools/ops/ping-supabase.sh` + `register-ping-task.ps1` — kết quả: `bash -n` sạch; chạy khi thiếu biến trả exit 2 kèm thông báo đúng; PowerShell parse sạch. Log `tools/ops/ping-supabase.log` thêm vào `.gitignore:12`. Commit `2dd673e`.
 - [x] B5 `.github/workflows/ping-supabase.yml` (workflow_dispatch, ngủ) — kết quả: chỉ `workflow_dispatch`, khối `schedule` để dạng comment, theo đúng cách `ci.yml` xử ở P.1. Commit `2dd673e`.
 - [x] B6 Người review chạy click-list: Supabase project, Auth, SQL — kết quả: project `rxnhounlifmydmdemzok` ở Singapore; 7 bảng + 13 policy + 1 trigger đúng kỳ vọng; 2 người dùng thử đã tạo; `email` và `google` bật, Apple tắt có lý do ghi sẵn.
-- [ ] B7 Người review chạy click-list: R2 bucket, Pages project — kết quả: R2 **Xong** (phần B của click-list): bucket `vocab-content` công khai, `R2_PUBLIC_BASE` đã điền vào `.env.local`, thẻ thanh toán đã gắn theo quyết định 2026-09-25. Pages (phần C) **chưa làm** — `moonegg.pages.dev` chưa phân giải được tên miền, kiểm 2026-09-29.
+- [ ] B7 Người review chạy click-list: R2 bucket, Pages project — kết quả: R2 **Xong** (phần B của click-list): bucket `vocab-content` công khai, `R2_PUBLIC_BASE` đã điền vào `.env.local`, thẻ thanh toán đã gắn theo quyết định 2026-09-25. Pages (phần C) **chưa làm** — `moonegg.pages.dev` chưa phân giải được tên miền, kiểm 2026-09-29. 2026-10-08: đổi sang Worker phục vụ tệp tĩnh (Plan quyết định 7). Đã thêm `web/wrangler.jsonc`; `npm run build` xanh trong 457 ms, `npx wrangler deploy --dry-run` (wrangler 4.148.0) đọc 9 tệp từ `web/dist`, không tải gì lên. Lần dựng thật trên Cloudflare **chưa chạy**.
 - [ ] B8 Test 1–10 chạy thật, ghi số vào bảng dưới — kết quả:
 - [ ] B9 Xoá 2 người dùng thử — kết quả:
 - [ ] B10 Cổng B: Result.md + Delivery + quét bằng chứng — kết quả:
@@ -27,7 +27,7 @@ Phụ thuộc: P.1 (Xong 2026-09-24)
 | 2 RLS thật bật | query `pg_class` + `pg_policy` trong SQL Editor | 7 bảng public | 7/7 `rls_bat = true`; policy: analytics_daily 1, sáu bảng còn lại 2 | Đạt |
 | 3 Schema lặp lại được | Run trong SQL Editor | tệp 220 dòng | chạy 3 lần (2 lần bản đầu, 1 lần sau khi sửa), cả 3 `Success. No rows returned` | Đạt |
 | 4 R2 đọc được | `curl -I` một file đã upload | `ping.txt` trên bucket `vocab-content` | HTTP 200, `Content-Type: text/plain`, `Accept-Ranges: bytes`; 2026-09-29T01:09:23Z. Gọi vào gốc bucket trả 404 — đúng, R2 không liệt kê thư mục. **`Content-Length: 0`, tệp thử đang rỗng** | Đạt |
-| 5 Pages trả lời | `curl -I` URL Pages | — | chưa chạy | |
+| 5 Địa chỉ web trả lời | `curl -I` URL `workers.dev` | — | chưa chạy | |
 | 6 event_id duy nhất | POST lại `event_id` đã có | `p2-a-1` | HTTP 409 `duplicate key value violates unique constraint "review_event_pkey"` | Đạt |
 | 7 Ping chạy tay | `bash tools/ops/ping-supabase.sh` | — | in `2026-09-29T01:01:10Z  http=200  ok`, exit 0, log thêm 1 dòng. Thân phản hồi là `[]`, tức **0 dòng** chứ không phải 1 — RLS chặn khoá anon, đúng chủ ý (xem quyết định 2026-09-29 dưới) | Đạt |
 | 7b Task Scheduler bắn | `pwsh -File tools/ops/register-ping-task.ps1` rồi `Start-ScheduledTask` | — | đăng ký được không cần quyền quản trị; `LastTaskResult 0`, `LastRunTime 29/09/2026 8:01:57`, `NumberOfMissedRuns 0`; log thêm dòng thứ ba `2026-09-29T01:01:58Z  http=200  ok`. Đọc lại tác vụ: chạy 3 ngày một lần lúc `09:00+07:00`, `StartWhenAvailable=True`, giới hạn 5 phút, thư mục làm việc `D:\Projects\MoonEgg` | Đạt |
@@ -99,6 +99,20 @@ Quyết định trong lúc làm:
 - 2026-09-29 — **Tác vụ Windows đăng ký được mà không cần quyền quản trị.** Chạy dưới tài khoản
   người dùng hiện tại là đủ, nên không phải mở PowerShell nâng quyền. Ghi lại để lần dựng máy sau
   không ai đi tìm quyền admin một cách vô ích.
+
+- 2026-10-08 — **Web chạy trên Cloudflare Worker phục vụ tệp tĩnh, không phải Pages.** Người review
+  đã dựng site dưới Workers Builds và chọn giữ nguyên (đường B). Ảnh cấu hình ngày 2026-09-29 có ba
+  chỗ sai: Build command `cd web && …` trong khi Root directory đã là `/web`; lệnh
+  `npx wrangler deploy` không có tệp cấu hình để đọc; Include paths để `*`. Sửa: thêm
+  `web/wrangler.jsonc` (chỉ `assets`, không có script; đường dẫn lạ trả về `index.html` cho 2.11),
+  Build command còn `npm ci && npm run build`, Include paths `web/*`. Không thêm `wrangler` vào
+  `web/package.json`, bản dựng của Cloudflare tự lấy bằng `npx`, nên không đụng tới
+  `sdk-allowlist.md`. Plan §4.4, test 5, DoD và click-list phần C đã sửa; Plan đẩy lại kèm
+  `--update`. Đã cập nhật `docs/07` §2 (sơ đồ dòng 32, bảng dòng 72). `docs/09` và tên task giữ chữ
+  "Pages" làm lịch sử.
+- 2026-10-08 — **Lần dựng đầu phải đọc nhánh task, không phải `main`.** `web/wrangler.jsonc` chỉ lên
+  `main` khi P.2 gộp, mà test 5 phải đạt trước Cổng B. Nên người review tạm trỏ Branch control vào
+  `chore/p2-supabase-r2-pages`, gộp xong thì trỏ lại `main`. Click-list C3 ghi rõ cả hai bước.
 
 ## Câu hỏi mở
 - Chưa có. Bốn câu của Cổng A đã trả lời trong Decisions log.
