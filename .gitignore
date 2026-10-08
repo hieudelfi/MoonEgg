@@ -14,3 +14,4 @@ web/node_modules/
 tools/ops/ping-supabase.log
 tools/pipeline/.mfa/
 tools/pipeline/.cache/
+__pycache__/

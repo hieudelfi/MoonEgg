@@ -95,6 +95,7 @@ Quyết định trong lúc làm:
 - 2026-10-08 — **Nghe kiểm: một nhận xét chung.** Plan đòi một nhận xét mỗi tệp. Người review trả
   lời "nghe rất ổn" cho cả bộ. Ghi đúng như vậy, không tự chia thành mười dòng.
 - 2026-10-08 — **Công thực tế chưa đo.** Không ai bấm giờ.
+- 2026-10-08 — **Thêm `__pycache__/` vào `.gitignore` lúc đóng task.** `gate.sh merge` từ chối gộp khi cây làm việc còn tệp chưa commit, và ba tệp `.pyc` mới do pytest sinh ra đang ở trạng thái chưa theo dõi. Đây là tệp tạm của Python, không phải mã. Ba tệp `.pyc` đã bị theo dõi từ P.1 thì để nguyên, ngoài phạm vi.
 
 ## Câu hỏi mở
 - Không còn. Câu dưới đây đã được trả lời ngày 2026-10-08, giữ lại làm lịch sử.
