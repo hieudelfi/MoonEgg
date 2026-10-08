@@ -1,10 +1,10 @@
 # P.2 — Supabase, R2, Pages
 
-Bắt đầu: 2026-09-24 (Plan) · 2026-09-25 (Cổng A duyệt, bắt đầu làm)  Kết thúc: <ngày>  Công thực tế: <nđ> (ước: 1,5)
+Bắt đầu: 2026-09-24 (Plan) · 2026-09-25 (Cổng A duyệt, bắt đầu làm)  Kết thúc: 2026-10-08  Công thực tế: chưa đo (ước: 1,5)
 Type: INFRA  Level: L2  Repro (ISSUE): không áp dụng
 Người kiểm: tự kiểm  Nhánh: `chore/p2-supabase-r2-pages` (cắt từ `main` tại `789b9c4`)
-Plan: https://hub.yawasa.com/app/p/moonegg-p2-plan  Flow: bỏ — Type INFRA, chưa có màn hình  Result: <link hub>
-Delivery: `docs/Delivery/2026-09-___P.2/`
+Plan: https://hub.yawasa.com/app/p/moonegg-p2-plan  Flow: bỏ — Type INFRA, chưa có màn hình  Result: https://hub.yawasa.com/app/p/moonegg-p2-result
+Delivery: `docs/Delivery/2026-10-08_P.2/` · https://hub.yawasa.com/app/p/moonegg-p2-delivery
 Tham chiếu: FR-30, FR-44→47 · Kiến trúc §2, §7.2 · Test TC-AU-04 · Kế hoạch §3P.1 P.2
 Phụ thuộc: P.1 (Xong 2026-09-24)
 
@@ -16,9 +16,9 @@ Phụ thuộc: P.1 (Xong 2026-09-24)
 - [x] B5 `.github/workflows/ping-supabase.yml` (workflow_dispatch, ngủ) — kết quả: chỉ `workflow_dispatch`, khối `schedule` để dạng comment, theo đúng cách `ci.yml` xử ở P.1. Commit `2dd673e`.
 - [x] B6 Người review chạy click-list: Supabase project, Auth, SQL — kết quả: project `rxnhounlifmydmdemzok` ở Singapore; 7 bảng + 13 policy + 1 trigger đúng kỳ vọng; 2 người dùng thử đã tạo; `email` và `google` bật, Apple tắt có lý do ghi sẵn.
 - [x] B7 Người review chạy click-list: R2 bucket, Pages project — kết quả: R2 **Xong** (phần B của click-list): bucket `vocab-content` công khai, `R2_PUBLIC_BASE` đã điền vào `.env.local`, thẻ thanh toán đã gắn theo quyết định 2026-09-25. Pages (phần C) **chưa làm** — `moonegg.pages.dev` chưa phân giải được tên miền, kiểm 2026-09-29. 2026-10-08: đổi sang Worker phục vụ tệp tĩnh (Plan quyết định 7). Đã thêm `web/wrangler.jsonc`; `npm run build` xanh trong 457 ms, `npx wrangler deploy --dry-run` (wrangler 4.148.0) đọc 9 tệp từ `web/dist`, không tải gì lên. Lần dựng thật trên Cloudflare **Xong** 2026-10-08: Worker `moonegg` dựng từ nhánh task, địa chỉ `https://moonegg.hieunn-bkict.workers.dev`, test 5 Đạt. Còn một việc sau khi gộp: trỏ Branch control về `main`.
-- [ ] B8 Test 1–10 chạy thật, ghi số vào bảng dưới — kết quả:
-- [ ] B9 Xoá 2 người dùng thử — kết quả:
-- [ ] B10 Cổng B: Result.md + Delivery + quét bằng chứng — kết quả:
+- [x] B8 Test 1–10 chạy thật, ghi số vào bảng dưới — kết quả: 11/11 dòng Đạt (10 phép thử cộng 7b), số ở bảng Kiểm tra. Test 1, 2, 3, 6, 9 đo 2026-09-25; 4, 7, 7b đo 2026-09-29; 5 và 10 đo 2026-10-08.
+- [x] B9 Xoá 2 người dùng thử — kết quả: người review xoá trên trang Supabase 2026-10-08; đăng nhập lại bằng cả hai tài khoản đều bị từ chối, HTTP 400 `invalid_credentials`.
+- [x] B10 Cổng B: Result.md + Delivery + quét bằng chứng — kết quả: `docs/tasks/P.2/Result.md` đã viết và đẩy hub. `docs/Delivery/2026-10-08_P.2/` có `index.md`, `README.md` và 11 tệp trong `evidence/`, dựng bằng lệnh gọi thật ngày 2026-10-08. Quét: 0 phát hiện. Cổng B duyệt 2026-10-08; Delivery đã đẩy hub, riêng tư; nhánh gộp vào `main` bằng `gate.sh merge`.
 
 ## Kiểm tra
 | Test | Cách chạy | Input | Output thật | Đạt? |
@@ -33,20 +33,22 @@ Phụ thuộc: P.1 (Xong 2026-09-24)
 | 7b Task Scheduler bắn | `pwsh -File tools/ops/register-ping-task.ps1` rồi `Start-ScheduledTask` | — | đăng ký được không cần quyền quản trị; `LastTaskResult 0`, `LastRunTime 29/09/2026 8:01:57`, `NumberOfMissedRuns 0`; log thêm dòng thứ ba `2026-09-29T01:01:58Z  http=200  ok`. Đọc lại tác vụ: chạy 3 ngày một lần lúc `09:00+07:00`, `StartWhenAvailable=True`, giới hạn 5 phút, thư mục làm việc `D:\Projects\MoonEgg` | Đạt |
 | 8 Không có khoá trong repo | `gate.sh full` + grep `eyJ…`, `AKIA…`, `service_role`, PEM | 5 tệp mới | cổng 4 mục Đạt trong 21,6 s; grep 0 tệp khớp | Đạt |
 | 9 `server_seq` client không đặt được | POST kèm `server_seq: 999999`, 3 lần | token A | máy chủ lưu 8, 9, 10; không lần nào là 999999; bước nhảy 1 | Đạt |
-| 10 Dọn người dùng thử | liệt kê auth users | — | chưa chạy | |
+| 10 Dọn người dùng thử | người review xoá trên trang Supabase; kiểm bằng `POST /auth/v1/token?grant_type=password` cho từng tài khoản | `p2-test-a`, `p2-test-b` | trước khi xoá (2026-10-08T05:18Z): cả hai HTTP 200. Sau khi xoá (2026-10-08T05:45:35Z): cả hai HTTP 400 `invalid_credentials`. Plan ghi cách kiểm là liệt kê người dùng, việc đó chỉ làm được trên trang Supabase | Đạt |
+| phụ: người không đăng nhập | khoá anon gọi `GET` 7 bảng và `POST review_event` | 2026-10-08T05:46:28Z | 6 bảng HTTP 401 `permission denied`; `review_event` HTTP 200 `[]`; POST HTTP 401, không dòng nào được ghi | Đạt |
+| phụ: tác vụ tự bắn | đọc `tools/ops/ping-supabase.log` | 2026-10-08 | 4 dòng lúc `02:00Z` (09:00 giờ VN) các ngày 09-29, 10-02, 10-05, 10-08, cách nhau đúng 3 ngày, đều `http=200` | Đạt |
 | phụ: provider bật | `GET /auth/v1/settings` | — | `email` và `google` true, `apple` false | Đạt |
 | phụ: Google nối thật | `GET /auth/v1/authorize?provider=google` | — | HTTP 302 tới `accounts.google.com`, `client_id` `811115347643-fdd9vt0...`, `redirect_uri` khớp callback | Đạt |
 
 ## Xác minh output trước khi đóng (CLAUDE.md §3)
-- [ ] `bash tools/checks/gate.sh full` sạch: <lệnh và kết quả>
+- [x] `bash tools/checks/gate.sh full` sạch: chạy 2026-10-08, 4 mục Đạt, `gate exit=0`; nguyên văn ở `docs/Delivery/2026-10-08_P.2/evidence/gate-full.txt`
 - [ ] Không có bản ghi thiếu source/license: không áp dụng, task này không sinh dữ liệu nội dung
 - [ ] Số đo (nếu NFR): không áp dụng
 
 ## Bằng chứng
-- Commit/PR:
-- File đầu ra:
-- Ảnh/số đo:
-- Delivery đã quét khoá/token/dữ liệu người thật: <ngày, kết quả>
+- Commit/PR: không mở PR. Mã: `f5c9f0c`, `975fbc6`, `2dd673e`, `c67fc6f`, `f7d0059`, `89c75bc`. Còn lại là commit bản ghi và Plan, xem `git log main..chore/p2-supabase-r2-pages`.
+- File đầu ra: `supabase/schema.sql`, `.env.example`, `docs/tasks/P.2/click-list.md`, `tools/ops/ping-supabase.sh`, `tools/ops/register-ping-task.ps1`, `.github/workflows/ping-supabase.yml`, `web/wrangler.jsonc`.
+- Ảnh/số đo: `docs/Delivery/2026-10-08_P.2/evidence/`, 11 tệp. Không có ảnh dashboard.
+- Delivery đã quét khoá/token/dữ liệu người thật: 2026-10-08, 0 phát hiện. Hai địa chỉ `@moonegg.invalid` là tài khoản thử đã xoá, không phải người thật. Không có URL Supabase hay R2 nào trong gói.
 
 ## Giải thích
 Năm quyết định của Cổng A nằm trong Decisions log của `docs/tasks/P.2/Plan.md`, không chép lại ở đây.
@@ -114,7 +116,13 @@ Quyết định trong lúc làm:
   `main` khi P.2 gộp, mà test 5 phải đạt trước Cổng B. Nên người review tạm trỏ Branch control vào
   `chore/p2-supabase-r2-pages`, gộp xong thì trỏ lại `main`. Click-list C3 ghi rõ cả hai bước.
 
+- 2026-10-08 — **Test 10 kiểm bằng đăng nhập, không bằng liệt kê người dùng.** Liệt kê cần khoá
+  `service_role` hoặc trang Supabase, cả hai đều nằm ngoài tay tôi theo quyết định 2 của Cổng A.
+  Người review xoá và nhìn danh sách; tôi đo từ ngoài: tài khoản đã xoá thì đăng nhập bị từ chối.
+- 2026-10-08 — **Công thực tế chưa đo.** Task chạy bốn buổi trong hai tuần (24, 25, 29/09 và
+  08/10), không ai bấm giờ. Ghi "chưa đo", chờ người review cho con số khi đóng task.
+
 ## Câu hỏi mở
 - Chưa có. Bốn câu của Cổng A đã trả lời trong Decisions log.
 
-## Người kiểm: tự kiểm  Ngày:   Kết luận: Xong / Làm lại (lý do)
+## Người kiểm: tự kiểm  Ngày: 2026-10-08  Kết luận: **Xong** — 11/11 dòng phép thử Đạt, Cổng B duyệt. Còn một việc ngoài repo: trỏ Branch control của Worker về `main`.
