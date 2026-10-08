@@ -1,0 +1,13 @@
+measured 2026-10-08T07:52:58Z
+hello__af_heart.opus          in  -24.5  gain  +8.5 dB  out  -16.4 LUFS   1406 ms   21.3 kbps   3748 B  1 tries   0.24 s  ok
+hello__am_michael.opus        in  -24.9  gain  +9.9 dB  out  -16.5 LUFS   1432 ms   23.1 kbps   4141 B  2 tries   0.29 s  ok
+market__af_heart.opus         in  -23.8  gain  +7.8 dB  out  -16.0 LUFS   1456 ms   21.9 kbps   3992 B  1 tries   0.17 s  ok
+market__am_michael.opus       in  -24.1  gain +12.1 dB  out  -16.3 LUFS   1356 ms   23.7 kbps   4021 B  4 tries   0.49 s  ok
+reluctant__af_heart.opus      in  -24.3  gain  +9.3 dB  out  -16.2 LUFS   1556 ms   22.5 kbps   4371 B  2 tries   0.27 s  ok
+reluctant__am_michael.opus    in  -24.0  gain +11.4 dB  out  -16.4 LUFS   1556 ms   24.9 kbps   4838 B  4 tries   0.49 s  ok
+think__af_heart.opus          in  -23.9  gain  +8.5 dB  out  -16.2 LUFS   1282 ms   21.3 kbps   3408 B  2 tries   0.27 s  ok
+think__am_michael.opus        in  -23.5  gain +10.1 dB  out  -16.5 LUFS   1232 ms   23.1 kbps   3561 B  3 tries   0.37 s  ok
+wind__af_heart.opus           in  -23.9  gain  +8.7 dB  out  -16.3 LUFS   1382 ms   21.6 kbps   3730 B  2 tries   0.27 s  ok
+wind__am_michael.opus         in  -25.0  gain +11.3 dB  out  -16.5 LUFS   1332 ms   23.7 kbps   3949 B  3 tries   0.36 s  ok
+10 files, mean 0.322 s per file, 0 outside the target
+exit=0

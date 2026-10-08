@@ -1,0 +1,106 @@
+[
+  {
+    "file": "hello__af_heart.TextGrid",
+    "item_id": "w:hello#1",
+    "cmudict": "HH AH0 L OW1",
+    "aligned": "HH AH0 L OW1",
+    "first_sound_s": 0.38,
+    "last_sound_s": 0.8,
+    "duration_s": 1.4,
+    "problems": []
+  },
+  {
+    "file": "hello__am_michael.TextGrid",
+    "item_id": "w:hello#1",
+    "cmudict": "HH AH0 L OW1",
+    "aligned": "HH AH0 L OW1",
+    "first_sound_s": 0.36,
+    "last_sound_s": 0.96,
+    "duration_s": 1.425,
+    "problems": []
+  },
+  {
+    "file": "market__af_heart.TextGrid",
+    "item_id": "w:market#1",
+    "cmudict": "M AA1 R K AH0 T",
+    "aligned": "M AA1 R K IH0 T",
+    "first_sound_s": 0.37,
+    "last_sound_s": 1.0,
+    "duration_s": 1.45,
+    "problems": [
+      "sound_mismatch"
+    ]
+  },
+  {
+    "file": "market__am_michael.TextGrid",
+    "item_id": "w:market#1",
+    "cmudict": "M AA1 R K AH0 T",
+    "aligned": "M AA1 R K IH0 T",
+    "first_sound_s": 0.33,
+    "last_sound_s": 1.02,
+    "duration_s": 1.35,
+    "problems": [
+      "sound_mismatch"
+    ]
+  },
+  {
+    "file": "reluctant__af_heart.TextGrid",
+    "item_id": "w:reluctant#1",
+    "cmudict": "R IH0 L AH1 K T AH0 N T",
+    "aligned": "R IH0 L AH1 K T AH0 N T",
+    "first_sound_s": 0.38,
+    "last_sound_s": 1.11,
+    "duration_s": 1.55,
+    "problems": []
+  },
+  {
+    "file": "reluctant__am_michael.TextGrid",
+    "item_id": "w:reluctant#1",
+    "cmudict": "R IH0 L AH1 K T AH0 N T",
+    "aligned": "R IH0 L AH1 K T AH0 N T",
+    "first_sound_s": 0.35,
+    "last_sound_s": 1.13,
+    "duration_s": 1.55,
+    "problems": []
+  },
+  {
+    "file": "think__af_heart.TextGrid",
+    "item_id": "w:think#1",
+    "cmudict": "TH IH1 NG K",
+    "aligned": "TH IH1 NG K",
+    "first_sound_s": 0.36,
+    "last_sound_s": 0.73,
+    "duration_s": 1.275,
+    "problems": []
+  },
+  {
+    "file": "think__am_michael.TextGrid",
+    "item_id": "w:think#1",
+    "cmudict": "TH IH1 NG K",
+    "aligned": "TH IH1 NG K",
+    "first_sound_s": 0.31,
+    "last_sound_s": 0.76,
+    "duration_s": 1.225,
+    "problems": []
+  },
+  {
+    "file": "wind__af_heart.TextGrid",
+    "item_id": "w:wind#1",
+    "cmudict": "W IH1 N D",
+    "aligned": "W IH1 N D",
+    "first_sound_s": 0.37,
+    "last_sound_s": 0.88,
+    "duration_s": 1.375,
+    "problems": []
+  },
+  {
+    "file": "wind__am_michael.TextGrid",
+    "item_id": "w:wind#1",
+    "cmudict": "W IH1 N D",
+    "aligned": "W IH1 N D",
+    "first_sound_s": 0.35,
+    "last_sound_s": 0.94,
+    "duration_s": 1.325,
+    "problems": []
+  }
+]

@@ -1,0 +1,17 @@
+measured 2026-10-08T07:54:53Z
+hello__af_heart.TextGrid         HH AH0 L OW1                 cmudict HH AH0 L OW1                 ok
+hello__am_michael.TextGrid       HH AH0 L OW1                 cmudict HH AH0 L OW1                 ok
+market__af_heart.TextGrid        M AA1 R K IH0 T              cmudict M AA1 R K AH0 T              sound_mismatch
+market__am_michael.TextGrid      M AA1 R K IH0 T              cmudict M AA1 R K AH0 T              sound_mismatch
+reluctant__af_heart.TextGrid     R IH0 L AH1 K T AH0 N T      cmudict R IH0 L AH1 K T AH0 N T      ok
+reluctant__am_michael.TextGrid   R IH0 L AH1 K T AH0 N T      cmudict R IH0 L AH1 K T AH0 N T      ok
+think__af_heart.TextGrid         TH IH1 NG K                  cmudict TH IH1 NG K                  ok
+think__am_michael.TextGrid       TH IH1 NG K                  cmudict TH IH1 NG K                  ok
+wind__af_heart.TextGrid          W IH1 N D                    cmudict W IH1 N D                    ok
+wind__am_michael.TextGrid        W IH1 N D                    cmudict W IH1 N D                    ok
+10 files, 4 of 5 words match CMUdict, 2 rows in mismatch.csv, 2 hard failures
+exit=1
+--- mismatch.csv
+file,item_id,kind,cmudict,aligned
+market__af_heart.TextGrid,w:market#1,sound_mismatch,M AA1 R K AH0 T,M AA1 R K IH0 T
+market__am_michael.TextGrid,w:market#1,sound_mismatch,M AA1 R K AH0 T,M AA1 R K IH0 T

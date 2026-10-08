@@ -1,0 +1,87 @@
+{
+  "model_load_s": 4.081,
+  "torch": "2.14.1+cpu",
+  "threads": 8,
+  "files": [
+    {
+      "word": "hello",
+      "voice": "af_heart",
+      "file": "hello__af_heart.wav",
+      "phonemes": "həlˈO",
+      "duration_ms": 1400,
+      "synth_s": 0.881
+    },
+    {
+      "word": "market",
+      "voice": "af_heart",
+      "file": "market__af_heart.wav",
+      "phonemes": "mˈɑɹkət",
+      "duration_ms": 1450,
+      "synth_s": 0.775
+    },
+    {
+      "word": "reluctant",
+      "voice": "af_heart",
+      "file": "reluctant__af_heart.wav",
+      "phonemes": "ɹəlˈʌktᵊnt",
+      "duration_ms": 1550,
+      "synth_s": 1.255
+    },
+    {
+      "word": "think",
+      "voice": "af_heart",
+      "file": "think__af_heart.wav",
+      "phonemes": "θˈɪŋk",
+      "duration_ms": 1275,
+      "synth_s": 0.635
+    },
+    {
+      "word": "wind",
+      "voice": "af_heart",
+      "file": "wind__af_heart.wav",
+      "phonemes": "wˈɪnd",
+      "duration_ms": 1375,
+      "synth_s": 0.59
+    },
+    {
+      "word": "hello",
+      "voice": "am_michael",
+      "file": "hello__am_michael.wav",
+      "phonemes": "həlˈO",
+      "duration_ms": 1425,
+      "synth_s": 0.595
+    },
+    {
+      "word": "market",
+      "voice": "am_michael",
+      "file": "market__am_michael.wav",
+      "phonemes": "mˈɑɹkət",
+      "duration_ms": 1350,
+      "synth_s": 0.551
+    },
+    {
+      "word": "reluctant",
+      "voice": "am_michael",
+      "file": "reluctant__am_michael.wav",
+      "phonemes": "ɹəlˈʌktᵊnt",
+      "duration_ms": 1550,
+      "synth_s": 0.607
+    },
+    {
+      "word": "think",
+      "voice": "am_michael",
+      "file": "think__am_michael.wav",
+      "phonemes": "θˈɪŋk",
+      "duration_ms": 1225,
+      "synth_s": 0.528
+    },
+    {
+      "word": "wind",
+      "voice": "am_michael",
+      "file": "wind__am_michael.wav",
+      "phonemes": "wˈɪnd",
+      "duration_ms": 1325,
+      "synth_s": 0.569
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+measured 2026-10-08T07:54:59Z
+C free GB: 12.62
+D free GB: 155.5
+before install, same day: C 9.17
+1.2G	tools/pipeline/.venv
+2.4G	tools/pipeline/.mfa
+1.9G	tools/pipeline/.cache
+621M	/d/tools/miniforge3
+--- left on C by MFA
+2.0K	<home>/Documents/MFA
+/tools/miniforge3 621M
+left on C by MFA: Documents/MFA, 2.0K (global_config.yaml and an empty joblib_cache)
