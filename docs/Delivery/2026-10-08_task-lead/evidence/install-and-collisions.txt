@@ -1,0 +1,11 @@
+measured 2026-10-08
+$ bash install.sh   (repo hieudelfi/claude-local, PRIVATE)
+skill   task-lead -> <home>/.claude/skills/task-lead
+agent   evidence-scout.md -> <home>/.claude/agents/
+agent   gate-reviewer.md -> <home>/.claude/agents/
+--- git status of <home>/.claude/skills (expect '??' for each skill above)
+?? task-lead/
+$ ls D:/Projects/*/.claude/agents/ | grep -cE '^(gate-reviewer|evidence-scout).md$'
+0
+$ gh repo view hieudelfi/claude-local --json visibility,url
+PRIVATE https://github.com/hieudelfi/claude-local

@@ -1,0 +1,4 @@
+Quet ngay 2026-10-08, thu muc docs/Delivery/2026-10-08_task-lead/.
+0 phat hien.
+Mau tim: JWT, AKIA, private key, gho_/ghp_, sk-, hf_, dia chi email, ten tai khoan may, duong dan thu muc nguoi dung, token, password.
+Luu y: cac bao cao cua agent duoc chep tu phien lam viec, vi tep nhat ky cua agent trong thu muc tasks/ rong (0 byte). Khong co tep nao duoc go lai; cac doan trich la nguyen van hoac tom tat co ghi ro.

@@ -1,0 +1,20 @@
+gate-reviewer (opus) on the same planted variant, after gate-reviewer.md gained step 3 "Inventory what the plan needs, then check each item exists" and a RESOURCES table. The brief also named that step. Tokens: 57327. Tool uses: 22. Duration: 105.3 s.
+
+COLD READ
+1. strong - goal stated in section 1 (line 35).
+2. weak - lines 4, 7, 41 assume the reader knows the task-lead dry run, "scout" and "lead"; the scout's table is not linked.
+3. weak - hidden ones: all five voices are already on disk (they are not), raw WAV loudness is fair, mismatch.csv survives, situation 4 never happens.
+4. weak - Three of the five voice files (af_bella.pt, af_sarah.pt, am_adam.pt) are not in tools/pipeline/.cache/hf/.../voices/. Line 96 says "Runs offline", so the first run fails or downloads files without a plan step.
+
+RESOURCES THE PLAN NEEDS (the agent wrote: "This section is not in my agent definition. I added it because the brief asked for it." - so the edited definition was not yet loaded; the brief carried the step)
+| Kokoro voices af_bella, af_sarah, am_adam | Not said. Line 96 claims offline | MISSING. Only af_heart.pt and am_michael.pt are cached |
+| five-voice list for voice_samples.py | Not said; VOICES shrinks to two | missing as a defined place |
+| three raters | owner to confirm | unknown |
+| mismatch.csv | not said which | exists, git-ignored, overwritten by check_textgrid.py:106 |
+| Piper fallback | out of scope | not installed, no install path |
+| pytest for new scripts | not said | none planned |
+
+DEFECTS: 18 rows. Row 1: ":96 Runs offline in about two minutes. Only af_heart.pt and am_michael.pt are in the cache. Three of five voices must be downloaded from Hugging Face. The plan has no step, source or licence line for that download."
+New rows applied to the real plan: rate.html opened from file:// cannot list a folder and has no copy step (:100-102); the three sheets have no fixed file names (:109); how the "wind" token is found in a sentence string is not said (:120).
+
+TEST 5 VERDICT: PASS. The planted assumption was named in cold-read answer 4 and as defect row 1.

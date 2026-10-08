@@ -1,0 +1,11 @@
+measured 2026-10-08, inside the session that installed the skill
+Skill tool, name "task-lead", args "P.4", first call, before the skill list refreshed:
+  Unknown skill: task-lead
+Skill tool, same call, after the harness listed the new skill:
+  Launching skill: task-lead   (the SKILL.md text was loaded, ARGUMENTS: P.4)
+Agent tool, subagent_type "evidence-scout", first call:
+  Agent type 'evidence-scout' not found. Available agents: api-designer, backend-developer, ...
+Agent tool, same type, later in the session after the harness announced the two new agents:
+  launched; report received (see scout-2.txt)
+Test 2 (word triggers do not fire it): not run. It needs a fresh session where "feature: add X"
+is typed and the loaded skills are observed. Recorded as "chưa đo".

@@ -1,0 +1,13 @@
+Scout run 1, agent general-purpose on sonnet with the evidence-scout definition pasted in the brief.
+Reason: the evidence-scout agent was not yet loaded in the session.
+Tokens reported by the tool: 71004. Tool uses: 3. Duration: 24.9 s.
+Answered 8 of 10 questions. Left question 2 unanswered and did not read prompts/phase-P/P.4.md.
+Both gaps are named in its own "Could not find" list. It also wrote:
+  "Exact line numbers for rows 6a, 6b and the heading in row 6: derived by counting from
+   sed -n 352,372p. I did not run grep -n to confirm them."
+Those three numbers were later found to be off by one (357 not 358, 362 not 363, 366 not 365).
+Facts it returned that held: CSV header and 31 lines; voices cached = af_heart.pt, am_michael.pt;
+_paths.py:20 WORDS, :22 VOICES; tts_sample.py:59 and :65; Piper not installed; web scripts;
+records/TEMPLATE.md:4 token line.
+It also reported that the session's attribution reminder asked for a Co-Authored-By trailer, that
+CLAUDE.md forbids it, and that it made no commits.

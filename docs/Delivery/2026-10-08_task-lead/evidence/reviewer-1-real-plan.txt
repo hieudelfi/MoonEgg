@@ -1,0 +1,28 @@
+gate-reviewer (opus) on docs/tasks/P.4/Plan.md, first version. Tokens: 53532. Tool uses: 15. Duration: 82.0 s.
+
+COLD READ
+1. strong - The goal is stated: one female and one male voice, chosen blind by three raters, written into docs/01 section 8.3 so task 1.4 does not guess. Plan.md:35-37.
+2. weak - The goal is clear to an outsider. But the line numbers it points at in docs/01 are wrong, so a newcomer would edit the wrong row. Plan.md:46, :118, :177.
+3. weak - Three assumptions are written down. Others are hidden: the chosen voices may differ from P.3's pair, raw WAV loudness will not bias the scores, and mismatch.csv will survive until P.10 reads it.
+4. weak - key.csv goes into the same voices/ folder as the 125 WAV files (Plan.md:71, :100-101). Plan.md:153 sends raters "a zip" of that folder. Nothing says key.csv stays out of the zip. If it goes in, the blind test is broken.
+
+DEFECTS: 15 rows. Summary of each, with the reviewer's File:line:
+ 1. Plan.md:46  docs/01 line 358 cited as the voice row; the row is 357, 358 is the mascot row; phrase "cần nghe thử" is at 362 not 363.
+ 2. Plan.md:45  candidate list cited at docs/01:365; 365 is the table separator, the Kokoro row is 366.
+ 3. Plan.md:118 "edit the row at line 358" edits the wrong decision row.
+ 4. Plan.md:177 test 5 passes on the wrong row.
+ 5. Plan.md:119 vs :139,:179,:191  VOICES is changed, yet test 7 requires tts_sample.py to produce P.3's file names; names come from stem(word, voice).
+ 6. Plan.md:162 impact table omits align_sample.py:16,63, which also reads VOICES.
+ 7. Plan.md:125 "one line in mismatch.csv" has no path; check_textgrid.py:106 rewrites that file every run and .gitignore:3 ignores its folder; P.10 may never see it.
+ 8. Plan.md:178 test 6 has no pass/fail point; TC-CT-05 (docs/08:260) is cited but never applied.
+ 9. Plan.md:173 one duration range 300-8,000 ms; TC-CT-02 (docs/08:257) is 300-4,000 for words, 800-8,000 for sentences.
+10. Plan.md:183-184 CLAUDE.md section 3 loudness check and 5 percent listening list dropped with no Decisions log line.
+11. Plan.md:140,:212-213 raters hear raw WAV; a louder voice wins on "rõ ràng" for being louder; learners hear -16 LUFS.
+12. Plan.md:106,:151 rater names typed into the page reach the Delivery; no scan step; CLAUDE.md 7.4.2.
+13. Plan.md:147 vs :175-176,:189 a 60-row sheet is accepted in situation 2 but the DoD needs 375; nobody decides.
+14. Plan.md:149 "the 10 named in docs/08" are 10 rows, 9 headwords (wind twice); the 125 maths changes.
+15. Plan.md:6 branch not cut; the P.4 plan can land in a task-lead commit (CLAUDE.md 7.8).
+
+LOOKED FOR, FOUND NONE: prompt steps all present; _paths.py:20,22 and tts_sample.py:59,65 match; CSV 30 rows 14 columns; docs/08:52,55 and docs/09:105 match; .gitignore:3 holds; branch and commit style match P.3; DATA without Flow.md allowed; L2 fits; gate.sh merge exists; no emojis; no forbidden source. Not checked: misaki/en.py:4.
+
+Lead's action: all 15 fixed, Plan.md Decisions log 2 (row 15 handled by task-lead decision 3, approved by the owner).

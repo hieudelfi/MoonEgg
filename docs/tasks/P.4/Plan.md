@@ -27,6 +27,11 @@ Depends on: P.3, done on 2026-10-08.
    is the single letter `I`, so test 6 compares misaki strings; `score.py` and the shared Kokoro
    code get a pytest in `tools/checks/`; a path to Piper when every Kokoro voice scores badly;
    the Level line counts the real files; the `docs/08:55` claim is worded as the file says.
+4. 2026-10-08 - **Third read, same variant, after the reader learned to inventory resources.**
+   It named the hidden download. Four more fixes here: the voice download is a planned step
+   after Gate A with its licence named; `rate.html` carries its own file list, since a page
+   opened from disk cannot list a folder, and is copied next to the samples; the three sheets
+   have fixed names; the "wind" check is a substring search on the whole-sentence string.
 
 Out of scope: Piper (the backup set, not installed; used only if a Kokoro voice fails to load),
 sentences for the real content (task 1.3), timing files (P.10), switching the pipeline to the
@@ -118,7 +123,10 @@ The sentences are for listening only; task 1.3 writes the real ones.
 
 Reuses the stand-ins and the pipeline from `tts_sample.py`; the shared part moves into a small
 `_kokoro.py` so the two scripts do not copy code. Speaks 20 words and 5 sentences with each of
-the 5 voices: 125 WAV files. Loads the three missing voices on first run. Then calls the same
+the 5 voices: 125 WAV files. On first run it downloads the three missing voice files from the
+same Hugging Face repo `hexgrad/Kokoro-82M` (Apache-2.0, already on the allowlist) into the
+cache on drive D:; this happens after Gate A, as `CLAUDE.md` section 2 step 3 requires
+(decision 4). Then it calls the same
 gain-and-limit step as `encode_opus.py` on all 125, so every sample sits at -16 ±2 LUFS
 (decision 2). Writes the Opus files under blind names `s001.opus` to `s125.opus`, in a random
 order fixed by a seed. Writes `key.csv` (blind name, voice, text) to a separate folder,
@@ -126,10 +134,12 @@ order fixed by a seed. Writes `key.csv` (blind name, voice, text) to a separate 
 
 ### 4.3 `tools/pipeline/env/rate.html` - required
 
-One static page, no build, no server: opened from disk next to the 125 Opus files. It plays
-them in a random order per rater, shows two sliders 1 to 5 ("rõ ràng", "tự nhiên") and a field
+One static page, no build, no server. `voice_samples.py` copies it next to the 125 Opus files
+and writes the file list into it, because a page opened from disk cannot list a folder
+(decision 4). It plays the 125 files in a random order per rater, shows two sliders 1 to 5 ("rõ ràng", "tự nhiên") and a field
 for a **rater code**, `R1`, `R2` or `R3`, never a name (decision 2). It offers the result as CSV
-text to copy out. The page never reads `_key/`. A rater who stops early sees how many rows are
+text to copy out, to be saved as `sheet_R1.csv`, `sheet_R2.csv`, `sheet_R3.csv` next to
+`key.csv` (decision 4). The page never reads `_key/`. A rater who stops early sees how many rows are
 done and can continue later from the same browser.
 
 ### 4.4 `tools/pipeline/env/score.py` - required
@@ -156,7 +166,8 @@ and P.3's record names their 10 files. Task P.10 switches the pipeline to the ch
 ### 4.6 The two-sound check - required, with a real threshold
 
 With each of the two winners, speak "wind" alone and the verb sentence. Keep Kokoro's phoneme
-string for each, in misaki symbols (decision 3). Pass: alone contains `wˈɪnd` and the verb
+string for each, in misaki symbols (decision 3). The check is a substring search on the whole
+string Kokoro returns for the input (decision 4). Pass: alone contains `wˈɪnd` and the verb
 sentence contains `wˈInd`. Fail: either does not. The result, pass or fail, goes to `docs/tasks/P.4/wind-check.md`, a tracked
 file, so P.10 can read it (decision 2). `mismatch.csv` is not used: it is rewritten by
 `check_textgrid.py` and lives in an ignored folder.
@@ -182,7 +193,7 @@ file, so P.10 can read it (decision 2). `mismatch.csv` is not used: it is rewrit
 | 1 | A voice file does not download | the script stops and names it; the record says so; Piper enters as the backup for that sex, as a plan change with a log line |
 | 2 | A rater stops at row 60 | the page keeps the 60 rows; `score.py` refuses the sheet; the rater finishes; the task waits. DoD stays at 375 |
 | 3 | Two voices tie | the owner decides by ear; the record says it was a tie |
-| 4 | A word is outside Kokoro's dictionary | the script stops and names it; the lead swaps the word and re-runs; the record says which |
+| 4 | A word is outside Kokoro's dictionary | the script stops and names it, as `tts_sample.py:64` does; the lead swaps the word and re-runs; the record says which |
 | 5 | Script run twice | same 125 names, same order, because the seed is fixed |
 | 6 | The audio folder is tracked by mistake | `content/pack/audio*/` is ignored; `key.csv`, `scores.csv` and the three sheets are copied into the delivery, then scanned |
 | 7 | "wind" as the verb comes out as the noun | test 6 fails; `wind-check.md` says so; task P.10 owns the fix |
