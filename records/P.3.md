@@ -3,8 +3,8 @@
 Bắt đầu: 2026-10-08 (Plan và Cổng A duyệt cùng ngày)  Kết thúc: <ngày>  Công thực tế: <nđ> (ước: 1,5)
 Type: INFRA  Level: L2  Repro (ISSUE): không áp dụng
 Người kiểm: tự kiểm  Nhánh: `chore/p3-pipeline-env` (cắt từ `main` tại `4963232`)
-Plan: https://hub.yawasa.com/app/p/moonegg-p3-plan  Flow: bỏ — Type INFRA, không có màn hình  Result: <link hub>
-Delivery: `docs/Delivery/<ngày>_P.3/`
+Plan: https://hub.yawasa.com/app/p/moonegg-p3-plan  Flow: bỏ — Type INFRA, không có màn hình  Result: https://hub.yawasa.com/app/p/moonegg-p3-result
+Delivery: `docs/Delivery/2026-10-08_P.3/`
 Tham chiếu: Kế hoạch §3P.1 P.3 · Kiến trúc §5.5 · Yêu cầu §8.3, §9.3 · ngưỡng của TC-CT-02, TC-CT-04
 Phụ thuộc: P.1 (Xong 2026-09-24)
 
@@ -16,10 +16,10 @@ Phụ thuộc: P.1 (Xong 2026-09-24)
 - [x] B5 `align_sample.py`: TextGrid có tier phones — kết quả: 10/10 TextGrid ở `content/pack/audio_test/aligned/`, mỗi tệp hai tier `words` và `phones`. 89,1 giây cho 10 tệp; chạy lại 90,3 giây; 40 tệp 93,2 giây.
 - [x] B6 `check_textgrid.py` + test trong `tools/checks/` — kết quả: 4/5 từ khớp CMUdict. `market` lệch ở cả hai giọng: CMUdict `M AA1 R K AH0 T`, MFA `M AA1 R K IH0 T`. `mismatch.csv` có 2 dòng. Mốc thời gian tăng đơn điệu và không vượt độ dài audio ở 10/10 tệp. 7 test mới trong `tools/checks/test_textgrid.py`, cả bộ `12 passed`.
 - [x] B7 1 ảnh SD hoặc lý do — kết quả: không cài. Lý do ở `tools/pipeline/ENV.md` mục 7: không có GPU rời, card tích hợp 512 MB. Quyết định 3 của Cổng A.
-- [ ] B8 `build_lexicon.py` chạy lại trong venv — kết quả: **chưa chạy, đang chặn.** Script cần gói `cmudict`, mã bọc mang giấy phép GPL-3.0. Chờ quyết định về giấy phép ở mục Câu hỏi mở.
+- [x] B8 `build_lexicon.py` chạy lại trong venv — kết quả: sau khi luật giấy phép được duyệt, cài `cmudict` 1.1.3. Chạy nguyên trạng: hỏng, `UnicodeEncodeError: 'charmap' codec can't encode character '\u0259'` ở dòng 61. Thêm `encoding='utf-8'`: hỏng tiếp ở lệnh `print` có chữ "từ". Thêm `sys.stdout.reconfigure`: exit 0, in `30 từ`, tệp ra **giống từng byte** với `content/lexicon/lexicon_raw_test.csv`. 2 test mới ở `tools/checks/test_lexicon_encoding.py`.
 - [x] B9 `ENV.md`, `requirements.txt`, dòng mới trong `sdk-allowlist.md` — kết quả: `tools/pipeline/ENV.md` 7 mục có bảng thời gian và ước cho cả bộ nội dung (khoảng 23 giờ máy); `requirements.txt` ghim 95 gói; `sdk-allowlist.md` thêm khối "Công cụ pipeline nội dung" 8 dòng.
-- [ ] B10 Người review nghe 10 file, ghi nhận xét — kết quả:
-- [ ] B11 Cổng B: Result.md + Delivery + quét bằng chứng — kết quả:
+- [x] B10 Người review nghe 10 file, ghi nhận xét — kết quả: người review nghe ngày 2026-10-08, nhận xét chung cho cả 10 tệp: "nghe rất ổn". Không có nhận xét riêng từng tệp, không báo méo ở giọng `am_michael`.
+- [ ] B11 Cổng B: Result.md + Delivery + quét bằng chứng — kết quả: `docs/tasks/P.3/Result.md` đã viết và đẩy hub. `docs/Delivery/2026-10-08_P.3/` có `index.md`, `README.md`, 17 tệp và 10 TextGrid trong `evidence/`, dựng từ một lượt chạy lại toàn bộ. Quét: 0 phát hiện. **Đang chờ nghiệm thu.**
 
 ## Kiểm tra
 | Test | Cách chạy | Input | Output thật | Đạt? |
@@ -30,23 +30,23 @@ Phụ thuộc: P.1 (Xong 2026-09-24)
 | 4 Mốc hợp lý | `python tools/pipeline/env/check_textgrid.py` | 10 TextGrid | 0 tệp có `time_not_rising`, 0 tệp có `ends_after_audio` | Đạt |
 | 5 Âm khớp CMUdict | cùng lệnh | 5 từ | 4/5 từ khớp; `market` lệch `AH0` thành `IH0`; `mismatch.csv` 2 dòng; exit 1 | Không đạt 5/5 — theo DoD: đã liệt kê và giải thích |
 | 6 Trường hợp "wind" | cùng lệnh | `w:wind#1` | Kokoro đọc `/wˈɪnd/`, MFA căn `W IH1 N D`, khớp CMUdict ở cả hai giọng | Đạt |
-| 7 `build_lexicon.py` chạy lại | — | — | chưa chạy, chặn vì giấy phép gói `cmudict` | |
-| 8 Không rơi vào ổ C | `Get-PSDrive C` trước và sau | — | 9,17 GB trước khi cài, 9,54 GB sau; `Documents\MFA` 2 KB | Đạt |
+| 7 `build_lexicon.py` chạy lại | `.venv/Scripts/python tools/pipeline/build_lexicon.py` trong thư mục tạm | 30 từ | exit 0; `30 từ`; `Phủ: có IPA 30 / 30 ; có nghĩa WordNet 28 ; đa cách đọc 11`; `cmp` với tệp đang theo dõi: giống từng byte | Đạt |
+| 8 Không rơi vào ổ C | dung lượng trống trước và sau | — | 9,17 GB trước khi cài; 9,54 GB ngay sau; 12,63 GB lúc dựng bằng chứng (thay đổi do việc khác trên máy); `Documents\MFA` 2 KB | Đạt |
 | 9 Không có audio trong git | `git status --short` | — | không dòng nào là WAV, Opus, `.venv`, `.mfa`, `.cache` | Đạt |
-| 10 Cổng vẫn xanh | `bash tools/checks/gate.sh full` | — | 4 mục Đạt, exit 0 | Đạt |
-| 11 Nghe kiểm | người review nghe 10 tệp | — | chưa nghe | |
-| 12 Giấy phép | `pip-licenses`, và trường `license` trong `conda-meta/*.json` | 95 + 204 gói | `.venv` 0 gói ngoài allowlist; `.mfa` 28 gói họ GPL/LGPL | Chờ quyết định |
+| 10 Cổng vẫn xanh | `bash tools/checks/gate.sh full` | — | 4 mục Đạt, `14 passed`, exit 0 | Đạt |
+| 11 Nghe kiểm | người review nghe 10 tệp Opus | 10 tệp | "nghe rất ổn", một nhận xét chung | Đạt |
+| 12 Giấy phép | `pip-licenses`, và trường `license` trong `conda-meta/*.json` | 95 + 204 gói | `.venv` 96 gói, 1 gói GPL giữ có chủ đích (`cmudict`); `.mfa` 204 gói, 28 gói họ GPL/LGPL | Đạt theo luật hai vùng, `CLAUDE.md` §5 |
 
 ## Xác minh output trước khi đóng (CLAUDE.md §3)
-- [ ] `bash tools/checks/gate.sh full` sạch:
-- [ ] Audio: duration trong ngưỡng, loudness −16 ±2 LUFS, đủ 2 giọng:
-- [ ] Timing: mốc tăng đơn điệu, kết ≤ duration, có `mismatch.csv`:
+- [x] `bash tools/checks/gate.sh full` sạch: 2026-10-08, 4 mục Đạt, `gate exit=0`, nguyên văn ở `docs/Delivery/2026-10-08_P.3/evidence/test10-gate-full.txt`
+- [x] Audio: duration 1.225–1.550 ms (ngưỡng 300–4.000); loudness −16,5 đến −16,0 LUFS; 5 từ đều có đủ 2 giọng; người review đã nghe cả 10 tệp, tức 100% chứ không phải 5%
+- [x] Timing: 10/10 tệp mốc tăng đơn điệu và kết không vượt duration; `mismatch.csv` có 2 dòng. Tỉ lệ lệch 1/5 từ, **vượt ngưỡng 2%** của CLAUDE.md §3; đã ghi nhận, người review quyết định để P.10 xử. Viseme 0..11 không áp dụng: task này chưa sinh viseme
 
 ## Bằng chứng
-- Commit/PR:
-- File đầu ra:
-- Ảnh/số đo:
-- Delivery đã quét khoá/token/dữ liệu người thật:
+- Commit/PR: không mở PR. Mã: `5509ead`, `afe2f81`, `bb052b9`, cộng commit sửa `build_lexicon.py` và luật giấy phép. Xem `git log main..chore/p3-pipeline-env`.
+- File đầu ra: `tools/pipeline/env/` (5 tệp), `tools/pipeline/ENV.md`, `tools/pipeline/requirements.txt`, `tools/checks/test_textgrid.py`, `tools/checks/test_lexicon_encoding.py`. Ngoài git: `content/pack/audio_test/` với 10 WAV, 10 Opus, 10 TextGrid.
+- Ảnh/số đo: `docs/Delivery/2026-10-08_P.3/evidence/`. Không có ảnh SD.
+- Delivery đã quét khoá/token/dữ liệu người thật: 2026-10-08, 0 phát hiện. Đường dẫn máy đã thay bằng `<repo>` và `<home>`.
 
 ## Giải thích
 Sáu quyết định của Cổng A nằm trong Decisions log của `docs/tasks/P.3/Plan.md`, không chép lại ở đây.
@@ -82,7 +82,22 @@ Quyết định trong lúc làm:
   mới sinh thêm một tệp `.pyc` chưa theo dõi. Không thêm nó vào commit; không dọn các tệp cũ vì
   ngoài phạm vi task.
 
+- 2026-10-08 — **Luật giấy phép hai vùng, người review duyệt.** Nguyên văn: "Tôi đồng ý, miễn sao
+  tránh rắc rối về bản quyền về sau". Đã ghi vào `CLAUDE.md` §5, `sdk-allowlist.md` và `ENV.md` mục 4.
+  Để đúng với vế sau của câu đó: ba gói GPL/LGPL của Kokoro **vẫn không cài lại**, dù luật mới cho
+  phép, vì Kokoro chạy được mà không cần chúng. Chỉ cài lại `cmudict`, thứ `build_lexicon.py` bắt
+  buộc phải có. Script đó giờ là chỗ duy nhất `import` thẳng mã GPL và được nêu tên trong `ENV.md`.
+- 2026-10-08 — **Sửa `build_lexicon.py` nhiều hơn Plan dự tính.** Plan ghi một tham số. Thực tế cần
+  ba dòng: `encoding='utf-8'` cho lệnh ghi tệp, và `sys.stdout.reconfigure` vì các lệnh `print`
+  cũng in IPA và tiếng Việt. Không đụng dòng nào khác. Test đọc mã nguồn thay vì chạy script, vì
+  cổng dùng Python 3.14 không có `cmudict`.
+- 2026-10-08 — **Lệch ở `market` để lại cho P.10**, người review quyết định.
+- 2026-10-08 — **Nghe kiểm: một nhận xét chung.** Plan đòi một nhận xét mỗi tệp. Người review trả
+  lời "nghe rất ổn" cho cả bộ. Ghi đúng như vậy, không tự chia thành mười dòng.
+- 2026-10-08 — **Công thực tế chưa đo.** Không ai bấm giờ.
+
 ## Câu hỏi mở
+- Không còn. Câu dưới đây đã được trả lời ngày 2026-10-08, giữ lại làm lịch sử.
 - **Luật giấy phép cho công cụ chỉ chạy lúc dựng.** `license-allowlist.txt` không có GPL hay LGPL.
   Nhưng `ffmpeg` cài sẵn trên máy đã là bản GPL, và môi trường MFA kéo theo 28 gói họ GPL/LGPL không
   gỡ được. Cả hai đều do tài liệu dự án yêu cầu dùng. `docs/01` dòng 650 đã nói Kokoro, MFA, SD

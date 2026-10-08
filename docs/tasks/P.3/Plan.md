@@ -34,6 +34,16 @@ Depends on: P.1, done on 2026-09-24. P.2 is not needed here, done on 2026-10-08.
 9. 2026-10-08 - **Test 5 gave 4 of 5, not 5 of 5.** MFA's own dictionary writes "market" with a
    different unstressed vowel than CMUdict. Both rows are in `mismatch.csv`. The fix belongs to
    task P.10: give MFA a dictionary built from CMUdict.
+10. 2026-10-08 - **Licence rule for build tools, approved by the reviewer.** What ships in the app
+    or in a content pack must be on the licence allowlist. Tools that only run on the build
+    machine may be GPL, if they are listed and never copied into the product. The rule is in
+    `CLAUDE.md` section 5. `cmudict` is installed again and test 7 is no longer blocked.
+11. 2026-10-08 - **The reviewer listened to the 10 files: "sounds very good".** One verdict for
+    all files, not one note per file.
+12. 2026-10-08 - **The "market" mismatch is left for task P.10**, as the reviewer decided.
+13. 2026-10-08 - **Section 4.8 grew from one argument to three lines.** The script also prints
+    phonetic letters, so the console output needed UTF-8 too. Output is byte-identical to the
+    tracked file.
 
 Out of scope: choosing the final two voices (task P.4), the content workshop (P.5), downloading
 any source data (P.7), the full 30-word run (P.10), drawing mouth shapes, any upload to R2.
