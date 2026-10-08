@@ -1,0 +1,10 @@
+measured 2026-10-08T05:46:28Z, all calls use the public anon key, no user signed in
+{"code":"42501","details":null,"hint":"Grant the required privileges to the current role with: GRANT SELECT ON public.profile TO anon;","message":"permission denied for table profile"}  <- GET profile http=401
+{"code":"42501","details":null,"hint":"Grant the required privileges to the current role with: GRANT SELECT ON public.device TO anon;","message":"permission denied for table device"}  <- GET device http=401
+[]  <- GET review_event http=200
+{"code":"42501","details":null,"hint":"Grant the required privileges to the current role with: GRANT SELECT ON public.user_content TO anon;","message":"permission denied for table user_content"}  <- GET user_content http=401
+{"code":"42501","details":null,"hint":"Grant the required privileges to the current role with: GRANT SELECT ON public.settings TO anon;","message":"permission denied for table settings"}  <- GET settings http=401
+{"code":"42501","details":null,"hint":"Grant the required privileges to the current role with: GRANT SELECT ON public.sync_cursor TO anon;","message":"permission denied for table sync_cursor"}  <- GET sync_cursor http=401
+{"code":"42501","details":null,"hint":"Grant the required privileges to the current role with: GRANT SELECT ON public.analytics_daily TO anon;","message":"permission denied for table analytics_daily"}  <- GET analytics_daily http=401
+--- anonymous insert into review_event
+{"code":"42501","details":null,"hint":"Grant the required privileges to the current role with: GRANT INSERT ON public.review_event TO anon;","message":"permission denied for table review_event"}  <- POST review_event http=401

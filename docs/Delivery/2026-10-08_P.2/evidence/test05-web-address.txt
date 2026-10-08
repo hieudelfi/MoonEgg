@@ -1,0 +1,11 @@
+measured 2026-10-08T05:46:22Z
+GET [] http=200 type=text/html bytes=453
+GET [session/3] http=200 type=text/html bytes=453
+GET [favicon.svg] http=200 type=image/svg+xml bytes=9522
+GET [assets/index-BRDr3nmD.js] http=200 type=text/javascript bytes=222523
+GET [assets/index-D64VDMd1.css] http=200 type=text/css bytes=4105
+--- headers of the root page
+HTTP/1.1 200 OK
+Content-Type: text/html
+Cache-Control: public, max-age=0, must-revalidate
+Server: cloudflare

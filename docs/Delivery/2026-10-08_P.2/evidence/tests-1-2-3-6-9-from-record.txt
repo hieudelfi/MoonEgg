@@ -1,0 +1,8 @@
+Copied by script from records/P.2.md, not retyped. Measured 2026-09-25 with two test users.
+The users were deleted on 2026-10-08, so these five cannot be run again.
+
+| 1 TC-AU-04 | token A gọi `GET /rest/v1/review_event` | A và B mỗi người 1 sự kiện | HTTP 200, 1 dòng, chủ sở hữu A; 0 dòng của B | Đạt |
+| 2 RLS thật bật | query `pg_class` + `pg_policy` trong SQL Editor | 7 bảng public | 7/7 `rls_bat = true`; policy: analytics_daily 1, sáu bảng còn lại 2 | Đạt |
+| 3 Schema lặp lại được | Run trong SQL Editor | tệp 220 dòng | chạy 3 lần (2 lần bản đầu, 1 lần sau khi sửa), cả 3 `Success. No rows returned` | Đạt |
+| 6 event_id duy nhất | POST lại `event_id` đã có | `p2-a-1` | HTTP 409 `duplicate key value violates unique constraint "review_event_pkey"` | Đạt |
+| 9 `server_seq` client không đặt được | POST kèm `server_seq: 999999`, 3 lần | token A | máy chủ lưu 8, 9, 10; không lần nào là 999999; bước nhảy 1 | Đạt |
