@@ -41,7 +41,7 @@ py -V:Astral/CPython3.12.14 -m venv tools/pipeline/.venv
 PY=tools/pipeline/.venv/Scripts/python
 $PY -m pip install --upgrade pip
 $PY -m pip install torch --index-url https://download.pytorch.org/whl/cpu
-$PY -m pip install kokoro soundfile nltk
+$PY -m pip install kokoro soundfile nltk cmudict
 $PY -m pip uninstall -y phonemizer-fork espeakng-loader num2words   # xem mục 4
 $PY -m spacy download en_core_web_sm
 
@@ -84,20 +84,30 @@ Chạy lại lần nữa thì ghi đè đúng 10 tệp cũ, không sinh tệp tr
 Model và dữ liệu đều nằm trong `tools/checks/license-allowlist.txt`: Kokoro-82M Apache-2.0,
 `en_core_web_sm` MIT, model MFA `english_us_arpa` CC-BY-4.0.
 
-`.venv` sau khi gỡ: 95 gói, **0 gói GPL hay LGPL**. Bốn gói bị gỡ hoặc không cài:
+Luật áp dụng nằm ở `CLAUDE.md` mục 5, chốt ngày 2026-10-08: thứ đi vào app và gói nội dung phải
+nằm trong allowlist; công cụ chỉ chạy trên máy dựng thì được dùng kể cả khi mang GPL, miễn là được
+liệt kê ở đây, không bị chép vào repo hay sản phẩm, và script nào `import` thẳng thư viện GPL thì
+được nêu tên.
+
+`.venv`: 96 gói. Ba gói bị gỡ, một gói GPL được giữ lại có chủ đích:
 
 | Gói | Giấy phép | Ai kéo vào | Xử lý |
 | --- | --- | --- | --- |
 | `phonemizer-fork` 3.3.2 | GPL-3.0-or-later | kokoro → misaki | gỡ; `tts_sample.py` chèn module giả |
 | `espeakng-loader` 0.2.4 | không khai, bọc espeak-ng GPL-3.0 | kokoro → misaki | gỡ; như trên |
 | `num2words` 0.5.14 | LGPL | misaki | gỡ; chèn hàm giả |
-| `cmudict` 1.1.3 | GPL-3.0-or-later (mã bọc; dữ liệu CMUdict bên trong là BSD) | đề bài P.3, `build_lexicon.py:1` | không cài, chờ quyết định |
+| `cmudict` 1.1.3 | GPL-3.0-or-later (mã bọc; dữ liệu CMUdict bên trong là BSD) | đề bài P.3, `build_lexicon.py:1` | cài; chỉ `build_lexicon.py` dùng |
 
 Hệ quả phải nhớ:
 - Từ nằm ngoài từ điển của Kokoro sẽ **bị bỏ qua, không được đoán âm**. `tts_sample.py` dừng với
   thông báo rõ khi gặp. Năm từ thử đều có trong từ điển.
 - Văn bản có **chữ số** sẽ làm Kokoro báo lỗi. Câu ví dụ phải viết số bằng chữ.
-- `build_lexicon.py` **chưa chạy được** trong `.venv` vì thiếu `cmudict`.
+- **`tools/pipeline/build_lexicon.py` là script duy nhất `import` thẳng một thư viện GPL** (`cmudict`).
+  Script này không được phát hành ra ngoài repo riêng tư. Dữ liệu nó tạo ra không vướng: nội dung
+  CMUdict là BSD, và tệp CSV ghi `source` và `license` theo dữ liệu gốc.
+- Đường ít rủi ro hơn cho P.8: đọc thẳng tệp dữ liệu CMUdict (BSD) mà P.7 tải về, bỏ hẳn mã bọc GPL.
+  Bản CMUdict đi kèm NLTK không thay được ngay: nó cũ hơn (123.455 mục so với 126.052), và trên 29
+  từ mẫu đã có 1 từ khác (`exhausted`).
 
 `.mfa` thì khác: 204 gói conda, trong đó **28 gói họ GPL/LGPL** đi kèm MFA mà không gỡ được, ví dụ
 `ffmpeg` 8.1.2 và `sox` 14.4.2 (GPL-2.0), `libsndfile` (LGPL), `libgcc` (GPL kèm ngoại lệ GCC). Bản
