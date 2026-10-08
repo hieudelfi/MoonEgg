@@ -1,10 +1,10 @@
 # P.3 — Môi trường pipeline
 
-Bắt đầu: 2026-10-08 (Plan và Cổng A duyệt cùng ngày)  Kết thúc: <ngày>  Công thực tế: <nđ> (ước: 1,5)
+Bắt đầu: 2026-10-08 (Plan và Cổng A duyệt cùng ngày)  Kết thúc: 2026-10-08  Công thực tế: chưa đo (ước: 1,5)
 Type: INFRA  Level: L2  Repro (ISSUE): không áp dụng
 Người kiểm: tự kiểm  Nhánh: `chore/p3-pipeline-env` (cắt từ `main` tại `4963232`)
 Plan: https://hub.yawasa.com/app/p/moonegg-p3-plan  Flow: bỏ — Type INFRA, không có màn hình  Result: https://hub.yawasa.com/app/p/moonegg-p3-result
-Delivery: `docs/Delivery/2026-10-08_P.3/`
+Delivery: `docs/Delivery/2026-10-08_P.3/` · https://hub.yawasa.com/app/p/moonegg-p3-delivery
 Tham chiếu: Kế hoạch §3P.1 P.3 · Kiến trúc §5.5 · Yêu cầu §8.3, §9.3 · ngưỡng của TC-CT-02, TC-CT-04
 Phụ thuộc: P.1 (Xong 2026-09-24)
 
@@ -19,7 +19,7 @@ Phụ thuộc: P.1 (Xong 2026-09-24)
 - [x] B8 `build_lexicon.py` chạy lại trong venv — kết quả: sau khi luật giấy phép được duyệt, cài `cmudict` 1.1.3. Chạy nguyên trạng: hỏng, `UnicodeEncodeError: 'charmap' codec can't encode character '\u0259'` ở dòng 61. Thêm `encoding='utf-8'`: hỏng tiếp ở lệnh `print` có chữ "từ". Thêm `sys.stdout.reconfigure`: exit 0, in `30 từ`, tệp ra **giống từng byte** với `content/lexicon/lexicon_raw_test.csv`. 2 test mới ở `tools/checks/test_lexicon_encoding.py`.
 - [x] B9 `ENV.md`, `requirements.txt`, dòng mới trong `sdk-allowlist.md` — kết quả: `tools/pipeline/ENV.md` 7 mục có bảng thời gian và ước cho cả bộ nội dung (khoảng 23 giờ máy); `requirements.txt` ghim 95 gói; `sdk-allowlist.md` thêm khối "Công cụ pipeline nội dung" 8 dòng.
 - [x] B10 Người review nghe 10 file, ghi nhận xét — kết quả: người review nghe ngày 2026-10-08, nhận xét chung cho cả 10 tệp: "nghe rất ổn". Không có nhận xét riêng từng tệp, không báo méo ở giọng `am_michael`.
-- [ ] B11 Cổng B: Result.md + Delivery + quét bằng chứng — kết quả: `docs/tasks/P.3/Result.md` đã viết và đẩy hub. `docs/Delivery/2026-10-08_P.3/` có `index.md`, `README.md`, 17 tệp và 10 TextGrid trong `evidence/`, dựng từ một lượt chạy lại toàn bộ. Quét: 0 phát hiện. **Đang chờ nghiệm thu.**
+- [x] B11 Cổng B: Result.md + Delivery + quét bằng chứng — kết quả: `docs/tasks/P.3/Result.md` đã viết và đẩy hub. `docs/Delivery/2026-10-08_P.3/` có `index.md`, `README.md`, 17 tệp và 10 TextGrid trong `evidence/`, dựng từ một lượt chạy lại toàn bộ. Quét: 0 phát hiện. Cổng B duyệt 2026-10-08; Delivery đã đẩy hub, riêng tư; nhánh gộp vào `main` bằng `gate.sh merge`.
 
 ## Kiểm tra
 | Test | Cách chạy | Input | Output thật | Đạt? |
@@ -106,4 +106,4 @@ Quyết định trong lúc làm:
   và `sdk-allowlist.md` nhưng không bị chặn. Nếu chấp nhận, cài lại `cmudict` và chạy B8. Đây là
   quyết định pháp lý, chờ người review.
 
-## Người kiểm: tự kiểm  Ngày:   Kết luận: Xong / Làm lại (lý do)
+## Người kiểm: tự kiểm  Ngày: 2026-10-08  Kết luận: **Xong** — 11/12 phép thử Đạt, phép thử 5 ra 4/5 từ, đã liệt kê và để P.10 xử; Cổng B duyệt.

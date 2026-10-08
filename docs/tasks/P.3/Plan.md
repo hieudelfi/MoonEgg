@@ -1,6 +1,6 @@
 # Plan - P.3 a machine that can make audio, timing and images
 
-Status: **in progress**. Gate A approved 2026-10-08. Gate B not reached.
+Status: **done**. Gate A and Gate B approved 2026-10-08.
 Task: `P.3` · Prompt: `prompts/phase-P/P.3.md` · Record: `records/P.3.md`
 Branch: `chore/p3-pipeline-env`, cut from `main` at `4963232`.
 Reviewer: `self`
