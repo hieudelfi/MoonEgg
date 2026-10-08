@@ -14,7 +14,7 @@ Depends on: P.1, done on 2026-09-24. P.2 is not needed here, done on 2026-10-08.
 
 **Decisions log (2026-10-08):**
 1. 2026-10-08 - Plan written. No review round yet.
-2. 2026-10-08 - **Gate A approved.** Miniforge may be installed at `D:	ools\miniforge3`, outside
+2. 2026-10-08 - **Gate A approved.** Miniforge may be installed at `D:\tools\miniforge3`, outside
    the repo and not on PATH.
 3. 2026-10-08 - **Stable Diffusion is skipped on this machine.** The record carries the reason.
    Task P.5 uses a free hosted service.
