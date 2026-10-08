@@ -1,6 +1,6 @@
 # Plan - task-lead: a global skill that runs one task with three helper agents
 
-Status: **not started**, stopped at Gate A, waiting for review.
+Status: **in progress**. Gate A approved 2026-10-08. Gate B not reached.
 Task: `task-lead` · Source: `docs/_Analysis/AgentNetwork.md` follow-ups 1, 2 and 5 · Record: `records/task-lead.md`
 Branch: `chore/task-lead-skill`, cut from `main` at `852d94b`.
 Reviewer: `self`
@@ -14,6 +14,11 @@ Depends on: the Analysis, accepted 2026-10-08.
 
 **Decisions log (2026-10-08):**
 1. 2026-10-08 - Plan written. No review round yet.
+2. 2026-10-08 - **Gate A approved.** The global files are backed up in a private repo
+   `hieudelfi/claude-local`; it holds the skill and the two agents, with an install script
+   that copies them into `~/.claude`. The repo is the source; `~/.claude` holds copies.
+3. 2026-10-08 - **The dry run writes the real `docs/tasks/P.4/Plan.md`.**
+4. 2026-10-08 - **Reviewer runs on Opus, scout on Sonnet.**
 
 Out of scope: running tasks in parallel (that is the POC in the Analysis, follow-up 3), installing
 CCB, changing any gate, changing `sprint-loop`, changing the 10 role agents that already exist.
@@ -235,8 +240,8 @@ feature(task-lead): add token line to the record template, name the skill in the
 docs(task-lead): record the dry run on P.4 and the helper token counts
 ```
 
-The skill and agent files live outside the repo, so they are not in any commit. `ENV.md` style
-copies are not made; the files are their own source. Record note: `records/TRACKING.md` gets a
+The skill and agent files live outside this repo, in `hieudelfi/claude-local` (decision 2).
+They are not in any MoonEgg commit. Record note: `records/TRACKING.md` gets a
 new row `task-lead` under phase P, status and date.
 
 ## 9. Open questions for the reviewer

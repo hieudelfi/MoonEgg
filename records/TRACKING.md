@@ -14,6 +14,7 @@ Cập nhật mỗi thứ hai (trạng thái, thực tế) và mỗi lần đóng
 | P.8 | Chuẩn hoá, ghép nguồn | 2 | | Chưa | | | — | | records/P.8.md | |
 | P.9 | Danh sách 5.000 từ, đợt 1 | 1.5 | | Chưa | | | CT-09 | | records/P.9.md | |
 | P.10 | Thử pipeline đầu-cuối 30 từ | 0.5 | | Chưa | | | CT-01→10 | | records/P.10.md | |
+| task-lead | Kỹ năng toàn cục: một task, ba trợ thủ (từ Analysis AgentNetwork) | — | | Đang làm | 2026-10-08 | | tự định nghĩa, 10 test | | records/task-lead.md | |
 | 1.2 | Nghĩa, định nghĩa | 6 | | Chưa | | | CT-01 | | records/1.2.md | |
 | 1.3 | Câu ví dụ | 8 | | Chưa | | | CT-06 | | records/1.3.md | |
 | 1.4 | Audio, timing | 2 | | Chưa | | | CT-02→05 | | records/1.4.md | |
