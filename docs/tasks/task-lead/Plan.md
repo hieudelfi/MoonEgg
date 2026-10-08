@@ -1,6 +1,6 @@
 # Plan - task-lead: a global skill that runs one task with three helper agents
 
-Status: **in progress**. Gate A approved 2026-10-08. Gate B not reached.
+Status: **done**. Gate A and Gate B approved 2026-10-08.
 Task: `task-lead` · Source: `docs/_Analysis/AgentNetwork.md` follow-ups 1, 2 and 5 · Record: `records/task-lead.md`
 Branch: `chore/task-lead-skill`, cut from `main` at `852d94b`.
 Reviewer: `self`
