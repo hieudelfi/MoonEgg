@@ -1,0 +1,23 @@
+sha256 of the ten Opus files. The audio stays on the build machine: *.opus is ignored by git.
+b363be1771316fc115436911e6b770e42d33b520658cb326103b2fb79197ec2a *hello__af_heart.opus
+2fec1d0307fbaa6e8ea0d9dace189490e3a5da64aa8414fdc830ee07194f37e2 *hello__am_michael.opus
+b0f4177f830083559a01a575a6acd91d6873afb179115516ae9f15617fede3f2 *market__af_heart.opus
+74a82420beee019d173410e0d69e364001eaf2e14ec6a488e5be6264631a328a *market__am_michael.opus
+890876a5d863985636c66da001a52047a6b80a6a96b92cac5a94fb87f83657ad *reluctant__af_heart.opus
+28440cdb3e145e1243b966be7409c253ee8ff09e4d005d44d2b0ccdb2a4a7d4c *reluctant__am_michael.opus
+7e45ebae7c9162df7dac034b7658538058e19ccf4c36c94ca1d8c9149e50981c *think__af_heart.opus
+1a29aa4e314d286453c022a16eaefe31cda77b70f7e23100f421d0db9752b8a4 *think__am_michael.opus
+68437fa868d0e9acdbbdd0e13b52a05aa270562da7e6c881f967f898ff7fd7c5 *wind__af_heart.opus
+3b50fb81892ce9bfecede7baaabc59b84bf91abb5b3fa0f34bbd7417c833807f *wind__am_michael.opus
+--- sizes in bytes
+ 3748 hello__af_heart.opus
+ 4141 hello__am_michael.opus
+ 3992 market__af_heart.opus
+ 4021 market__am_michael.opus
+ 4371 reluctant__af_heart.opus
+ 4838 reluctant__am_michael.opus
+ 3408 think__af_heart.opus
+ 3561 think__am_michael.opus
+ 3730 wind__af_heart.opus
+ 3949 wind__am_michael.opus
+39759 total

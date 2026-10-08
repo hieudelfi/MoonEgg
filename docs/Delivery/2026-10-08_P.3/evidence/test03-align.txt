@@ -1,0 +1,5 @@
+measured 2026-10-08T07:53:02Z
+MFA 3.4.2, model english_us_arpa
+models ready in 9.3 s, paid once per machine
+10 of 10 files aligned in 89.9 s, 8.99 s per file including start-up
+exit=0

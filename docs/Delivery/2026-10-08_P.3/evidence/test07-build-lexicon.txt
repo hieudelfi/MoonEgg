@@ -1,0 +1,22 @@
+measured 2026-10-08T07:54:55Z
+30 từ
+w:hello#1        /həlˈoʊ/         nhấn=1 khó=[] viseme=DD aa DD O
+w:market#1       /mˈɑrkət/        nhấn=0 khó=[cuối /t/;r] viseme=PP aa O DD aa DD
+w:umbrella#1     /əmbrˈɛlə/       nhấn=1 khó=[r] viseme=aa PP PP O E DD aa
+w:bargain#1      /bˈɑrɡən/        nhấn=0 khó=[r] viseme=PP aa O DD aa DD
+w:reluctant#1    /rɪlˈʌktənt/     nhấn=1 khó=[cuối nt;r] viseme=O I DD aa DD DD aa DD DD
+w:think#1        /θˈɪŋk/          nhấn=0 khó=[cuối /k/;θ] viseme=TH I DD DD
+w:sink#1         /sˈɪŋk/          nhấn=0 khó=[cuối /k/] viseme=SS I DD DD
+w:wind#1         /wˈɪnd/          nhấn=0 khó=[cuối nd] viseme=U I DD DD
+w:wind#2         /wˈaɪnd/         nhấn=0 khó=[cuối nd] viseme=U aa DD DD
+w:thorough#1     /θˈɝoʊ/          nhấn=0 khó=[θ] viseme=TH E O
+w:through#1      /θrˈu/           nhấn=0 khó=[r;θ] viseme=TH O U
+
+ví dụ WordNet: unwillingness to do something contrary to your custom | disinclined to become involved | not eager
+đồng nghĩa (loại khỏi nhiễu): loath;loth
+
+Phủ: có IPA 30 / 30 ; có nghĩa WordNet 28 ; đa cách đọc 11
+exit=0
+--- compare with content/lexicon/lexicon_raw_test.csv
+byte-identical
+lines: 31

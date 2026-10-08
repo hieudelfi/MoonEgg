@@ -1,0 +1,6 @@
+Quet ngay 2026-10-08, thu muc docs/Delivery/2026-10-08_P.3/.
+0 phat hien.
+Mau tim: JWT, AKIA, private key, gho_/ghp_, sk-, hf_, dia chi email, ten tai khoan may,
+duong dan thu muc nguoi dung, chu token va password.
+Duong dan may da duoc thay bang <repo> va <home> luc ghi tep.
+Khong co tep audio trong goi: chi co sha256 va kich thuoc cua 10 tep Opus.

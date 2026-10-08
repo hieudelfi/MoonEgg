@@ -1,0 +1,14 @@
+measured 2026-10-08T07:52:17Z
+hello__af_heart.wav           1400 ms  synth  0.881 s  /həlˈO/
+market__af_heart.wav          1450 ms  synth  0.775 s  /mˈɑɹkət/
+reluctant__af_heart.wav       1550 ms  synth  1.255 s  /ɹəlˈʌktᵊnt/
+think__af_heart.wav           1275 ms  synth  0.635 s  /θˈɪŋk/
+wind__af_heart.wav            1375 ms  synth  0.590 s  /wˈɪnd/
+hello__am_michael.wav         1425 ms  synth  0.595 s  /həlˈO/
+market__am_michael.wav        1350 ms  synth  0.551 s  /mˈɑɹkət/
+reluctant__am_michael.wav     1550 ms  synth  0.607 s  /ɹəlˈʌktᵊnt/
+think__am_michael.wav         1225 ms  synth  0.528 s  /θˈɪŋk/
+wind__am_michael.wav          1325 ms  synth  0.569 s  /wˈɪnd/
+model and voices loaded in 4.08 s, paid once per run
+10 files, mean 0.699 s per word
+exit=0

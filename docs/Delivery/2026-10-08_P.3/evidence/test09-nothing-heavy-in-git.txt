@@ -1,0 +1,11 @@
+measured 2026-10-08T08:05:09Z
+--- git status --short (pyc caches left out)
+?? docs/Delivery/2026-10-08_P.3/
+?? docs/tasks/P.3/Result.md
+--- git check-ignore
+.gitignore:3:content/pack/audio*/	content/pack/audio_test/wav/hello__af_heart.wav
+.gitignore:3:content/pack/audio*/	content/pack/audio_test/opus/hello__af_heart.opus
+.gitignore:7:tools/pipeline/.venv/	tools/pipeline/.venv
+.gitignore:15:tools/pipeline/.mfa/	tools/pipeline/.mfa
+.gitignore:16:tools/pipeline/.cache/	tools/pipeline/.cache
+--- tracked audio or environment files: 0

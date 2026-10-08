@@ -1,0 +1,10 @@
+{
+  "mfa_version": "3.4.2",
+  "model": "english_us_arpa",
+  "files": 10,
+  "textgrids": 10,
+  "missing": [],
+  "model_download_s": 9.35,
+  "align_total_s": 89.89,
+  "align_per_file_s": 8.989
+}

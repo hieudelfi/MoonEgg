@@ -59,6 +59,17 @@ Mockup: https://claude.ai/artifact/BJJpsvciECNVUK4VocwWUq (15 màn). Tài liệu
 - Bộ tag commit khác bộ tiền tố nhánh, cố ý. Ánh xạ: tag `bug` nằm trên nhánh `fix/`; tag `feature` nằm trên `feature/` nếu là năng lực người học thấy, trên `chore/` nếu là hạ tầng hay công cụ.
 - Commit chỉ mang tên tác giả là chủ máy. Không `Co-Authored-By`, không dòng "Generated with", không ghi công công cụ ở commit, PR hay CHANGELOG.
 - Không emoji ở bất cứ đâu: mã, commit, PR, tài liệu, drop.
+- Giấy phép chia hai vùng (chốt 2026-10-08, task P.3):
+  - **Thứ đi vào app hoặc vào gói nội dung** (mã, thư viện, model, dữ liệu, audio, ảnh): giấy phép
+    phải nằm trong `tools/checks/license-allowlist.txt`. Không có ngoại lệ.
+  - **Công cụ chỉ chạy trên máy dựng** (ffmpeg, MFA, Kokoro và các gói chúng kéo theo): được dùng
+    kể cả khi mang GPL hay LGPL, với đủ bốn điều kiện. Một, có dòng trong
+    `tools/checks/sdk-allowlist.md` và trong `tools/pipeline/ENV.md`. Hai, không chép mã, tệp chạy
+    hay model của chúng vào repo, vào app, vào gói nội dung. Ba, ưu tiên gọi như một chương trình
+    riêng; script nào `import` thẳng một thư viện GPL thì phải được nêu tên trong `ENV.md` và không
+    được phát hành ra ngoài repo riêng tư này. Bốn, đầu ra đưa vào gói vẫn mang `source` và
+    `license` của dữ liệu và model gốc.
+  - Không chắc một thứ thuộc vùng nào thì coi như vùng thứ nhất.
 
 ## 6. Khi không chắc
 
