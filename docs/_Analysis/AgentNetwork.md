@@ -3,11 +3,16 @@
 Owner: Claude Code session, on behalf of the project owner.
 Reviewer: `self`.
 Date: 2026-10-08.
-Status: **Ready for review**.
+Status: **Accepted** 2026-10-08.
 
 **Decisions log (2026-10-08):**
 1. 2026-10-08 - First version. Lane chosen: Analysis, not Plan. The question is "does this work", so
    the recommendation feeds a Plan later.
+2. 2026-10-08 - **Accepted by the owner, with four answers.** (1) No token budget can be named
+   yet; measure first, follow-up 5 stays. (2) Gate requests are approved one by one, never as a
+   batch. The lead reports each task on its own. (3) The global skill serves every repo from day
+   one, but the Plan must check for conflicts with the other repos and skills on this machine.
+   (4) A terminal with three live panes is acceptable, so Option C stays on the list for later.
 
 > **Language rule (B1/B2):** short sentences, 20 words or fewer. Common words. Active voice.
 > One idea per sentence. Diagrams carry the content.
@@ -110,7 +115,7 @@ Options A and D combine. Option B builds on A. Option C replaces B, not A.
 
 ## 5. Recommendation
 
-**Chosen:** Option A now, as a global skill. Then a timed trial of Option B on three Phase P
+**Chosen:** Option A now, as a global skill. Approved 2026-10-08, see decision 2. Then a timed trial of Option B on three Phase P
 tasks. Option C only if the trial shows the lead cannot juggle three agents from one console.
 
 ```mermaid
