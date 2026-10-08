@@ -22,6 +22,18 @@ Depends on: P.1, done on 2026-09-24. P.2 is not needed here, done on 2026-10-08.
    the real licences after install, before any use.
 5. 2026-10-08 - **Downloads go to drive D:.** The 5 to 6 GB estimate is accepted.
 6. 2026-10-08 - **The reviewer listens to the 10 files** for test 11.
+7. 2026-10-08 - **Section 4.3 changed: no `loudnorm`.** Run as planned, it left 7 of 10 files
+   between -18 and -20 LUFS. A single word has tall peaks, so `loudnorm` could add only half the
+   gain it needed. The script now measures, adds gain, holds the peaks with a limiter, and
+   measures the Opus file again. All 10 files land between -16.5 and -16.0 LUFS.
+8. 2026-10-08 - **Three packages removed from the speech environment, one not installed.**
+   `phonemizer-fork` and `espeakng-loader` are GPL-3.0, `num2words` is LGPL. Kokoro loads them on
+   import, so they were uninstalled and replaced by two small stand-ins in `tts_sample.py`. The
+   `cmudict` package from PyPI is also GPL-3.0, though the dictionary data inside it is BSD. It
+   stays uninstalled. Test 7 is blocked until the reviewer decides the licence rule for build tools.
+9. 2026-10-08 - **Test 5 gave 4 of 5, not 5 of 5.** MFA's own dictionary writes "market" with a
+   different unstressed vowel than CMUdict. Both rows are in `mismatch.csv`. The fix belongs to
+   task P.10: give MFA a dictionary built from CMUdict.
 
 Out of scope: choosing the final two voices (task P.4), the content workshop (P.5), downloading
 any source data (P.7), the full 30-word run (P.10), drawing mouth shapes, any upload to R2.
@@ -132,9 +144,10 @@ One speed only. Slow playback is done in the app, never as a second file.
 
 ### 4.3 `tools/pipeline/env/encode_opus.py` - required
 
-Calls `ffmpeg` twice per file. The first pass measures loudness. The second pass corrects to
--16 LUFS and writes Opus at 24 kbps. Then it measures the result again and prints the number.
-A printed target is not proof; the measured output is.
+Measures the loudness of each file. Adds the missing gain, holds the peaks with a limiter, and
+writes Opus at 24 kbps. Then it measures the Opus file itself and corrects the gain until the
+result is within 0.5 of -16 LUFS. A printed target is not proof; the measured output is.
+The first version used the `loudnorm` filter alone. Decision 7 says why that changed.
 
 ### 4.4 `tools/pipeline/env/align_sample.py` - required
 
