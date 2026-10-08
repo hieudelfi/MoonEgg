@@ -1,5 +1,8 @@
-import cmudict, json, csv, sqlite3
+import cmudict, json, csv, sqlite3, sys
 from nltk.corpus import wordnet as wn
+
+# Console cp1252 trên Windows không in được IPA và tiếng Việt.
+sys.stdout.reconfigure(encoding='utf-8')
 
 CMU = cmudict.dict()
 # ARPAbet -> IPA (US)
@@ -58,7 +61,7 @@ for hw,pos,rank,vi in WORDS:
         wn_defs=' | '.join(defs),wn_synonyms=';'.join(synonyms),n_variants=len(prons),
         source='cmudict(BSD);wordnet(Princeton)',license='BSD;WordNet'))
 
-with open('lexicon_raw_test.csv','w',newline='') as f:
+with open('lexicon_raw_test.csv','w',newline='',encoding='utf-8') as f:
     w=csv.DictWriter(f,fieldnames=rows[0].keys()); w.writeheader(); w.writerows(rows)
 con=sqlite3.connect('lexicon_raw_test.sqlite'); con.execute('drop table if exists word')
 con.execute('create table word(item_id text primary key, headword, pos, freq_rank int, arpabet, ipa_us, stress_index int, hard_sound_flags, viseme_seq, wn_defs, wn_synonyms, n_variants int, source, license)')
