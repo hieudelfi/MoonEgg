@@ -89,7 +89,12 @@ Quyết định trong lúc làm:
   phím. Nghi vấn về 101 dòng trùng điểm vì thế khép lại theo lời người chấm, không theo bằng chứng
   máy. Nghe thẳng "wind": chủ dự án chưa rõ phải làm gì nên không làm; chuyển sang P.10.
 
+- 2026-10-09, sau khi đóng task — **Chủ dự án đã nghe thẳng bốn mẫu "wind".** Nguyên văn: "trong file câu đầy
+  đủ nghe là âm uoai, còn âm riêng lẻ là uwin". Tức câu động từ ra /waɪnd/, từ đứng riêng ra /wɪnd/,
+  ở cả `af_heart` và `am_adam`. Tai người khớp với chuỗi âm. Phần còn thiếu của B8 đã xong; ghi vào
+  `docs/tasks/P.4/wind-check.md`. Ghi bổ sung trên nhánh `chore/p5-content-workbench`.
+
 ## Câu hỏi mở
-- Không còn câu nào chặn. Một việc chuyển tiếp: P.10 xác nhận bằng tai hai cách đọc của "wind".
+- Không còn. P.10 vẫn phải tự kiểm audio thật của `w:wind#1` và `w:wind#2`.
 
 ## Người kiểm: tự kiểm  Ngày: 2026-10-09  Kết luận: **Xong** — 12/12 dòng phép thử Đạt; chọn Nữ `af_heart`, Nam `am_adam`; Cổng B duyệt. Chuyển P.10: nghe xác nhận "wind", và xem lại trần đỉnh của bước chuẩn âm lượng cho giọng nam.

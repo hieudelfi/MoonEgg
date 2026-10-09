@@ -21,8 +21,12 @@ What this means for task P.10:
 - Two sentences are not proof for every sentence. P.10 should check the sound string of every
   audio it makes for a word with two readings.
 
-**Open for task P.10:** nobody has yet listened to these readings on purpose. P.10 makes the
-real audio for `w:wind#1` and `w:wind#2` and must confirm by ear that the two sound different.
+**Confirmed by ear on 2026-10-09, after the task closed.** The owner played the four samples below
+one by one. In the full sentence "wind" sounds like "wined" (/waɪnd/). Alone it sounds like
+"winned" (/wɪnd/). Both chosen voices, `af_heart` and `am_adam`. The ear agrees with the strings.
+
+Still for task P.10: it makes the real audio for `w:wind#1` and `w:wind#2` and must check its own
+files the same way.
 
 By ear: the listener scored the four samples below without knowing the voice. The scores say the
 samples were clear. They do not say which reading was heard; that needs one direct listen.
