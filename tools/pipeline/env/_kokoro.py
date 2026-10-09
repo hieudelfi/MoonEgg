@@ -44,6 +44,11 @@ def make_pipeline(voices):
 def speak(pipeline, text, voice):
     """Return (audio tensor, phoneme string) for one text. Exits when Kokoro skips the text."""
     import torch
+    # Kokoro drops a word it does not know and keeps going. Catch it before any sound is made.
+    _, tokens = pipeline.g2p(text)
+    lost = [t.text for t in tokens if t.phonemes is None and t.text.strip().isalpha()]
+    if lost:
+        sys.exit(f"{text!r}: Kokoro has no sounds for {lost}. Swap the word or spell it out.")
     results = list(pipeline(text, voice=voice, speed=1.0))
     chunks = [r.audio for r in results if r.audio is not None]
     phonemes = " ".join(r.phonemes for r in results)

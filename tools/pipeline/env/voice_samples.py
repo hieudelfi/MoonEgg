@@ -3,9 +3,12 @@
 Run with the project environment:
     tools/pipeline/.venv/Scripts/python tools/pipeline/env/voice_samples.py
 
+    ... voice_samples.py --page-only    rewrite rate.html only; the audio is left untouched
+
 Output, all under content/pack/audio_test/voices/ (ignored by git):
     s001.opus ... s125.opus   levelled to -16 LUFS, names carry no voice
     rate.html                 the rating page, with the file list written in
+    sheets/                   where the rater puts sheet_R1.csv, sheet_R2.csv, sheet_R3.csv
     _key/key.csv              which sample is which voice and text. Keep it away from the rater.
     _key/measures.csv         length and loudness per sample, sound string per text
     _key/wav/                 the raw recordings, named by voice
@@ -13,9 +16,9 @@ Output, all under content/pack/audio_test/voices/ (ignored by git):
 The order is fixed by a seed, so a second run gives the same names.
 """
 import csv
+import hashlib
 import json
 import random
-import shutil
 import sys
 import time
 from pathlib import Path
@@ -25,19 +28,45 @@ from _paths import (CANDIDATE_VOICES, KEY_DIR, LEXICON_CSV, SAMPLE_WORDS, SENTEN
 
 setup()
 
-from _kokoro import SAMPLE_RATE, make_pipeline, speak  # noqa: E402
 from encode_opus import TARGET_LUFS, TOLERANCE, level_and_encode  # noqa: E402
-
-import soundfile as sf  # noqa: E402
 
 SEED = 20261009
 # TC-CT-02, docs/08-kiem-thu.md: length limits in ms.
 LIMITS = {"word": (300, 4000), "sentence": (800, 8000)}
 PAGE_TEMPLATE = Path(__file__).with_name("rate.html")
 FILES_MARK = "/*SAMPLE_FILES*/[]"
+SET_MARK = '/*SET_ID*/""'
+SEXES = {"af_": "female", "am_": "male"}
+
+
+def write_page(samples):
+    """Copy the page next to the samples, with the file list and an id of this exact audio."""
+    page = PAGE_TEMPLATE.read_text(encoding="utf-8")
+    for mark in (FILES_MARK, SET_MARK):
+        if mark not in page:
+            sys.exit(f"{PAGE_TEMPLATE.name}: the marker {mark} is missing")
+    digest = hashlib.sha256()
+    for sample in samples:
+        digest.update((VOICES_DIR / f"{sample}.opus").read_bytes())
+    set_id = digest.hexdigest()[:16]
+    names = [f"{sample}.opus" for sample in samples]
+    page = page.replace(FILES_MARK, json.dumps(names)).replace(SET_MARK, json.dumps(set_id))
+    (VOICES_DIR / "rate.html").write_text(page, encoding="utf-8")
+    (VOICES_DIR / "sheets").mkdir(exist_ok=True)
+    return set_id
 
 
 def main():
+    if "--page-only" in sys.argv:
+        with open(KEY_DIR / "key.csv", encoding="utf-8", newline="") as f:
+            samples = [row["sample"] for row in csv.DictReader(f)]
+        print(f"rate.html rewritten for {len(samples)} samples, set id {write_page(samples)}")
+        return
+    from _kokoro import SAMPLE_RATE, make_pipeline, speak
+    import soundfile as sf
+    unknown = [v for v in CANDIDATE_VOICES if v[:3] not in SEXES]
+    if unknown:
+        sys.exit(f"cannot tell the sex of {unknown} from the name; add the prefix to SEXES")
     texts = [("word", w) for w in SAMPLE_WORDS] + [("sentence", s) for s in SENTENCES]
     with open(LEXICON_CSV, encoding="utf-8", newline="") as f:
         arpabet = {}
@@ -73,8 +102,8 @@ def main():
             problems.append(f"{sample}: {result['duration_ms']} ms, outside {low}-{high}")
         if result["verdict"] != "ok":
             problems.append(f"{sample}: loudness {result['out_lufs']}, {result['verdict']}")
-        sex = "female" if take["voice"].startswith("af_") else "male"
-        key_rows.append(dict(sample=sample, voice=take["voice"], sex=sex, kind=take["kind"],
+        key_rows.append(dict(sample=sample, voice=take["voice"], sex=SEXES[take["voice"][:3]],
+                             kind=take["kind"],
                              text=take["text"]))
         measure_rows.append(dict(sample=sample, voice=take["voice"], kind=take["kind"],
                                  text=take["text"], duration_ms=result["duration_ms"],
@@ -88,13 +117,7 @@ def main():
             writer.writeheader()
             writer.writerows(rows)
 
-    page = PAGE_TEMPLATE.read_text(encoding="utf-8")
-    if FILES_MARK not in page:
-        sys.exit(f"{PAGE_TEMPLATE.name}: the marker {FILES_MARK} is missing")
-    names = [f"{row['sample']}.opus" for row in key_rows]
-    (VOICES_DIR / "rate.html").write_text(page.replace(FILES_MARK, json.dumps(names)),
-                                          encoding="utf-8")
-    shutil.copy2(PAGE_TEMPLATE, KEY_DIR / "rate.template.html")
+    write_page([row["sample"] for row in key_rows])
 
     per_voice = {v: sum(1 for r in key_rows if r["voice"] == v) for v in CANDIDATE_VOICES}
     print(f"voices loaded in {load_s:.1f} s; {len(takes)} takes, {synth_s / len(takes):.3f} s each")
