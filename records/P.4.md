@@ -1,11 +1,11 @@
 # P.4 — Chốt giọng đọc
 
-Bắt đầu: 2026-10-09 (Plan viết 2026-10-08 trong lần chạy thử task-lead; Cổng A duyệt 2026-10-09)  Kết thúc: <ngày>  Công thực tế: <nđ> (ước: 0,5)
+Bắt đầu: 2026-10-09 (Plan viết 2026-10-08 trong lần chạy thử task-lead; Cổng A duyệt 2026-10-09)  Kết thúc: 2026-10-09  Công thực tế: chưa đo (ước: 0,5)
 Token: scout và reviewer của Plan đã tính vào `records/task-lead.md` (269.604) · reviewer trước Cổng B: opus, 128.090 (tổng riêng P.4: 128.090; phiên dẫn công cụ không báo)
 Type: DATA  Level: L2  Repro (ISSUE): không áp dụng
 Người kiểm: tự kiểm  Nhánh: `chore/p4-voices` (cắt từ `main` tại `c54337e`)
 Plan: https://hub.yawasa.com/app/p/moonegg-p4-plan  Flow: bỏ — Type DATA, không có màn hình  Result: https://hub.yawasa.com/app/p/moonegg-p4-result
-Delivery: `docs/Delivery/2026-10-09_P.4/`
+Delivery: `docs/Delivery/2026-10-09_P.4/` · https://hub.yawasa.com/app/p/moonegg-p4-delivery
 Tham chiếu: Kế hoạch §3P.1 P.4 · Yêu cầu §8.3 · ngưỡng TC-CT-02, TC-CT-05
 Phụ thuộc: P.3 (Xong 2026-10-08)
 
@@ -17,9 +17,9 @@ Phụ thuộc: P.3 (Xong 2026-10-08)
 - [x] B5 `measures.csv`: bảng đo của phiên, tách khỏi điểm — kết quả: 125 dòng ở `voices/_key/measures.csv`. Âm lượng gốc trung bình theo giọng: `af_bella` −25,5, `am_michael` −24,7, `af_heart` −24,4, `af_sarah` −22,0, `am_adam` −20,9 LUFS — chênh tới 4,6 dB, nên việc chuẩn âm lượng trước khi chấm là cần. Độ dài từ trung bình: `am_adam` 1.224 ms, `am_michael` 1.390, `af_heart` 1.428, `af_bella` 1.445, `af_sarah` 1.741. Chuỗi âm: 25 văn bản, 0 văn bản có chuỗi khác nhau giữa các giọng, đúng như quyết định 7.
 - [x] B6 Chủ dự án nghe 3 phiên, 3 bảng, 375 dòng — kết quả: `sheet_R1.csv` lưu 10:11, `sheet_R2.csv` 16:04, `sheet_R3.csv` 16:11 ngày 2026-10-09, cả ba ở `voices/_key/` (bản trang lúc đó bảo lưu vào đó). Mỗi bảng 125 dòng, 125 mẫu khác nhau, mã phiên trong tệp khớp tên tệp, mọi điểm trong thang 1–5; ba thứ tự phát khác nhau. Trung bình cả bảng Rõ ràng / Tự nhiên: R1 4,34 / 3,59; R2 4,37 / 3,74; R3 3,78 / 3,60. **Nghi vấn ở R3:** 101/125 dòng có hai điểm giống nhau (R1: 41, R2: 52) và R3 lưu sau R2 đúng 7 phút. Trang chấm lúc đó có lỗi phím giữ tự điền cả hai điểm; chưa chứng minh được đó là nguyên nhân. Lượt R1 cũng là phép thử trình duyệt thật của trang: phát được, lưu được.
 - [x] B7 Tính trung bình, chọn 1 Nữ + 1 Nam — kết quả: `score.py` trên 3 bảng: `af_heart` 8,59 · `af_sarah` 8,41 · `af_bella` 8,11 · `am_adam` 7,45 · `am_michael` 6,45 (tổng hai trung bình, thang 10). Chọn **Nữ `af_heart`, Nam `am_adam`**. `am_adam` dẫn ở cả 3 phiên (cách 1,60 · 1,08 · 0,32). `af_heart` dẫn ở R1 và R2, thua `af_sarah` 0,20 ở R3; cách biệt chung 0,17. Tính lại theo từng tổ hợp phiên: R1, R2, R1+R2, R1+R2+R3 đều ra cùng hai giọng; chỉ riêng R3 ra `af_sarah`. Reviewer tự cộng lại từ tệp gốc, khớp cả năm số.
-- [ ] B8 Kiểm "wind" hai cách đọc, ghi `docs/tasks/P.4/wind-check.md` — kết quả: chuỗi âm đạt: đứng riêng `wˈɪnd`, trong câu động từ `wˈInd`, trong câu danh từ "The cold wind and rain…" `wˈɪnd`; giống nhau ở cả 5 giọng. Đã ghi `wind-check.md`. **Phần tai người chưa làm**: cần chủ dự án nghe thẳng `s037`, `s090` (câu động từ) và `s025`, `s121` (từ đứng riêng). Chưa tick.
+- [x] B8 Kiểm "wind" hai cách đọc, ghi `docs/tasks/P.4/wind-check.md` — kết quả: chuỗi âm đạt: đứng riêng `wˈɪnd`, trong câu động từ `wˈInd`, trong câu danh từ "The cold wind and rain…" `wˈɪnd`; giống nhau ở cả 5 giọng. Đã ghi `wind-check.md`. Phần chuỗi âm đủ cho Definition of Done. **Phần tai người không làm trong task này**: chủ dự án chưa nghe riêng bốn mẫu; chuyển sang P.10 và ghi rõ ở đầu `wind-check.md`.
 - [x] B9 Ghi quyết định vào `docs/01-yeu-cau.md` dòng 357 — kết quả: ô quyết định của dòng "Giọng đọc" thêm "Chốt 2026-10-09 (task P.4, Kokoro-82M): Nữ `af_heart`, Nam `am_adam`". `git diff --stat`: 1 dòng đổi. Bảng ứng viên ở dòng 366 giữ nguyên làm lịch sử. Đã cập nhật docs/01 §8.3. `tools/pipeline/ENV.md` mục 3 và 4 cũng sửa cho khớp `_kokoro.py`. Commit `859a022`.
-- [ ] B10 Cổng B: Result.md + Delivery + quét bằng chứng — kết quả: `docs/tasks/P.4/Result.md` viết và đẩy hub. `docs/Delivery/2026-10-09_P.4/` có `index.md`, `README.md`, 14 tệp bằng chứng gồm ba bảng điểm gốc, khoá, bảng đo và báo cáo reviewer. Quét: 0 phát hiện; bảng điểm chỉ có mã R1–R3. **Đang chờ nghiệm thu.**
+- [x] B10 Cổng B: Result.md + Delivery + quét bằng chứng — kết quả: `docs/tasks/P.4/Result.md` viết và đẩy hub. `docs/Delivery/2026-10-09_P.4/` có `index.md`, `README.md`, 14 tệp bằng chứng gồm ba bảng điểm gốc, khoá, bảng đo và báo cáo reviewer. Quét: 0 phát hiện; bảng điểm chỉ có mã R1–R3. Cổng B duyệt 2026-10-09; Delivery đã đẩy hub, riêng tư; nhánh gộp vào `main` bằng `gate.sh merge`.
 
 ## Kiểm tra
 | Test | Cách chạy | Input | Output thật | Đạt? |
@@ -84,9 +84,12 @@ Quyết định trong lúc làm:
   khi cách biệt nhỏ hơn độ lệch giữa các phiên, và báo nhầm `am_adam` dù nó dẫn cả ba phiên: một
   phiên chấm thấp đều tay làm độ lệch tăng mà thứ tự không đổi.
 
-## Câu hỏi mở
-- Giọng nữ: `af_heart` (theo luật tổng điểm) hay `af_sarah`? Cách biệt 0,17/10, R3 nghiêng về `af_sarah`.
-- Bảng R3 giữ nguyên hay chấm lại trên trang đã sửa?
-- Tai người xác nhận hai cách đọc của "wind" ở hai giọng thắng (B8).
+- 2026-10-09 — **Cổng B, ba quyết định của chủ dự án.** Giọng nữ: duyệt `af_heart`. Bảng R3: giữ nguyên;
+  nguyên văn "thực sự giọng nam khó nghe hơn", tức điểm thấp ở phiên đó là có chủ ý, không phải lỗi
+  phím. Nghi vấn về 101 dòng trùng điểm vì thế khép lại theo lời người chấm, không theo bằng chứng
+  máy. Nghe thẳng "wind": chủ dự án chưa rõ phải làm gì nên không làm; chuyển sang P.10.
 
-## Người kiểm: tự kiểm  Ngày:   Kết luận: Xong / Làm lại (lý do)
+## Câu hỏi mở
+- Không còn câu nào chặn. Một việc chuyển tiếp: P.10 xác nhận bằng tai hai cách đọc của "wind".
+
+## Người kiểm: tự kiểm  Ngày: 2026-10-09  Kết luận: **Xong** — 12/12 dòng phép thử Đạt; chọn Nữ `af_heart`, Nam `am_adam`; Cổng B duyệt. Chuyển P.10: nghe xác nhận "wind", và xem lại trần đỉnh của bước chuẩn âm lượng cho giọng nam.

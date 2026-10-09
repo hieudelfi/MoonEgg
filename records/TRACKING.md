@@ -7,7 +7,7 @@ Cập nhật mỗi thứ hai (trạng thái, thực tế) và mỗi lần đóng
 | P.1 | Repo, cổng kiểm tra, quét giấy phép | 1.5 | 0.9 | Xong | 2026-09-24 | 2026-09-24 | CP-01/02 | CP-01 Đạt, CP-02 Đạt, 10/10 phép thử Đạt; cổng ở máy 4,9 giây | records/P.1.md | tự kiểm 2026-09-24 |
 | P.2 | Supabase, R2, Pages | 1.5 | chưa đo | Xong | 2026-09-25 | 2026-10-08 | AU-04 | AU-04 Đạt, 11/11 dòng phép thử Đạt; web chạy trên Workers, không phải Pages | records/P.2.md | tự kiểm 2026-10-08 |
 | P.3 | Môi trường pipeline | 1.5 | chưa đo | Xong | 2026-10-08 | 2026-10-08 | — | 11/12 phép thử Đạt; so CMUdict 4/5 từ, `market` lệch, để P.10; SD bỏ vì không có GPU | records/P.3.md | tự kiểm 2026-10-08 |
-| P.4 | Chốt giọng đọc | 0.5 | | Đang làm | 2026-10-09 | | — | | records/P.4.md | |
+| P.4 | Chốt giọng đọc | 0.5 | chưa đo | Xong | 2026-10-09 | 2026-10-09 | — | Nữ `af_heart` 8,59 · Nam `am_adam` 7,45 (thang 10); 375 dòng, một người ba phiên; 12/12 phép thử Đạt | records/P.4.md | tự kiểm 2026-10-09 |
 | P.5 | Xưởng nội dung | 3 | | Chưa | | | — | | records/P.5.md | |
 | P.6 | Đặc tả lõi + golden | 1.5 | | Chưa | | | — | | records/P.6.md | |
 | P.7 | Tải và ghi nhận nguồn | 1 | | Chưa | | | CT-07 | | records/P.7.md | |

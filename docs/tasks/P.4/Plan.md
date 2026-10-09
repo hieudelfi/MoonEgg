@@ -1,6 +1,6 @@
 # Plan - P.4 pick the final two voices
 
-Status: **in progress**. Gate A approved 2026-10-09. Gate B not reached.
+Status: **done**. Gate A and Gate B approved 2026-10-09.
 Written during the `task-lead` dry run on 2026-10-08. Opened as its own task on 2026-10-09.
 Task: `P.4` · Prompt: `prompts/phase-P/P.4.md` · Record: `records/P.4.md`
 Branch: `chore/p4-voices`, cut from `main` at `c54337e`. This file reached `main` inside the
@@ -68,6 +68,9 @@ Depends on: P.3, done on 2026-10-08.
    had to add back 2.6 dB on `am_michael` words and 1.8 dB on `am_adam`, against 0.7 to 1.0 dB
    on the female voices. The raters heard what learners will hear, so the test is fair to the
    product. It may still cost `am_michael` some of its "natural" score. Noted for task P.10.
+11. 2026-10-09 - **Gate B approved.** Female voice `af_heart`, as scored. Sitting 3 stands: the
+   owner says the male voices are really harder to hear. The check of "wind" by ear was not
+   done and moves to task P.10; the sound strings pass.
 
 Out of scope: Piper (the backup set, not installed; used only if a Kokoro voice fails to load),
 sentences for the real content (task 1.3), timing files (P.10), switching the pipeline to the
