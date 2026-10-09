@@ -1,0 +1,15 @@
+measured 2026-10-09
+rows with the same number for both scores
+  R1 41 of 125
+  R2 52 of 125
+  R3 101 of 125
+winners by which sittings are counted
+  R1+R2+R3  {'af_bella': 8.11, 'af_heart': 8.59, 'af_sarah': 8.41, 'am_adam': 7.45, 'am_michael': 6.45} -> af_heart am_adam
+  R1+R2     {'af_bella': 8.38, 'af_heart': 8.8, 'af_sarah': 8.44, 'am_adam': 7.9, 'am_michael': 6.56} -> af_heart am_adam
+  R1        {'af_bella': 8.36, 'af_heart': 8.6, 'af_sarah': 8.28, 'am_adam': 8.0, 'am_michael': 6.4} -> af_heart am_adam
+  R2        {'af_bella': 8.4, 'af_heart': 9.0, 'af_sarah': 8.6, 'am_adam': 7.8, 'am_michael': 6.72} -> af_heart am_adam
+  R3        {'af_bella': 7.56, 'af_heart': 8.16, 'af_sarah': 8.36, 'am_adam': 6.56, 'am_michael': 6.24} -> af_sarah am_adam
+samples: 125 | per voice: {'am_michael': 25, 'am_adam': 25, 'af_bella': 25, 'af_heart': 25, 'af_sarah': 25}
+word 100 files, 856 to 2031 ms
+sentence 25 files, 2232 to 3756 ms
+levelled loudness -16.8 to -15.9 LUFS

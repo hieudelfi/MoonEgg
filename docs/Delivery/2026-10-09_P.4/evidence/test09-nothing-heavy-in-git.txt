@@ -1,0 +1,4 @@
+measured 2026-10-09
+--- git status --short
+?? docs/Delivery/2026-10-09_P.4/
+--- tracked audio or audio_test files: 0

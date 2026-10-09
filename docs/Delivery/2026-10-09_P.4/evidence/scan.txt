@@ -1,0 +1,5 @@
+Quet ngay 2026-10-09, thu muc docs/Delivery/2026-10-09_P.4/.
+0 phat hien.
+Mau tim: JWT, AKIA, private key, gho_/ghp_, sk-, hf_, dia chi email, ten tai khoan may, duong dan thu muc nguoi dung, token, password.
+Ba bang diem chi mang ma R1, R2, R3, khong co ten nguoi.
+Khong co tep audio trong goi.

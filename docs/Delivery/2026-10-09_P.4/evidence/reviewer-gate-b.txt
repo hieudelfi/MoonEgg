@@ -1,0 +1,38 @@
+gate-reviewer (opus) on the P.4 code, records and data, before Gate B. Tokens: 128090. Tool uses: 42. Duration: 286.7 s.
+Copied from the session; the agent's transcript file was empty. Summary of each row, with the reviewer's File:line.
+
+FOUR ANSWERS: all "weak".
+1. Code does the plan, with extras, and one gap: score.py printed the per-voice table from one sheet.
+2. A wrong winner was possible: "sheet_R1 (1).csv" counted as a new sitting; check_sheet never read the rater column; Enter could re-press the last clicked score button.
+3. Record numbers for B1 to B5 match the disk. The record stopped at "1/3 sittings" while the disk had three sheets and the decision was already in docs/01.
+4. A held or repeated digit key fills both scores with one number. R3 has clarity equal to natural in 101 of 125 rows, and R3 is the sitting that flips the female order.
+
+RECOMPUTED BY THE REVIEWER from key.csv and the three sheets: af_heart 644/75 = 8.59, af_sarah 631/75 = 8.41, af_bella 608/75 = 8.11, am_adam 559/75 = 7.45, am_michael 484/75 = 6.45. All five match score.py.
+FEMALE MARGIN: not stable. af_heart leads in R1 (+0.32) and R2 (+0.40); af_sarah leads in R3 (+0.20). Overall margin 13 raw points of 750. The gap is in single words; sentences are level (145 vs 144 of 150).
+MALE: stable. am_adam leads in all three sittings (+1.60, +1.08, +0.32).
+
+DEFECTS, 24 rows:
+rate.html:170-174  held digit key fills both scores                          FIXED: e.repeat ignored
+rate.html:174      keyboard cannot correct clarity once both are set         FIXED: third digit starts the sample over
+rate.html:175      Enter re-presses the last clicked score button            FIXED: Enter always cancelled; buttons blur after a click
+rate.html:176      Space on keyup presses a focused button in Firefox        FIXED: keyup cancelled
+rate.html:132,139  done screen shows 125 over a shorter CSV                  FIXED: shows scored count, warns when short
+rate.html:90       localStorage errors swallowed                             FIXED: visible warning
+rate.html:145,157  resume by length only; old scores on new audio            FIXED: saved state carries an id of the audio
+rate.html:74       page says "move the sheet into _key"                      FIXED: sheets/ folder
+score.py:24-40     rater column never read                                   FIXED: must equal the code in the file name
+score.py:83-84     glob takes any stem                                       FIXED: only sheet_R1/R2/R3.csv, others listed as ignored
+score.py:136       four or more sheets accepted                              FIXED: exactly the three names
+score.py:121-134   per-voice table and scores.csv before three sheets        FIXED: nothing about voices before three
+score.py:74        thin margin and lost sitting invisible                    FIXED: per-sitting columns, UNSTEADY flag
+score.py:59        sex re-derived from prefix                                FIXED: read from key.csv; unknown prefix stops voice_samples.py
+_kokoro.py:50      unknown word inside a sentence is skipped silently        FIXED: stops and names the word; proven with a nonsense word
+voice_samples.py:70 limiter works unevenly by voice                          LEFT: recorded, Plan decision 10, note for P.10
+test_voice_scores.py:10 main() and find_sheets untested                      FIXED: 8 new tests, two run the script end to end
+test_voice_scores.py:88 importing _kokoro pollutes sys.modules               FIXED: test reads the source
+records/P.4.md:18-21 record behind the disk                                  FIXED: B6 to B9 written
+records/P.4.md:17  mean length per voice written before sittings 2 and 3     LEFT: cannot be undone; recorded as a lapse
+wind-check.md:24-25 by-ear check of the two readings not done                LEFT: asked of the owner at Gate B
+Plan.md:3          commits before Gate B                                     LEFT: step-by-step commits are a recorded practice since P.2; no merge before Gate B
+ENV.md:79,96       stale lines about tts_sample.py                           FIXED
+Plan.md:176        heading names measure.py                                  FIXED

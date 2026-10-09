@@ -1,0 +1,25 @@
+measured 2026-10-09
+$ python tools/pipeline/env/score.py
+sheets: 3 complete of 3 needed (R1, R2, R3); one listener, 3 sitting(s)
+note - R3: 101 of 125 rows have the same number for both scores. Check that this sitting was not scored with a held or doubled key.
+
+measured, not scored (words only)
+voice         mean ms  raw LUFS  limiter dB
+af_bella         1445     -25.5         0.7
+af_heart         1428     -24.2         0.8
+af_sarah         1741     -21.6         1.0
+am_adam          1224     -20.9         1.8
+am_michael       1390     -24.3         2.6
+
+scores
+voice        sex     rows  clarity  natural    sum  spread     R1     R2     R3
+af_heart     female    75     4.48     4.11   8.59    0.84   8.60   9.00   8.16
+af_sarah     female    75     4.40     4.01   8.41    0.32   8.28   8.60   8.36
+af_bella     female    75     4.29     3.81   8.11    0.84   8.36   8.40   7.56
+am_adam      male      75     4.04     3.41   7.45    1.44   8.00   7.80   6.56
+am_michael   male      75     3.59     2.87   6.45    0.48   6.40   6.72   6.24
+
+chosen
+female  af_heart  UNSTEADY: leads in 2 of 3 sittings, overall margin 0.17: confirm by ear
+male    am_adam  leads in every sitting, margin 1.00
+exit=0

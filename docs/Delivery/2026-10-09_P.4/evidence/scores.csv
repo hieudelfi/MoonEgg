@@ -1,0 +1,376 @@
+rater,order,sample,voice,sex,kind,text,clarity,natural
+R1,1,s064,af_sarah,female,word,yesterday,5,3
+R1,2,s113,af_sarah,female,word,approve,5,4
+R1,3,s011,af_heart,female,word,receipt,5,4
+R1,4,s046,af_heart,female,sentence,Think it through before you make a decision.,5,5
+R1,5,s125,am_michael,male,word,through,4,4
+R1,6,s005,am_michael,male,sentence,The cold wind and rain left everyone exhausted.,4,4
+R1,7,s087,am_adam,male,word,decision,5,4
+R1,8,s115,am_adam,male,sentence,The cold wind and rain left everyone exhausted.,5,4
+R1,9,s118,af_bella,female,word,budget,5,4
+R1,10,s112,am_adam,male,sentence,Think it through before you make a decision.,5,5
+R1,11,s120,af_sarah,female,word,thorough,4,3
+R1,12,s055,af_sarah,female,word,reluctant,5,4
+R1,13,s081,am_michael,male,word,yesterday,4,3
+R1,14,s031,af_heart,female,word,bargain,4,3
+R1,15,s092,am_adam,male,word,sink,3,3
+R1,16,s021,af_sarah,female,word,receipt,4,4
+R1,17,s020,af_heart,female,word,thorough,3,3
+R1,18,s061,af_heart,female,word,hello,4,4
+R1,19,s067,am_adam,male,sentence,I went to the market yesterday.,5,5
+R1,20,s066,af_sarah,female,word,bargain,5,4
+R1,21,s088,af_sarah,female,word,think,4,3
+R1,22,s085,am_michael,male,word,budget,4,3
+R1,23,s109,af_bella,female,word,reluctant,5,4
+R1,24,s101,af_bella,female,word,approve,5,4
+R1,25,s048,am_adam,male,word,exhausted,5,5
+R1,26,s063,af_bella,female,word,market,5,5
+R1,27,s075,af_heart,female,word,climb,5,4
+R1,28,s003,af_bella,female,word,bargain,5,4
+R1,29,s076,af_sarah,female,word,umbrella,5,5
+R1,30,s123,am_adam,male,word,hello,5,5
+R1,31,s002,am_adam,male,word,receipt,5,5
+R1,32,s042,af_heart,female,sentence,I went to the market yesterday.,5,5
+R1,33,s010,af_heart,female,word,yesterday,5,5
+R1,34,s016,af_bella,female,word,decision,5,5
+R1,35,s097,am_michael,male,sentence,My mother was reluctant to approve the budget.,5,5
+R1,36,s098,af_bella,female,sentence,The cold wind and rain left everyone exhausted.,5,5
+R1,37,s001,am_michael,male,word,reluctant,5,4
+R1,38,s119,af_heart,female,word,budget,5,5
+R1,39,s110,am_adam,male,word,market,5,4
+R1,40,s038,am_michael,male,word,think,4,3
+R1,41,s100,af_bella,female,word,exhausted,5,5
+R1,42,s111,am_adam,male,word,think,5,4
+R1,43,s013,af_sarah,female,word,energetic,5,5
+R1,44,s105,am_adam,male,word,thorough,5,4
+R1,45,s091,af_sarah,female,word,market,5,5
+R1,46,s030,af_bella,female,sentence,Think it through before you make a decision.,5,5
+R1,47,s017,af_sarah,female,sentence,I went to the market yesterday.,5,5
+R1,48,s117,af_heart,female,word,through,5,4
+R1,49,s103,af_bella,female,word,receipt,5,5
+R1,50,s086,af_sarah,female,sentence,Think it through before you make a decision.,5,5
+R1,51,s060,am_michael,male,word,umbrella,4,3
+R1,52,s084,af_bella,female,word,thorough,4,3
+R1,53,s034,af_sarah,female,word,decision,4,4
+R1,54,s073,af_sarah,female,word,climb,4,3
+R1,55,s065,af_heart,female,word,decision,4,3
+R1,56,s071,af_bella,female,sentence,I went to the market yesterday.,4,4
+R1,57,s024,am_adam,male,word,budget,4,3
+R1,58,s044,af_heart,female,word,approve,5,5
+R1,59,s122,af_bella,female,word,hello,5,5
+R1,60,s062,af_bella,female,word,energetic,5,4
+R1,61,s069,am_michael,male,sentence,Think it through before you make a decision.,4,4
+R1,62,s059,am_adam,male,word,bargain,4,3
+R1,63,s077,af_sarah,female,word,kitchen,4,3
+R1,64,s114,am_michael,male,word,receipt,4,3
+R1,65,s056,am_michael,male,word,exhausted,4,3
+R1,66,s090,am_adam,male,sentence,Please wind the clock before you leave the kitchen.,4,3
+R1,67,s054,am_michael,male,word,hello,4,3
+R1,68,s096,af_sarah,female,word,through,3,3
+R1,69,s094,af_heart,female,word,reluctant,5,5
+R1,70,s089,af_sarah,female,word,wind,4,4
+R1,71,s049,af_bella,female,word,yesterday,4,3
+R1,72,s079,am_michael,male,word,mother,4,3
+R1,73,s107,am_adam,male,word,climb,4,3
+R1,74,s074,af_bella,female,word,umbrella,4,4
+R1,75,s083,am_adam,male,sentence,My mother was reluctant to approve the budget.,4,3
+R1,76,s014,af_bella,female,word,sink,4,3
+R1,77,s032,af_bella,female,word,mother,4,3
+R1,78,s058,af_bella,female,word,wind,4,4
+R1,79,s068,am_michael,male,sentence,Please wind the clock before you leave the kitchen.,4,2
+R1,80,s093,af_sarah,female,word,budget,4,2
+R1,81,s022,af_heart,female,word,umbrella,4,2
+R1,82,s053,af_sarah,female,word,exhausted,5,4
+R1,83,s108,af_heart,female,word,kitchen,4,3
+R1,84,s023,af_sarah,female,sentence,My mother was reluctant to approve the budget.,5,4
+R1,85,s027,af_sarah,female,word,hello,5,4
+R1,86,s043,af_sarah,female,sentence,The cold wind and rain left everyone exhausted.,5,5
+R1,87,s121,am_adam,male,word,wind,5,3
+R1,88,s025,af_heart,female,word,wind,5,4
+R1,89,s099,am_adam,male,word,kitchen,5,4
+R1,90,s102,am_adam,male,word,umbrella,4,2
+R1,91,s028,am_michael,male,word,energetic,4,2
+R1,92,s095,am_michael,male,word,wind,4,2
+R1,93,s116,af_heart,female,sentence,The cold wind and rain left everyone exhausted.,5,4
+R1,94,s033,af_sarah,female,word,sink,4,3
+R1,95,s008,am_adam,male,word,approve,4,4
+R1,96,s045,af_heart,female,word,think,5,4
+R1,97,s015,af_bella,female,word,think,4,3
+R1,98,s051,am_michael,male,word,sink,3,2
+R1,99,s124,am_adam,male,word,mother,3,2
+R1,100,s004,am_michael,male,word,thorough,3,2
+R1,101,s104,am_adam,male,word,energetic,4,3
+R1,102,s070,am_michael,male,word,kitchen,2,1
+R1,103,s006,af_heart,female,word,exhausted,5,4
+R1,104,s036,am_adam,male,word,reluctant,5,4
+R1,105,s078,am_adam,male,word,through,4,3
+R1,106,s019,af_heart,female,word,mother,5,4
+R1,107,s018,af_bella,female,word,kitchen,4,2
+R1,108,s050,af_heart,female,sentence,My mother was reluctant to approve the budget.,5,4
+R1,109,s047,af_bella,female,word,climb,4,3
+R1,110,s007,am_michael,male,word,market,3,2
+R1,111,s106,am_michael,male,word,climb,3,2
+R1,112,s029,am_michael,male,word,approve,3,2
+R1,113,s082,af_sarah,female,sentence,Please wind the clock before you leave the kitchen.,4,3
+R1,114,s039,am_michael,male,sentence,I went to the market yesterday.,3,2
+R1,115,s026,af_bella,female,word,through,3,3
+R1,116,s041,af_bella,female,sentence,My mother was reluctant to approve the budget.,4,3
+R1,117,s057,am_michael,male,word,bargain,3,2
+R1,118,s040,am_michael,male,word,decision,3,2
+R1,119,s052,af_heart,female,word,market,4,4
+R1,120,s035,af_heart,female,word,sink,4,3
+R1,121,s012,am_adam,male,word,yesterday,3,2
+R1,122,s080,af_bella,female,sentence,Please wind the clock before you leave the kitchen.,5,4
+R1,123,s037,af_heart,female,sentence,Please wind the clock before you leave the kitchen.,5,4
+R1,124,s072,af_sarah,female,word,mother,4,3
+R1,125,s009,af_heart,female,word,energetic,5,4
+R2,1,s061,af_heart,female,word,hello,5,5
+R2,2,s030,af_bella,female,sentence,Think it through before you make a decision.,5,5
+R2,3,s064,af_sarah,female,word,yesterday,4,3
+R2,4,s050,af_heart,female,sentence,My mother was reluctant to approve the budget.,5,5
+R2,5,s074,af_bella,female,word,umbrella,4,3
+R2,6,s120,af_sarah,female,word,thorough,3,2
+R2,7,s077,af_sarah,female,word,kitchen,4,3
+R2,8,s025,af_heart,female,word,wind,5,4
+R2,9,s053,af_sarah,female,word,exhausted,5,5
+R2,10,s091,af_sarah,female,word,market,5,4
+R2,11,s070,am_michael,male,word,kitchen,3,2
+R2,12,s036,am_adam,male,word,reluctant,4,3
+R2,13,s079,am_michael,male,word,mother,4,3
+R2,14,s033,af_sarah,female,word,sink,4,4
+R2,15,s096,af_sarah,female,word,through,4,4
+R2,16,s052,af_heart,female,word,market,5,5
+R2,17,s029,am_michael,male,word,approve,4,3
+R2,18,s073,af_sarah,female,word,climb,4,3
+R2,19,s016,af_bella,female,word,decision,4,4
+R2,20,s086,af_sarah,female,sentence,Think it through before you make a decision.,5,5
+R2,21,s113,af_sarah,female,word,approve,5,4
+R2,22,s040,am_michael,male,word,decision,4,3
+R2,23,s024,am_adam,male,word,budget,4,3
+R2,24,s071,af_bella,female,sentence,I went to the market yesterday.,5,5
+R2,25,s018,af_bella,female,word,kitchen,5,4
+R2,26,s047,af_bella,female,word,climb,4,3
+R2,27,s111,am_adam,male,word,think,4,3
+R2,28,s015,af_bella,female,word,think,4,4
+R2,29,s116,af_heart,female,sentence,The cold wind and rain left everyone exhausted.,5,5
+R2,30,s122,af_bella,female,word,hello,5,4
+R2,31,s100,af_bella,female,word,exhausted,5,5
+R2,32,s060,am_michael,male,word,umbrella,5,4
+R2,33,s054,am_michael,male,word,hello,5,3
+R2,34,s037,af_heart,female,sentence,Please wind the clock before you leave the kitchen.,5,5
+R2,35,s021,af_sarah,female,word,receipt,5,5
+R2,36,s045,af_heart,female,word,think,5,5
+R2,37,s028,am_michael,male,word,energetic,5,4
+R2,38,s115,am_adam,male,sentence,The cold wind and rain left everyone exhausted.,5,5
+R2,39,s095,am_michael,male,word,wind,5,4
+R2,40,s001,am_michael,male,word,reluctant,5,4
+R2,41,s020,af_heart,female,word,thorough,4,3
+R2,42,s114,am_michael,male,word,receipt,3,2
+R2,43,s108,af_heart,female,word,kitchen,4,4
+R2,44,s067,am_adam,male,sentence,I went to the market yesterday.,5,4
+R2,45,s112,am_adam,male,sentence,Think it through before you make a decision.,5,5
+R2,46,s069,am_michael,male,sentence,Think it through before you make a decision.,5,5
+R2,47,s063,af_bella,female,word,market,5,5
+R2,48,s011,af_heart,female,word,receipt,5,5
+R2,49,s059,am_adam,male,word,bargain,5,4
+R2,50,s084,af_bella,female,word,thorough,4,3
+R2,51,s082,af_sarah,female,sentence,Please wind the clock before you leave the kitchen.,5,5
+R2,52,s019,af_heart,female,word,mother,5,4
+R2,53,s013,af_sarah,female,word,energetic,5,5
+R2,54,s094,af_heart,female,word,reluctant,5,5
+R2,55,s058,af_bella,female,word,wind,5,5
+R2,56,s009,af_heart,female,word,energetic,5,5
+R2,57,s121,am_adam,male,word,wind,5,4
+R2,58,s090,am_adam,male,sentence,Please wind the clock before you leave the kitchen.,5,3
+R2,59,s107,am_adam,male,word,climb,4,2
+R2,60,s092,am_adam,male,word,sink,4,2
+R2,61,s068,am_michael,male,sentence,Please wind the clock before you leave the kitchen.,4,2
+R2,62,s056,am_michael,male,word,exhausted,3,2
+R2,63,s014,af_bella,female,word,sink,3,2
+R2,64,s032,af_bella,female,word,mother,4,3
+R2,65,s055,af_sarah,female,word,reluctant,5,4
+R2,66,s041,af_bella,female,sentence,My mother was reluctant to approve the budget.,5,4
+R2,67,s005,am_michael,male,sentence,The cold wind and rain left everyone exhausted.,5,4
+R2,68,s035,af_heart,female,word,sink,4,3
+R2,69,s072,af_sarah,female,word,mother,4,4
+R2,70,s081,am_michael,male,word,yesterday,3,2
+R2,71,s027,af_sarah,female,word,hello,5,5
+R2,72,s125,am_michael,male,word,through,4,4
+R2,73,s083,am_adam,male,sentence,My mother was reluctant to approve the budget.,5,4
+R2,74,s048,am_adam,male,word,exhausted,5,5
+R2,75,s118,af_bella,female,word,budget,5,4
+R2,76,s008,am_adam,male,word,approve,5,4
+R2,77,s003,af_bella,female,word,bargain,5,4
+R2,78,s078,am_adam,male,word,through,4,4
+R2,79,s075,af_heart,female,word,climb,5,3
+R2,80,s098,af_bella,female,sentence,The cold wind and rain left everyone exhausted.,5,5
+R2,81,s080,af_bella,female,sentence,Please wind the clock before you leave the kitchen.,5,5
+R2,82,s051,am_michael,male,word,sink,3,2
+R2,83,s085,am_michael,male,word,budget,3,2
+R2,84,s109,af_bella,female,word,reluctant,4,3
+R2,85,s046,af_heart,female,sentence,Think it through before you make a decision.,5,5
+R2,86,s006,af_heart,female,word,exhausted,5,5
+R2,87,s038,am_michael,male,word,think,3,2
+R2,88,s117,af_heart,female,word,through,4,3
+R2,89,s106,am_michael,male,word,climb,3,2
+R2,90,s034,af_sarah,female,word,decision,5,4
+R2,91,s044,af_heart,female,word,approve,5,4
+R2,92,s101,af_bella,female,word,approve,4,4
+R2,93,s105,am_adam,male,word,thorough,3,2
+R2,94,s017,af_sarah,female,sentence,I went to the market yesterday.,5,5
+R2,95,s031,af_heart,female,word,bargain,5,5
+R2,96,s102,am_adam,male,word,umbrella,5,4
+R2,97,s042,af_heart,female,sentence,I went to the market yesterday.,5,5
+R2,98,s062,af_bella,female,word,energetic,5,4
+R2,99,s022,af_heart,female,word,umbrella,4,3
+R2,100,s124,am_adam,male,word,mother,4,4
+R2,101,s049,af_bella,female,word,yesterday,4,3
+R2,102,s002,am_adam,male,word,receipt,3,2
+R2,103,s007,am_michael,male,word,market,4,3
+R2,104,s066,af_sarah,female,word,bargain,4,3
+R2,105,s123,am_adam,male,word,hello,5,5
+R2,106,s097,am_michael,male,sentence,My mother was reluctant to approve the budget.,4,3
+R2,107,s104,am_adam,male,word,energetic,5,5
+R2,108,s110,am_adam,male,word,market,4,3
+R2,109,s093,af_sarah,female,word,budget,4,3
+R2,110,s119,af_heart,female,word,budget,4,4
+R2,111,s043,af_sarah,female,sentence,The cold wind and rain left everyone exhausted.,5,5
+R2,112,s088,af_sarah,female,word,think,5,5
+R2,113,s012,am_adam,male,word,yesterday,4,3
+R2,114,s087,am_adam,male,word,decision,3,2
+R2,115,s099,am_adam,male,word,kitchen,3,2
+R2,116,s103,af_bella,female,word,receipt,4,3
+R2,117,s057,am_michael,male,word,bargain,3,2
+R2,118,s065,af_heart,female,word,decision,4,4
+R2,119,s023,af_sarah,female,sentence,My mother was reluctant to approve the budget.,5,5
+R2,120,s026,af_bella,female,word,through,4,4
+R2,121,s039,am_michael,male,sentence,I went to the market yesterday.,3,3
+R2,122,s076,af_sarah,female,word,umbrella,4,4
+R2,123,s004,am_michael,male,word,thorough,3,2
+R2,124,s010,af_heart,female,word,yesterday,4,4
+R2,125,s089,af_sarah,female,word,wind,4,3
+R3,1,s035,af_heart,female,word,sink,4,4
+R3,2,s022,af_heart,female,word,umbrella,5,4
+R3,3,s024,am_adam,male,word,budget,4,4
+R3,4,s047,af_bella,female,word,climb,4,3
+R3,5,s034,af_sarah,female,word,decision,5,5
+R3,6,s125,am_michael,male,word,through,4,3
+R3,7,s112,am_adam,male,sentence,Think it through before you make a decision.,4,4
+R3,8,s023,af_sarah,female,sentence,My mother was reluctant to approve the budget.,5,5
+R3,9,s078,am_adam,male,word,through,4,3
+R3,10,s100,af_bella,female,word,exhausted,5,5
+R3,11,s005,am_michael,male,sentence,The cold wind and rain left everyone exhausted.,4,3
+R3,12,s021,af_sarah,female,word,receipt,4,4
+R3,13,s088,af_sarah,female,word,think,3,3
+R3,14,s073,af_sarah,female,word,climb,4,3
+R3,15,s075,af_heart,female,word,climb,4,4
+R3,16,s083,am_adam,male,sentence,My mother was reluctant to approve the budget.,4,3
+R3,17,s036,am_adam,male,word,reluctant,4,3
+R3,18,s092,am_adam,male,word,sink,3,3
+R3,19,s071,af_bella,female,sentence,I went to the market yesterday.,5,4
+R3,20,s049,af_bella,female,word,yesterday,4,4
+R3,21,s087,am_adam,male,word,decision,3,3
+R3,22,s098,af_bella,female,sentence,The cold wind and rain left everyone exhausted.,5,5
+R3,23,s097,am_michael,male,sentence,My mother was reluctant to approve the budget.,5,4
+R3,24,s121,am_adam,male,word,wind,4,4
+R3,25,s060,am_michael,male,word,umbrella,3,3
+R3,26,s050,af_heart,female,sentence,My mother was reluctant to approve the budget.,5,5
+R3,27,s051,am_michael,male,word,sink,3,3
+R3,28,s039,am_michael,male,sentence,I went to the market yesterday.,3,3
+R3,29,s086,af_sarah,female,sentence,Think it through before you make a decision.,5,5
+R3,30,s079,am_michael,male,word,mother,4,4
+R3,31,s002,am_adam,male,word,receipt,3,3
+R3,32,s120,af_sarah,female,word,thorough,3,3
+R3,33,s103,af_bella,female,word,receipt,4,4
+R3,34,s058,af_bella,female,word,wind,5,5
+R3,35,s089,af_sarah,female,word,wind,4,4
+R3,36,s085,am_michael,male,word,budget,3,3
+R3,37,s010,af_heart,female,word,yesterday,4,3
+R3,38,s004,am_michael,male,word,thorough,3,3
+R3,39,s016,af_bella,female,word,decision,4,3
+R3,40,s101,af_bella,female,word,approve,4,3
+R3,41,s056,am_michael,male,word,exhausted,3,3
+R3,42,s012,am_adam,male,word,yesterday,3,3
+R3,43,s082,af_sarah,female,sentence,Please wind the clock before you leave the kitchen.,5,5
+R3,44,s053,af_sarah,female,word,exhausted,5,5
+R3,45,s054,am_michael,male,word,hello,3,3
+R3,46,s090,am_adam,male,sentence,Please wind the clock before you leave the kitchen.,3,3
+R3,47,s110,am_adam,male,word,market,3,3
+R3,48,s094,af_heart,female,word,reluctant,4,4
+R3,49,s119,af_heart,female,word,budget,4,4
+R3,50,s031,af_heart,female,word,bargain,4,4
+R3,51,s057,am_michael,male,word,bargain,3,3
+R3,52,s118,af_bella,female,word,budget,4,4
+R3,53,s076,af_sarah,female,word,umbrella,5,5
+R3,54,s033,af_sarah,female,word,sink,5,5
+R3,55,s115,am_adam,male,sentence,The cold wind and rain left everyone exhausted.,5,5
+R3,56,s080,af_bella,female,sentence,Please wind the clock before you leave the kitchen.,5,5
+R3,57,s015,af_bella,female,word,think,4,4
+R3,58,s067,am_adam,male,sentence,I went to the market yesterday.,4,3
+R3,59,s008,am_adam,male,word,approve,4,3
+R3,60,s020,af_heart,female,word,thorough,3,3
+R3,61,s028,am_michael,male,word,energetic,3,3
+R3,62,s006,af_heart,female,word,exhausted,3,3
+R3,63,s123,am_adam,male,word,hello,3,3
+R3,64,s048,am_adam,male,word,exhausted,3,3
+R3,65,s026,af_bella,female,word,through,3,3
+R3,66,s065,af_heart,female,word,decision,4,4
+R3,67,s113,af_sarah,female,word,approve,4,4
+R3,68,s052,af_heart,female,word,market,4,4
+R3,69,s077,af_sarah,female,word,kitchen,4,4
+R3,70,s037,af_heart,female,sentence,Please wind the clock before you leave the kitchen.,5,5
+R3,71,s095,am_michael,male,word,wind,3,3
+R3,72,s102,am_adam,male,word,umbrella,3,3
+R3,73,s117,af_heart,female,word,through,4,4
+R3,74,s105,am_adam,male,word,thorough,3,3
+R3,75,s091,af_sarah,female,word,market,4,4
+R3,76,s061,af_heart,female,word,hello,4,4
+R3,77,s070,am_michael,male,word,kitchen,3,3
+R3,78,s001,am_michael,male,word,reluctant,3,3
+R3,79,s108,af_heart,female,word,kitchen,4,4
+R3,80,s046,af_heart,female,sentence,Think it through before you make a decision.,5,5
+R3,81,s011,af_heart,female,word,receipt,5,5
+R3,82,s109,af_bella,female,word,reluctant,4,4
+R3,83,s017,af_sarah,female,sentence,I went to the market yesterday.,5,5
+R3,84,s072,af_sarah,female,word,mother,4,4
+R3,85,s064,af_sarah,female,word,yesterday,4,4
+R3,86,s014,af_bella,female,word,sink,3,3
+R3,87,s045,af_heart,female,word,think,4,4
+R3,88,s009,af_heart,female,word,energetic,4,4
+R3,89,s068,am_michael,male,sentence,Please wind the clock before you leave the kitchen.,3,3
+R3,90,s096,af_sarah,female,word,through,4,4
+R3,91,s062,af_bella,female,word,energetic,4,4
+R3,92,s013,af_sarah,female,word,energetic,4,5
+R3,93,s055,af_sarah,female,word,reluctant,4,4
+R3,94,s027,af_sarah,female,word,hello,4,4
+R3,95,s042,af_heart,female,sentence,I went to the market yesterday.,5,5
+R3,96,s029,am_michael,male,word,approve,3,3
+R3,97,s124,am_adam,male,word,mother,3,3
+R3,98,s040,am_michael,male,word,decision,3,3
+R3,99,s122,af_bella,female,word,hello,4,4
+R3,100,s063,af_bella,female,word,market,4,4
+R3,101,s104,am_adam,male,word,energetic,4,4
+R3,102,s106,am_michael,male,word,climb,3,3
+R3,103,s030,af_bella,female,sentence,Think it through before you make a decision.,4,4
+R3,104,s084,af_bella,female,word,thorough,3,3
+R3,105,s111,am_adam,male,word,think,2,2
+R3,106,s032,af_bella,female,word,mother,3,2
+R3,107,s043,af_sarah,female,sentence,The cold wind and rain left everyone exhausted.,4,4
+R3,108,s107,am_adam,male,word,climb,3,2
+R3,109,s041,af_bella,female,sentence,My mother was reluctant to approve the budget.,4,3
+R3,110,s069,am_michael,male,sentence,Think it through before you make a decision.,4,3
+R3,111,s044,af_heart,female,word,approve,3,3
+R3,112,s019,af_heart,female,word,mother,4,4
+R3,113,s093,af_sarah,female,word,budget,4,3
+R3,114,s025,af_heart,female,word,wind,4,4
+R3,115,s114,am_michael,male,word,receipt,3,3
+R3,116,s074,af_bella,female,word,umbrella,3,3
+R3,117,s003,af_bella,female,word,bargain,3,3
+R3,118,s007,am_michael,male,word,market,3,3
+R3,119,s116,af_heart,female,sentence,The cold wind and rain left everyone exhausted.,4,4
+R3,120,s018,af_bella,female,word,kitchen,3,2
+R3,121,s081,am_michael,male,word,yesterday,3,2
+R3,122,s059,am_adam,male,word,bargain,3,3
+R3,123,s099,am_adam,male,word,kitchen,3,3
+R3,124,s066,af_sarah,female,word,bargain,3,3
+R3,125,s038,am_michael,male,word,think,3,2
