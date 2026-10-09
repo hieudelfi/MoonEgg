@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MoonEgg P.4 - chấm giọng đọc</title>
+<style>
+  :root { color-scheme: light dark; --ink: #1d2433; --paper: #faf7f0; --line: #c9c2b2; --pick: #2f6f5e; }
+  @media (prefers-color-scheme: dark) { :root { --ink: #ece7db; --paper: #171a21; --line: #3a4150; --pick: #6fc3ab; } }
+  body { margin: 0; font: 17px/1.5 system-ui, "Segoe UI", sans-serif; color: var(--ink); background: var(--paper); }
+  main { max-width: 34rem; margin: 0 auto; padding: 2rem 1rem 4rem; }
+  h1 { font-size: 1.3rem; margin: 0 0 1rem; }
+  p { margin: .6rem 0; }
+  .count { font-variant-numeric: tabular-nums; font-size: 2rem; font-weight: 600; }
+  audio { width: 100%; margin: 1rem 0; }
+  fieldset { border: 1px solid var(--line); border-radius: .5rem; margin: 1rem 0; padding: .7rem 1rem 1rem; }
+  legend { padding: 0 .4rem; font-weight: 600; }
+  .scale { display: flex; gap: .5rem; }
+  .scale button { flex: 1; }
+  .ends { display: flex; justify-content: space-between; font-size: .85rem; opacity: .75; margin-top: .3rem; }
+  button { font: inherit; padding: .6rem .9rem; border: 1px solid var(--line); border-radius: .4rem; background: transparent; color: inherit; cursor: pointer; }
+  button[aria-pressed="true"] { background: var(--pick); border-color: var(--pick); color: var(--paper); font-weight: 600; }
+  button:disabled { opacity: .4; cursor: default; }
+  button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--pick); outline-offset: 2px; }
+  .row { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1rem; }
+  .row .grow { flex: 1; }
+  select, textarea { font: inherit; color: inherit; background: transparent; border: 1px solid var(--line); border-radius: .4rem; padding: .5rem; }
+  textarea { width: 100%; box-sizing: border-box; height: 10rem; font: 13px/1.4 ui-monospace, Consolas, monospace; }
+  .hint { font-size: .9rem; opacity: .8; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Chấm giọng đọc</h1>
+
+  <section id="start">
+    <p>Mỗi phiên nghe 125 mẫu, thứ tự ngẫu nhiên. Bạn không biết mẫu nào là giọng nào.</p>
+    <p>Cho mỗi mẫu hai điểm từ 1 đến 5: <b>Rõ ràng</b> (nghe ra từng âm) và <b>Tự nhiên</b> (giống người nói).</p>
+    <p><label for="rater">Phiên nghe</label>
+      <select id="rater">
+        <option value="R1">R1 - phiên thứ nhất</option>
+        <option value="R2">R2 - phiên thứ hai</option>
+        <option value="R3">R3 - phiên thứ ba</option>
+      </select></p>
+    <p id="resume" class="hint"></p>
+    <div class="row"><button id="begin" class="grow">Bắt đầu</button></div>
+    <p class="hint">Dừng giữa chừng được: điểm đã chấm nằm lại trong trình duyệt này. Làm ba phiên vào ba lúc khác nhau.</p>
+  </section>
+
+  <section id="rate" hidden>
+    <p class="count" aria-live="polite"><span id="pos">1</span> / <span id="total">125</span></p>
+    <audio id="player" controls></audio>
+    <fieldset>
+      <legend>Rõ ràng</legend>
+      <div class="scale" id="clarity"></div>
+      <div class="ends"><span>1 khó nghe</span><span>5 rất rõ</span></div>
+    </fieldset>
+    <fieldset>
+      <legend>Tự nhiên</legend>
+      <div class="scale" id="natural"></div>
+      <div class="ends"><span>1 như máy</span><span>5 như người</span></div>
+    </fieldset>
+    <div class="row">
+      <button id="back">Quay lại</button>
+      <button id="replay">Nghe lại</button>
+      <button id="next" class="grow">Tiếp</button>
+    </div>
+    <p class="hint">Phím tắt: 1 đến 5 chấm lần lượt Rõ ràng rồi Tự nhiên, Enter sang mẫu kế, phím cách nghe lại.</p>
+  </section>
+
+  <section id="done" hidden>
+    <p>Xong phiên <b id="doneRater"></b>: <span id="doneCount"></span> mẫu.</p>
+    <div class="row"><button id="save" class="grow">Lưu bảng điểm</button></div>
+    <p class="hint">Tệp tên <code id="fileName"></code>. Chuyển nó vào thư mục <code>_key</code> nằm cạnh trang này. Nếu nút lưu không chạy, chép phần chữ dưới đây vào một tệp cùng tên.</p>
+    <textarea id="csv" readonly aria-label="Bảng điểm dạng CSV"></textarea>
+    <div class="row"><button id="again">Về màn đầu</button></div>
+  </section>
+
+  <section id="empty" hidden>
+    <p>Trang này chưa có danh sách mẫu. Hãy mở bản <code>rate.html</code> nằm cạnh các tệp <code>s001.opus</code>, do <code>voice_samples.py</code> tạo ra.</p>
+  </section>
+</main>
+<script>
+const FILES = /*SAMPLE_FILES*/[];
+const $ = id => document.getElementById(id);
+const keyOf = rater => "moonegg-p4-" + rater;
+let rater, state;
+
+function load(r) { try { return JSON.parse(localStorage.getItem(keyOf(r))); } catch (e) { return null; } }
+function store() { try { localStorage.setItem(keyOf(rater), JSON.stringify(state)); } catch (e) {} }
+function shuffled(list) {
+  const a = list.slice();
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+function show(id) { for (const s of ["start", "rate", "done", "empty"]) $(s).hidden = s !== id; }
+
+function scale(id, field) {
+  const box = $(id);
+  for (let v = 1; v <= 5; v++) {
+    const b = document.createElement("button");
+    b.textContent = v; b.dataset.value = v; b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", () => setScore(field, v));
+    box.appendChild(b);
+  }
+}
+function current() { return state.order[state.pos]; }
+function setScore(field, value) {
+  const file = current();
+  state.scores[file] = Object.assign({}, state.scores[file], { [field]: value });
+  store(); paint();
+}
+function paint() {
+  const got = state.scores[current()] || {};
+  for (const [id, field] of [["clarity", "c"], ["natural", "n"]])
+    for (const b of $(id).children) b.setAttribute("aria-pressed", String(Number(b.dataset.value) === got[field]));
+  $("pos").textContent = state.pos + 1;
+  $("total").textContent = state.order.length;
+  $("next").disabled = !(got.c && got.n);
+  $("back").disabled = state.pos === 0;
+}
+function play() { const p = $("player"); p.currentTime = 0; p.play().catch(() => {}); }
+function open(pos) {
+  state.pos = pos; store();
+  if (pos >= state.order.length) return finish();
+  show("rate"); $("player").src = current(); paint(); play();
+}
+function toCsv() {
+  const rows = ["rater,order,sample,clarity,natural"];
+  state.order.forEach((file, i) => {
+    const s = state.scores[file];
+    if (s && s.c && s.n) rows.push([rater, i + 1, file.replace(/\.opus$/, ""), s.c, s.n].join(","));
+  });
+  return rows.join("\n") + "\n";
+}
+function finish() {
+  show("done");
+  $("doneRater").textContent = rater;
+  $("doneCount").textContent = state.order.length;
+  $("fileName").textContent = "sheet_" + rater + ".csv";
+  $("csv").value = toCsv();
+}
+function resumeNote() {
+  const saved = load($("rater").value);
+  $("resume").textContent = saved && saved.order && saved.order.length === FILES.length
+    ? "Phiên này đã chấm " + Math.min(saved.pos, saved.order.length) + " / " + saved.order.length + " mẫu, sẽ chạy tiếp từ đó."
+    : "";
+}
+
+if (!FILES.length) show("empty");
+else {
+  scale("clarity", "c"); scale("natural", "n");
+  $("rater").addEventListener("change", resumeNote); resumeNote();
+  $("begin").addEventListener("click", () => {
+    rater = $("rater").value;
+    const saved = load(rater);
+    state = saved && saved.order && saved.order.length === FILES.length ? saved : { order: shuffled(FILES), scores: {}, pos: 0 };
+    open(state.pos);
+  });
+  $("next").addEventListener("click", () => open(state.pos + 1));
+  $("back").addEventListener("click", () => open(Math.max(0, state.pos - 1)));
+  $("replay").addEventListener("click", play);
+  $("again").addEventListener("click", () => { show("start"); resumeNote(); });
+  $("save").addEventListener("click", () => {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([toCsv()], { type: "text/csv" }));
+    a.download = "sheet_" + rater + ".csv";
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+  document.addEventListener("keydown", e => {
+    if ($("rate").hidden || e.ctrlKey || e.metaKey || e.altKey) return;
+    if (e.key >= "1" && e.key <= "5") {
+      const got = state.scores[current()] || {};
+      setScore(got.c && !got.n ? "n" : got.c && got.n ? "n" : "c", Number(e.key));
+    } else if (e.key === "Enter" && !$("next").disabled) { e.preventDefault(); open(state.pos + 1); }
+    else if (e.key === " ") { e.preventDefault(); play(); }
+  });
+}
+</script>
+</body>
+</html>
