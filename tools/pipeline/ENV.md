@@ -76,7 +76,8 @@ python tools/pipeline/env/align_sample.py   # 10 TextGrid    -> content/pack/aud
 python tools/pipeline/env/check_textgrid.py # so với CMUdict -> mismatch.csv
 ```
 
-Chỉ `tts_sample.py` cần `.venv`. Ba script còn lại chạy bằng Python 3.11 trở lên bất kỳ.
+Hai script sinh giọng, `tts_sample.py` và `voice_samples.py` (task P.4), cần `.venv`. Các script còn lại chạy bằng Python 3.11 trở lên bất kỳ.
+Mọi script sinh giọng nạp Kokoro qua `tools/pipeline/env/_kokoro.py`, không `import kokoro` trực tiếp.
 Chạy lại lần nữa thì ghi đè đúng 10 tệp cũ, không sinh tệp trùng.
 
 ## 4. Giấy phép — đọc trước khi cài thêm gì
@@ -93,13 +94,13 @@ liệt kê ở đây, không bị chép vào repo hay sản phẩm, và script n
 
 | Gói | Giấy phép | Ai kéo vào | Xử lý |
 | --- | --- | --- | --- |
-| `phonemizer-fork` 3.3.2 | GPL-3.0-or-later | kokoro → misaki | gỡ; `tts_sample.py` chèn module giả |
+| `phonemizer-fork` 3.3.2 | GPL-3.0-or-later | kokoro → misaki | gỡ; `_kokoro.py` chèn module giả |
 | `espeakng-loader` 0.2.4 | không khai, bọc espeak-ng GPL-3.0 | kokoro → misaki | gỡ; như trên |
 | `num2words` 0.5.14 | LGPL | misaki | gỡ; chèn hàm giả |
 | `cmudict` 1.1.3 | GPL-3.0-or-later (mã bọc; dữ liệu CMUdict bên trong là BSD) | đề bài P.3, `build_lexicon.py:1` | cài; chỉ `build_lexicon.py` dùng |
 
 Hệ quả phải nhớ:
-- Từ nằm ngoài từ điển của Kokoro sẽ **bị bỏ qua, không được đoán âm**. `tts_sample.py` dừng với
+- Từ nằm ngoài từ điển của Kokoro **không được đoán âm**. Kokoro tự nó sẽ lặng lẽ bỏ từ đó và đọc tiếp; `_kokoro.py` hỏi trước bộ đổi chữ thành âm và dừng, nêu tên từ, kể cả khi từ nằm giữa câu.
   thông báo rõ khi gặp. Năm từ thử đều có trong từ điển.
 - Văn bản có **chữ số** sẽ làm Kokoro báo lỗi. Câu ví dụ phải viết số bằng chữ.
 - **`tools/pipeline/build_lexicon.py` là script duy nhất `import` thẳng một thư viện GPL** (`cmudict`).

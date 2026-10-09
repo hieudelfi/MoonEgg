@@ -50,6 +50,24 @@ Depends on: P.3, done on 2026-10-08.
    sounds before the voice is applied, so the sound string is the same for all five voices. It
    cannot tell voices apart. `measures.csv` keeps length and raw loudness per sample, which do
    differ by voice, and lists the sound string once per text next to the CMUdict entry.
+8. 2026-10-09 - **Second reader on the code, before Gate B: 24 defects. What changed.**
+   The rating page: a held digit key used to fill both scores with one number; it is ignored
+   now. A third digit starts the sample over, so clarity can be corrected. Enter and Space no
+   longer press a focused button. Saved scores carry an id of the audio, so they cannot attach
+   to new audio. Sheets go to a `sheets` folder, not to `_key`. The scoring script: only the
+   three exact file names count; the rater code inside must match; a copied sheet is refused;
+   nothing about any voice is printed before three sheets; a lead that loses a sitting is
+   printed as unsteady; sex comes from the key. Kokoro: a word it would drop inside a sentence
+   now stops the run. Section 4.3 said sliders; the page has five buttons per score.
+9. 2026-10-09 - **The third sitting is doubtful, and the result does not depend on it.** In R3,
+   101 of 125 rows carry the same number twice (R1: 41, R2: 52), and R3 was saved 7 minutes
+   after R2. The old key handling could cause that. R3 alone puts `af_sarah` first; R1, R2,
+   R1 plus R2, and all three together put `af_heart` first. `am_adam` leads in all three.
+   The owner decides at Gate B whether R3 stands or is redone on the fixed page.
+10. 2026-10-09 - **The limiter works harder on the male voices.** To reach -16 LUFS the script
+   had to add back 2.6 dB on `am_michael` words and 1.8 dB on `am_adam`, against 0.7 to 1.0 dB
+   on the female voices. The raters heard what learners will hear, so the test is fair to the
+   product. It may still cost `am_michael` some of its "natural" score. Noted for task P.10.
 
 Out of scope: Piper (the backup set, not installed; used only if a Kokoro voice fails to load),
 sentences for the real content (task 1.3), timing files (P.10), switching the pipeline to the
@@ -156,9 +174,9 @@ order fixed by a seed. Writes `key.csv` (blind name, voice, text) to a separate 
 One static page, no build, no server. `voice_samples.py` copies it next to the 125 Opus files
 and writes the file list into it, because a page opened from disk cannot list a folder
 (decision 4). It plays the 125 files in a random order per rater, shows two sliders 1 to 5 ("rõ ràng", "tự nhiên") and a field
-for a **rater code**, `R1`, `R2` or `R3`, never a name (decision 2). It offers the result as CSV
-text to copy out, to be saved as `sheet_R1.csv`, `sheet_R2.csv`, `sheet_R3.csv` next to
-`key.csv` (decision 4). The page never reads `_key/`. A rater who stops early sees how many rows are
+for a **rater code**, `R1`, `R2` or `R3`, never a name (decision 2). The scores are five buttons each, not sliders. It offers the result as CSV
+text to copy out, to be saved as `sheet_R1.csv`, `sheet_R2.csv`, `sheet_R3.csv` in the folder
+`sheets` next to the page, never in `_key` (decisions 4 and 8). The page never reads `_key/`. A rater who stops early sees how many rows are
 done and can continue later from the same browser.
 
 ### 4.4 `tools/pipeline/env/score.py` - required
@@ -173,7 +191,7 @@ below 3 of 5 on either score, the script says so and Piper enters as a plan chan
 pair of ears; the script prints the sheet count on the first line. It also prints, per voice,
 how far the three sittings differ, so an unsteady score is visible.
 
-### 4.4a `measure.py` output, the session's sheet - required
+### 4.4a `measures.csv`, the session's sheet - required
 
 `voice_samples.py` also writes `measures.csv`: for each of the 125 samples, the length in ms,
 the loudness before and after levelling, Kokoro's sound string, and for the 20 words the
