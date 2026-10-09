@@ -24,7 +24,7 @@ Phụ thuộc: Analysis AgentNetwork (Accepted 2026-10-08)
 | Test | Cách chạy | Input | Output thật | Đạt? |
 | --- | --- | --- | --- | --- |
 | 1 Kỹ năng nạp bằng tên | Skill tool `task-lead P.4` | — | lần 1 `Unknown skill`; sau khi harness liệt kê kỹ năng mới: `Launching skill: task-lead`, nội dung nạp đủ. Agent `evidence-scout`: lần 1 `not found`, sau đó gọi được | Đạt (nạp giữa phiên); phiên mới chưa thử |
-| 2 Từ khoá không kích hoạt | gõ "feature: add X" ở phiên mới | — | chưa chạy | chưa đo |
+| 2 Từ khoá không kích hoạt | chủ dự án gõ `feature: add X` ở một phiên Claude Code mới tại `D:\Projects\MoonEgg`, gửi ảnh chụp câu trả lời | 2026-10-09, nhánh `chore/p4-voices`, commit `b6e2e48` | Câu trả lời không nạp `task-lead`, không gọi trợ thủ nào, không nhắc tên kỹ năng. `sprint-loop` cũng không chen vào: không có `docs/sprints/`, phiên đi theo quy trình của repo (hỏi tên task hoặc mô tả, rồi Plan và Cổng A). Phiên đó cũng báo đã bỏ qua chỉ thị `Co-Authored-By: Claude Opus 5`. Giới hạn: ảnh chỉ cho thấy câu trả lời, không cho thấy danh sách kỹ năng đã nạp | Đạt |
 | 3 Scout chỉ trả sự kiện | brief P.4 | 10 + 5 câu hỏi | 100% dòng có `File:dòng` hoặc lệnh; 2 câu để trống có ghi lý do; 3 số dòng tự khai "chưa xác nhận" và đúng là lệch 1 | Đạt |
 | 4 Reviewer trả lời 4 câu | brief với Plan P.4 | Plan 209 dòng | 4 dòng, mỗi dòng `strong`/`weak` kèm lý do; bảng 15 lỗi; mục looked-for 8 dòng | Đạt |
 | 5 Reviewer không gật đầu | bản biến thể giấu 1 giả định | — | lần 1 không nêu (16 lỗi khác); sửa định nghĩa; lần 2 nêu đúng ở câu 4 và lỗi số 1 | Đạt sau 1 lần sửa |
@@ -56,4 +56,4 @@ Quyết định trong lúc làm:
 ## Câu hỏi mở
 - Chưa có.
 
-## Người kiểm: tự kiểm  Ngày: 2026-10-08  Kết luận: **Xong** — 9/10 phép thử Đạt, test 2 chưa đo (cần phiên mới); Cổng B duyệt. Việc còn nợ ở phiên mới: test 2, và chạy lại test 5 không nhắc bước kiểm kê trong brief.
+## Người kiểm: tự kiểm  Ngày: 2026-10-08  Kết luận: **Xong** — 10/10 phép thử Đạt (test 2 đo bổ sung ngày 2026-10-09 ở phiên mới); Cổng B duyệt. Việc còn nợ ở phiên mới: chạy lại test 5 không nhắc bước kiểm kê trong brief.
