@@ -1,6 +1,6 @@
 # Plan - P.4 pick the final two voices
 
-Status: **not started**, stopped at Gate A, waiting for review.
+Status: **in progress**. Gate A approved 2026-10-09. Gate B not reached.
 Written during the `task-lead` dry run on 2026-10-08. Opened as its own task on 2026-10-09.
 Task: `P.4` · Prompt: `prompts/phase-P/P.4.md` · Record: `records/P.4.md`
 Branch: `chore/p4-voices`, cut from `main` at `c54337e`. This file reached `main` inside the
@@ -40,6 +40,16 @@ Depends on: P.3, done on 2026-10-08.
    of each sample against CMUdict. It is labelled as measurement, never mixed into the means.
    This is a deliberate deviation from `prompts/phase-P/P.4.md` lines 6 and 15. Question 1
    asks whether a second person joins.
+6. 2026-10-09 - **Gate A approved. One person, three sittings, 375 rows.** The owner rates alone
+   and listens in three separate sittings. Each sitting is one full sheet of 125 rows with its
+   own random order, coded `R1`, `R2`, `R3`. The 375 rows of the task prompt are met. What this
+   is and is not: three sheets from one person show whether that person scores the same way
+   twice. They do not show whether other people agree. The record and the result say so.
+   `score.py` needs all three sheets before it names the winners.
+7. 2026-10-09 - **The measurement sheet drops the CMUdict match column.** Kokoro turns text into
+   sounds before the voice is applied, so the sound string is the same for all five voices. It
+   cannot tell voices apart. `measures.csv` keeps length and raw loudness per sample, which do
+   differ by voice, and lists the sound string once per text next to the CMUdict entry.
 
 Out of scope: Piper (the backup set, not installed; used only if a Kokoro voice fails to load),
 sentences for the real content (task 1.3), timing files (P.10), switching the pipeline to the
@@ -92,7 +102,7 @@ confirmed with `grep -n` by the lead (decision 2).
 
 - The three missing voice files download from the same Hugging Face repo as the first two, into
   the cache on drive D:. Each is under 1 MB, by the size of the two present. Not measured.
-- The owner rates at this machine. A second person may join; question 1. The session cannot
+- The owner rates at this machine, alone, in three sittings (decision 6). The session cannot
   hear and does not rate (decision 5).
 - Kokoro reads "wind" as the noun when alone (P.3 measured this). What it does inside a verb
   sentence is not measured. Test 6 measures it.
@@ -106,7 +116,7 @@ graph TB
     B --> C["encode_opus.py: 125 Opus at -16 LUFS"]:::green
     C --> D["blind names s001..s125, key.csv kept apart"]:::purple
     D --> E["rate.html: random order, 2 scores, rater code"]:::cyan
-    E --> F["1 sheet per human rater, 125 rows each"]:::purple
+    E --> F["3 sittings, 3 sheets, 375 rows"]:::purple
     F --> G["score.py: mean per voice, 1 female + 1 male"]:::green
     G --> H["docs/01 section 8.3 row 357, record, wind-check.md"]:::purple
 
@@ -153,20 +163,21 @@ done and can continue later from the same browser.
 
 ### 4.4 `tools/pipeline/env/score.py` - required
 
-Joins every `sheet_R*.csv` it finds with `key.csv`; one sheet is enough (decision 5). Refuses
-a sheet with fewer than 125 rows and names it;
+Joins `sheet_R1.csv`, `sheet_R2.csv` and `sheet_R3.csv` with `key.csv`; all three are needed
+before it names winners (decision 6). Refuses a sheet with fewer than 125 rows and names it;
 that rater finishes before scoring runs (decision 2). Prints the mean of each score per voice,
 with the count, and the two winners: highest sum of means, one female, one male. On a tie the
 owner decides by ear and the record says it was a tie. If the best voice of a sex has a mean
 below 3 of 5 on either score, the script says so and Piper enters as a plan change for that sex
 (decision 3). Writes `scores.csv` next to `key.csv`. With one rater the means rest on one
-pair of ears; the script prints the rater count on the first line so nobody reads it as three.
+pair of ears; the script prints the sheet count on the first line. It also prints, per voice,
+how far the three sittings differ, so an unsteady score is visible.
 
 ### 4.4a `measure.py` output, the session's sheet - required
 
 `voice_samples.py` also writes `measures.csv`: for each of the 125 samples, the length in ms,
-the loudness before levelling, and Kokoro's sound string. For the 20 words it adds whether the
-string matches the CMUdict entry in `lexicon_raw_test.csv`, using the same comparison as P.3.
+the loudness before and after levelling, Kokoro's sound string, and for the 20 words the
+CMUdict entry from `lexicon_raw_test.csv` beside it. No match is computed (decision 7).
 `score.py` prints this table per voice under its own heading. It is evidence about each voice,
 for the owner to read next to the scores. It never changes which voice wins (decision 5).
 
@@ -241,9 +252,9 @@ Found with: the scout's table, `grep -n VOICES tools/pipeline/env/*.py`.
 | 1 | 125 samples exist, right length | `voice_samples.py`, then `ffprobe` each | 125 Opus, 25 per voice; words 300 to 4,000 ms, sentences 800 to 8,000 ms |
 | 2 | Samples are level | `ebur128` on each file | every file -18 to -14 LUFS |
 | 3 | Names are blind | read `rate.html`, list the samples folder | no voice name in any file name or in the page; `key.csv` only under `_key/` |
-| 4 | Full sheets | the raters | 1 to 3 CSV files, 125 rows each; two scores per row, each 1 to 5; rater codes only. The prompt's 375 rows needs 3 raters, decision 5 |
-| 5 | Means are computed | `score.py` | first line states the rater count; one table, 5 rows, count 25 per rater; two names printed, one female, one male |
-| 5b | The measurement sheet | `measures.csv` | 125 rows; length, raw loudness and sound string filled for every row; CMUdict match for the 20 words |
+| 4 | Three full sheets | the owner, three sittings | 3 CSV files, 125 rows each, 375 in total; two scores per row, each 1 to 5; codes `R1` to `R3` only |
+| 5 | Means are computed | `score.py` | first line states 3 sheets; one table, 5 rows, count 75 each; spread between sittings per voice; two names printed, one female, one male |
+| 5b | The measurement sheet | `measures.csv` | 125 rows; length, raw and levelled loudness and sound string filled for every row |
 | 6 | The two-sound check | the two winners on "wind" alone and in the verb sentence | alone contains `wˈɪnd`; verb sentence contains `wˈInd`; result in `wind-check.md` |
 | 7 | Decision is written | `git diff docs/01-yeu-cau.md` | one row changed, line 357, two names and the date |
 | 8 | P.3's scripts still work | `tts_sample.py` | 10 files, same names as `records/P.3.md` |
@@ -258,7 +269,7 @@ spot check is covered and the sheets are the written list), code tests green.
 **Definition of done:**
 
 - [ ] 125 blind, levelled samples, 25 per voice, with `key.csv` kept apart
-- [ ] At least 1 full sheet of 125 rows from a human rater; means per voice printed by `score.py` with the rater count
+- [ ] 3 full sheets from three sittings, 375 rows; means and spread per voice printed by `score.py`
 - [ ] `measures.csv` has 125 rows and is shown apart from the scores
 - [ ] One female and one male voice named in `docs/01` line 357, with the date
 - [ ] `VOICES` unchanged; `tts_sample.py` still produces P.3's 10 files
@@ -281,8 +292,4 @@ Record note: `records/TRACKING.md` row P.4 gets status, real effort, "bảng đi
 
 ## 9. Open questions for the reviewer
 
-1. **"Me and you": is "you" this session, or a second person?** If it is the session, there is
-   one rater, 125 rows, and the choice rests on your ears alone. I recommend one more person if
-   one is near: with two sheets a tie or a tired ear shows up. Either way the plan works.
-2. **One rater means the 375 rows in the task prompt are not met.** Accept that as recorded in
-   decision 5, or wait for three people?
+None. Both were answered on 2026-10-09 and moved into decision 6.
