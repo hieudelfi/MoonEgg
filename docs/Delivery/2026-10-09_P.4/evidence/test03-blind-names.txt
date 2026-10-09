@@ -1,0 +1,7 @@
+measured 2026-10-09
+files in the samples folder that are not sNNN.opus: ['_key', 'rate.html', 'sheets']
+sample files: 125
+file names containing af_ or am_: 0
+voice names or the word _key inside rate.html: 0
+sheets folder: []
+note: the three sheets of this run were saved into _key/, as the first version of the page asked.

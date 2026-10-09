@@ -1,0 +1,126 @@
+sample,voice,kind,text,duration_ms,raw_lufs,out_lufs,gain_db,phonemes,cmudict
+s001,am_michael,word,reluctant,1556,-24.0,-16.3,11.6,ɹəlˈʌktᵊnt,R IH0 L AH1 K T AH0 N T
+s002,am_adam,word,receipt,1182,-20.8,-16.3,5.7,ɹəsˈit,R IH0 S IY1 T
+s003,af_bella,word,bargain,1432,-26.2,-16.3,12.0,bˈɑɹɡᵊn,B AA1 R G AH0 N
+s004,am_michael,word,thorough,1282,-24.3,-16.3,10.6,θˈɜɹO,TH ER1 OW0
+s005,am_michael,sentence,The cold wind and rain left everyone exhausted.,3756,-27.1,-16.4,12.4,ðə kˈOld wˈɪnd ænd ɹˈAn lˈɛft ˈɛvɹiwən ɪɡzˈɔstᵻd.,
+s006,af_heart,word,exhausted,1606,-24.2,-16.2,8.8,ɪɡzˈɔstᵻd,IH0 G Z AO1 S T IH0 D
+s007,am_michael,word,market,1356,-24.1,-16.4,11.9,mˈɑɹkət,M AA1 R K AH0 T
+s008,am_adam,word,approve,1282,-20.7,-16.3,5.7,əpɹˈuv,AH0 P R UW1 V
+s009,af_heart,word,energetic,1506,-24.0,-16.4,8.0,ˌɛnəɹʤˈɛTɪk,EH2 N ER0 JH EH1 T IH0 K
+s010,af_heart,word,yesterday,1582,-24.2,-16.2,9.1,jˈɛstəɹdˌA,Y EH1 S T ER0 D EY2
+s011,af_heart,word,receipt,1432,-23.8,-16.2,8.7,ɹəsˈit,R IH0 S IY1 T
+s012,am_adam,word,yesterday,1506,-20.3,-16.2,5.0,jˈɛstəɹdˌA,Y EH1 S T ER0 D EY2
+s013,af_sarah,word,energetic,1882,-22.8,-16.4,7.9,ˌɛnəɹʤˈɛTɪk,EH2 N ER0 JH EH1 T IH0 K
+s014,af_bella,word,sink,1306,-25.5,-16.3,9.5,sˈɪŋk,S IH1 NG K
+s015,af_bella,word,think,1306,-25.7,-16.2,9.7,θˈɪŋk,TH IH1 NG K
+s016,af_bella,word,decision,1506,-24.9,-16.2,9.9,dəsˈɪʒᵊn,D IH0 S IH1 ZH AH0 N
+s017,af_sarah,sentence,I went to the market yesterday.,2732,-23.1,-16.1,8.2,ˌI wˈɛnt tə ðə mˈɑɹkət jˈɛstəɹdˌA.,
+s018,af_bella,word,kitchen,1456,-26.3,-16.3,12.1,kˈɪʧᵊn,K IH1 CH AH0 N
+s019,af_heart,word,mother,1306,-23.2,-16.2,7.2,mˈʌðəɹ,M AH1 DH ER0
+s020,af_heart,word,thorough,1356,-24.8,-16.1,9.6,θˈɜɹO,TH ER1 OW0
+s021,af_sarah,word,receipt,1706,-21.4,-16.4,6.8,ɹəsˈit,R IH0 S IY1 T
+s022,af_heart,word,umbrella,1506,-24.0,-16.3,8.0,ˌʌmbɹˈɛlə,AH0 M B R EH1 L AH0
+s023,af_sarah,sentence,My mother was reluctant to approve the budget.,3632,-23.6,-16.2,8.6,mˌI mˈʌðəɹ wʌz ɹəlˈʌktᵊnt tʊ əpɹˈuv ðə bˈʌʤət.,
+s024,am_adam,word,budget,1006,-20.6,-16.5,6.1,bˈʌʤət,B AH1 JH IH0 T
+s025,af_heart,word,wind,1382,-23.9,-16.3,8.7,wˈɪnd,W IH1 N D
+s026,af_bella,word,through,1382,-27.0,-16.3,11.0,θɹˈu,TH R UW1
+s027,af_sarah,word,hello,1706,-22.1,-16.0,6.7,həlˈO,HH AH0 L OW1
+s028,am_michael,word,energetic,1506,-24.2,-16.4,9.4,ˌɛnəɹʤˈɛTɪk,EH2 N ER0 JH EH1 T IH0 K
+s029,am_michael,word,approve,1482,-25.0,-16.1,10.4,əpɹˈuv,AH0 P R UW1 V
+s030,af_bella,sentence,Think it through before you make a decision.,2982,-25.2,-16.4,9.2,θˈɪŋk ɪt θɹu bəfˈɔɹ ju mˌAk ɐ dəsˈɪʒᵊn.,
+s031,af_heart,word,bargain,1382,-23.7,-16.3,9.8,bˈɑɹɡᵊn,B AA1 R G AH0 N
+s032,af_bella,word,mother,1306,-24.5,-16.1,8.5,mˈʌðəɹ,M AH1 DH ER0
+s033,af_sarah,word,sink,1556,-21.6,-16.4,6.5,sˈɪŋk,S IH1 NG K
+s034,af_sarah,word,decision,1882,-22.4,-16.5,6.4,dəsˈɪʒᵊn,D IH0 S IH1 ZH AH0 N
+s035,af_heart,word,sink,1332,-23.5,-16.5,8.5,sˈɪŋk,S IH1 NG K
+s036,am_adam,word,reluctant,1456,-20.5,-16.5,5.4,ɹəlˈʌktᵊnt,R IH0 L AH1 K T AH0 N T
+s037,af_heart,sentence,Please wind the clock before you leave the kitchen.,2982,-25.1,-16.1,9.7,plˈiz wˈInd ðə klˈɑk bəfˈɔɹ ju lˈiv ðə kˈɪʧᵊn.,
+s038,am_michael,word,think,1232,-23.5,-16.4,10.1,θˈɪŋk,TH IH1 NG K
+s039,am_michael,sentence,I went to the market yesterday.,2632,-26.1,-16.5,11.3,ˌI wˈɛnt tə ðə mˈɑɹkət jˈɛstəɹdˌA.,
+s040,am_michael,word,decision,1532,-24.9,-16.5,8.9,dəsˈɪʒᵊn,D IH0 S IH1 ZH AH0 N
+s041,af_bella,sentence,My mother was reluctant to approve the budget.,3332,-24.9,-16.5,8.9,mˌI mˈʌðəɹ wʌz ɹəlˈʌktᵊnt tʊ əpɹˈuv ðə bˈʌʤət.,
+s042,af_heart,sentence,I went to the market yesterday.,2232,-24.8,-16.5,8.8,ˌI wˈɛnt tə ðə mˈɑɹkət jˈɛstəɹdˌA.,
+s043,af_sarah,sentence,The cold wind and rain left everyone exhausted.,3706,-24.0,-16.3,9.0,ðə kˈOld wˈɪnd ænd ɹˈAn lˈɛft ˈɛvɹiwən ɪɡzˈɔstᵻd.,
+s044,af_heart,word,approve,1482,-24.6,-16.2,9.6,əpɹˈuv,AH0 P R UW1 V
+s045,af_heart,word,think,1282,-23.9,-16.5,7.9,θˈɪŋk,TH IH1 NG K
+s046,af_heart,sentence,Think it through before you make a decision.,2682,-25.6,-16.4,9.6,θˈɪŋk ɪt θɹu bəfˈɔɹ ju mˌAk ɐ dəsˈɪʒᵊn.,
+s047,af_bella,word,climb,1382,-27.4,-16.2,11.4,klˈIm,K L AY1 M
+s048,am_adam,word,exhausted,1582,-20.3,-16.4,6.5,ɪɡzˈɔstᵻd,IH0 G Z AO1 S T IH0 D
+s049,af_bella,word,yesterday,1632,-24.7,-16.1,9.3,jˈɛstəɹdˌA,Y EH1 S T ER0 D EY2
+s050,af_heart,sentence,My mother was reluctant to approve the budget.,3106,-25.4,-16.4,9.4,mˌI mˈʌðəɹ wʌz ɹəlˈʌktᵊnt tʊ əpɹˈuv ðə bˈʌʤət.,
+s051,am_michael,word,sink,1182,-24.2,-16.3,11.8,sˈɪŋk,S IH1 NG K
+s052,af_heart,word,market,1456,-23.8,-15.9,7.8,mˈɑɹkət,M AA1 R K AH0 T
+s053,af_sarah,word,exhausted,2031,-21.6,-16.2,6.4,ɪɡzˈɔstᵻd,IH0 G Z AO1 S T IH0 D
+s054,am_michael,word,hello,1432,-24.9,-16.5,11.1,həlˈO,HH AH0 L OW1
+s055,af_sarah,word,reluctant,1906,-21.1,-16.3,5.1,ɹəlˈʌktᵊnt,R IH0 L AH1 K T AH0 N T
+s056,am_michael,word,exhausted,1682,-23.7,-16.5,10.5,ɪɡzˈɔstᵻd,IH0 G Z AO1 S T IH0 D
+s057,am_michael,word,bargain,1406,-23.3,-16.8,12.7,bˈɑɹɡᵊn,B AA1 R G AH0 N
+s058,af_bella,word,wind,1356,-26.4,-15.9,11.0,wˈɪnd,W IH1 N D
+s059,am_adam,word,bargain,1256,-20.3,-16.3,6.2,bˈɑɹɡᵊn,B AA1 R G AH0 N
+s060,am_michael,word,umbrella,1556,-24.6,-16.3,9.3,ˌʌmbɹˈɛlə,AH0 M B R EH1 L AH0
+s061,af_heart,word,hello,1406,-24.5,-16.4,8.5,həlˈO,HH AH0 L OW1
+s062,af_bella,word,energetic,1582,-24.1,-16.2,8.1,ˌɛnəɹʤˈɛTɪk,EH2 N ER0 JH EH1 T IH0 K
+s063,af_bella,word,market,1456,-24.3,-16.2,8.3,mˈɑɹkət,M AA1 R K AH0 T
+s064,af_sarah,word,yesterday,2006,-21.8,-16.3,6.5,jˈɛstəɹdˌA,Y EH1 S T ER0 D EY2
+s065,af_heart,word,decision,1456,-24.6,-16.5,8.6,dəsˈɪʒᵊn,D IH0 S IH1 ZH AH0 N
+s066,af_sarah,word,bargain,1756,-21.7,-15.9,5.7,bˈɑɹɡᵊn,B AA1 R G AH0 N
+s067,am_adam,sentence,I went to the market yesterday.,2482,-20.7,-16.2,5.6,ˌI wˈɛnt tə ðə mˈɑɹkət jˈɛstəɹdˌA.,
+s068,am_michael,sentence,Please wind the clock before you leave the kitchen.,3456,-26.6,-16.4,12.3,plˈiz wˈInd ðə klˈɑk bəfˈɔɹ ju lˈiv ðə kˈɪʧᵊn.,
+s069,am_michael,sentence,Think it through before you make a decision.,3182,-26.9,-16.4,12.0,θˈɪŋk ɪt θɹu bəfˈɔɹ ju mˌAk ɐ dəsˈɪʒᵊn.,
+s070,am_michael,word,kitchen,1332,-24.0,-16.3,8.8,kˈɪʧᵊn,K IH1 CH AH0 N
+s071,af_bella,sentence,I went to the market yesterday.,2506,-24.9,-16.5,8.9,ˌI wˈɛnt tə ðə mˈɑɹkət jˈɛstəɹdˌA.,
+s072,af_sarah,word,mother,1432,-21.8,-16.4,7.1,mˈʌðəɹ,M AH1 DH ER0
+s073,af_sarah,word,climb,1682,-21.7,-16.2,6.3,klˈIm,K L AY1 M
+s074,af_bella,word,umbrella,1506,-24.5,-16.2,8.5,ˌʌmbɹˈɛlə,AH0 M B R EH1 L AH0
+s075,af_heart,word,climb,1382,-24.4,-16.2,8.4,klˈIm,K L AY1 M
+s076,af_sarah,word,umbrella,1906,-22.5,-16.5,6.5,ˌʌmbɹˈɛlə,AH0 M B R EH1 L AH0
+s077,af_sarah,word,kitchen,1732,-21.0,-16.2,6.5,kˈɪʧᵊn,K IH1 CH AH0 N
+s078,am_adam,word,through,1232,-21.0,-16.3,5.9,θɹˈu,TH R UW1
+s079,am_michael,word,mother,1056,-24.5,-16.3,12.2,mˈʌðəɹ,M AH1 DH ER0
+s080,af_bella,sentence,Please wind the clock before you leave the kitchen.,3256,-25.9,-16.3,9.9,plˈiz wˈInd ðə klˈɑk bəfˈɔɹ ju lˈiv ðə kˈɪʧᵊn.,
+s081,am_michael,word,yesterday,1606,-24.4,-16.3,9.7,jˈɛstəɹdˌA,Y EH1 S T ER0 D EY2
+s082,af_sarah,sentence,Please wind the clock before you leave the kitchen.,3406,-23.1,-16.1,7.7,plˈiz wˈInd ðə klˈɑk bəfˈɔɹ ju lˈiv ðə kˈɪʧᵊn.,
+s083,am_adam,sentence,My mother was reluctant to approve the budget.,3182,-21.3,-16.3,6.1,mˌI mˈʌðəɹ wʌz ɹəlˈʌktᵊnt tʊ əpɹˈuv ðə bˈʌʤət.,
+s084,af_bella,word,thorough,1356,-26.3,-16.5,10.3,θˈɜɹO,TH ER1 OW0
+s085,am_michael,word,budget,1206,-22.8,-16.4,10.6,bˈʌʤət,B AH1 JH IH0 T
+s086,af_sarah,sentence,Think it through before you make a decision.,3206,-23.0,-16.2,7.6,θˈɪŋk ɪt θɹu bəfˈɔɹ ju mˌAk ɐ dəsˈɪʒᵊn.,
+s087,am_adam,word,decision,1456,-21.0,-16.3,5.6,dəsˈɪʒᵊn,D IH0 S IH1 ZH AH0 N
+s088,af_sarah,word,think,1606,-20.3,-16.4,5.0,θˈɪŋk,TH IH1 NG K
+s089,af_sarah,word,wind,1556,-20.9,-16.3,5.9,wˈɪnd,W IH1 N D
+s090,am_adam,sentence,Please wind the clock before you leave the kitchen.,3306,-21.1,-16.2,5.8,plˈiz wˈInd ðə klˈɑk bəfˈɔɹ ju lˈiv ðə kˈɪʧᵊn.,
+s091,af_sarah,word,market,1832,-21.5,-16.2,5.5,mˈɑɹkət,M AA1 R K AH0 T
+s092,am_adam,word,sink,932,-21.4,-16.4,9.1,sˈɪŋk,S IH1 NG K
+s093,af_sarah,word,budget,1682,-21.4,-16.3,6.4,bˈʌʤət,B AH1 JH IH0 T
+s094,af_heart,word,reluctant,1556,-24.3,-16.4,9.2,ɹəlˈʌktᵊnt,R IH0 L AH1 K T AH0 N T
+s095,am_michael,word,wind,1332,-25.1,-16.5,11.4,wˈɪnd,W IH1 N D
+s096,af_sarah,word,through,1632,-21.2,-16.2,5.2,θɹˈu,TH R UW1
+s097,am_michael,sentence,My mother was reluctant to approve the budget.,3406,-26.7,-16.2,12.8,mˌI mˈʌðəɹ wʌz ɹəlˈʌktᵊnt tʊ əpɹˈuv ðə bˈʌʤət.,
+s098,af_bella,sentence,The cold wind and rain left everyone exhausted.,3606,-26.8,-16.1,11.5,ðə kˈOld wˈɪnd ænd ɹˈAn lˈɛft ˈɛvɹiwən ɪɡzˈɔstᵻd.,
+s099,am_adam,word,kitchen,1156,-20.7,-16.5,5.7,kˈɪʧᵊn,K IH1 CH AH0 N
+s100,af_bella,word,exhausted,1656,-25.4,-16.5,9.4,ɪɡzˈɔstᵻd,IH0 G Z AO1 S T IH0 D
+s101,af_bella,word,approve,1506,-25.7,-16.5,11.4,əpɹˈuv,AH0 P R UW1 V
+s102,am_adam,word,umbrella,1432,-20.7,-16.3,5.4,ˌʌmbɹˈɛlə,AH0 M B R EH1 L AH0
+s103,af_bella,word,receipt,1432,-24.7,-16.3,9.6,ɹəsˈit,R IH0 S IY1 T
+s104,am_adam,word,energetic,1356,-21.0,-16.4,6.6,ˌɛnəɹʤˈɛTɪk,EH2 N ER0 JH EH1 T IH0 K
+s105,am_adam,word,thorough,1206,-21.0,-16.5,5.9,θˈɜɹO,TH ER1 OW0
+s106,am_michael,word,climb,1306,-24.5,-16.2,10.4,klˈIm,K L AY1 M
+s107,am_adam,word,climb,1106,-21.5,-16.4,7.4,klˈIm,K L AY1 M
+s108,af_heart,word,kitchen,1432,-24.9,-16.2,9.7,kˈɪʧᵊn,K IH1 CH AH0 N
+s109,af_bella,word,reluctant,1582,-25.1,-16.2,9.1,ɹəlˈʌktᵊnt,R IH0 L AH1 K T AH0 N T
+s110,am_adam,word,market,1156,-20.8,-16.5,6.0,mˈɑɹkət,M AA1 R K AH0 T
+s111,am_adam,word,think,982,-20.7,-16.5,7.3,θˈɪŋk,TH IH1 NG K
+s112,am_adam,sentence,Think it through before you make a decision.,2906,-21.0,-16.3,5.8,θˈɪŋk ɪt θɹu bəfˈɔɹ ju mˌAk ɐ dəsˈɪʒᵊn.,
+s113,af_sarah,word,approve,1732,-22.1,-16.2,7.4,əpɹˈuv,AH0 P R UW1 V
+s114,am_michael,word,receipt,1382,-24.4,-16.4,9.6,ɹəsˈit,R IH0 S IY1 T
+s115,am_adam,sentence,The cold wind and rain left everyone exhausted.,3582,-21.3,-16.3,6.2,ðə kˈOld wˈɪnd ænd ɹˈAn lˈɛft ˈɛvɹiwən ɪɡzˈɔstᵻd.,
+s116,af_heart,sentence,The cold wind and rain left everyone exhausted.,3306,-26.1,-16.2,10.7,ðə kˈOld wˈɪnd ænd ɹˈAn lˈɛft ˈɛvɹiwən ɪɡzˈɔstᵻd.,
+s117,af_heart,word,through,1382,-24.7,-16.5,8.7,θɹˈu,TH R UW1
+s118,af_bella,word,budget,1332,-25.7,-16.2,10.5,bˈʌʤət,B AH1 JH IH0 T
+s119,af_heart,word,budget,1332,-24.3,-16.4,9.1,bˈʌʤət,B AH1 JH IH0 T
+s120,af_sarah,word,thorough,1606,-21.4,-16.2,6.1,θˈɜɹO,TH ER1 OW0
+s121,am_adam,word,wind,1156,-21.2,-16.4,6.4,wˈɪnd,W IH1 N D
+s122,af_bella,word,hello,1432,-26.0,-16.1,10.6,həlˈO,HH AH0 L OW1
+s123,am_adam,word,hello,1182,-21.4,-16.3,6.4,həlˈO,HH AH0 L OW1
+s124,am_adam,word,mother,856,-21.7,-16.5,6.9,mˈʌðəɹ,M AH1 DH ER0
+s125,am_michael,word,through,1382,-24.9,-16.4,8.9,θɹˈu,TH R UW1

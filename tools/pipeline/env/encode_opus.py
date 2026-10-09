@@ -51,52 +51,57 @@ def measure(path):
     return float(found[-1]) if found else None
 
 
+def level_and_encode(wav, out):
+    """Write one levelled Opus file and return what was measured on it."""
+    ceiling = 10 ** (PEAK_CEILING_DB / 20)
+    t0 = time.perf_counter()
+    in_lufs = measure(wav)
+    if in_lufs is None:
+        sys.exit(f"{wav.name}: ffmpeg could not measure the input")
+    gain, lufs, tries = TARGET_LUFS - in_lufs, None, 0
+    while tries < MAX_TRIES:
+        tries += 1
+        chain = (f"volume={gain:.2f}dB,"
+                 f"alimiter=limit={ceiling:.4f}:level=false:attack=1:release=50")
+        done = run(["ffmpeg", "-hide_banner", "-nostats", "-y", "-i", str(wav), "-af", chain,
+                    "-ar", "48000", "-ac", "1", "-c:a", "libopus", "-b:a", BITRATE, str(out)])
+        if done.returncode != 0:
+            sys.exit(f"{wav.name}: ffmpeg failed\n{done.stderr[-400:]}")
+        lufs = measure(out)
+        if lufs is None or abs(lufs - TARGET_LUFS) <= SETTLE:
+            break
+        gain += TARGET_LUFS - lufs
+    seconds = time.perf_counter() - t0
+    duration_ms, kbps = probe(out)
+    if duration_ms < MIN_MEASURABLE_MS:
+        lufs = None
+    if lufs is None:
+        verdict = "too short to measure"
+    elif abs(lufs - TARGET_LUFS) <= TOLERANCE:
+        verdict = "ok"
+    else:
+        verdict = "outside target"
+    return dict(file=out.name, in_lufs=in_lufs, out_lufs=lufs, gain_db=round(gain, 2),
+                tries=tries, duration_ms=duration_ms, kbps=kbps, bytes=out.stat().st_size,
+                encode_s=round(seconds, 3), verdict=verdict)
+
+
 def main():
     wavs = sorted(WAV_DIR.glob("*.wav"))
     if not wavs:
         sys.exit(f"no WAV files in {WAV_DIR}. Run tts_sample.py first.")
     OPUS_DIR.mkdir(parents=True, exist_ok=True)
-    rows, failed = [], 0
-    ceiling = 10 ** (PEAK_CEILING_DB / 20)
+    rows = []
     for wav in wavs:
-        t0 = time.perf_counter()
-        in_lufs = measure(wav)
-        if in_lufs is None:
-            sys.exit(f"{wav.name}: ffmpeg could not measure the input")
-        out = OPUS_DIR / (wav.stem + ".opus")
-        gain, lufs, tries = TARGET_LUFS - in_lufs, None, 0
-        while tries < MAX_TRIES:
-            tries += 1
-            chain = (f"volume={gain:.2f}dB,"
-                     f"alimiter=limit={ceiling:.4f}:level=false:attack=1:release=50")
-            done = run(["ffmpeg", "-hide_banner", "-nostats", "-y", "-i", str(wav), "-af", chain,
-                        "-ar", "48000", "-ac", "1", "-c:a", "libopus", "-b:a", BITRATE, str(out)])
-            if done.returncode != 0:
-                sys.exit(f"{wav.name}: ffmpeg failed\n{done.stderr[-400:]}")
-            lufs = measure(out)
-            if lufs is None or abs(lufs - TARGET_LUFS) <= SETTLE:
-                break
-            gain += TARGET_LUFS - lufs
-        seconds = time.perf_counter() - t0
-        duration_ms, kbps = probe(out)
-        if duration_ms < MIN_MEASURABLE_MS:
-            lufs = None
-        if lufs is None:
-            verdict = "too short to measure"
-            failed += 1
-        elif abs(lufs - TARGET_LUFS) <= TOLERANCE:
-            verdict = "ok"
-        else:
-            verdict = "outside target"
-            failed += 1
-        rows.append(dict(file=out.name, in_lufs=in_lufs, out_lufs=lufs, gain_db=round(gain, 2),
-                         tries=tries, duration_ms=duration_ms, kbps=kbps, bytes=out.stat().st_size,
-                         encode_s=round(seconds, 3), verdict=verdict))
-        shown = "  n/a" if lufs is None else f"{lufs:6.1f}"
-        print(f"{out.name:29} in {in_lufs:6.1f}  gain {gain:+5.1f} dB  out {shown} LUFS"
-              f"  {duration_ms:5d} ms  {kbps:5.1f} kbps  {out.stat().st_size:5d} B"
-              f"  {tries} tries  {seconds:5.2f} s  {verdict}")
+        row = level_and_encode(wav, OPUS_DIR / (wav.stem + ".opus"))
+        rows.append(row)
+        shown = "  n/a" if row["out_lufs"] is None else f"{row['out_lufs']:6.1f}"
+        print(f"{row['file']:29} in {row['in_lufs']:6.1f}  gain {row['gain_db']:+5.1f} dB"
+              f"  out {shown} LUFS  {row['duration_ms']:5d} ms  {row['kbps']:5.1f} kbps"
+              f"  {row['bytes']:5d} B  {row['tries']} tries  {row['encode_s']:5.2f} s"
+              f"  {row['verdict']}")
     (AUDIO_TEST / "opus_report.json").write_text(json.dumps(rows, indent=2), encoding="utf-8")
+    failed = sum(1 for r in rows if r["verdict"] != "ok")
     mean = sum(r["encode_s"] for r in rows) / len(rows)
     print(f"{len(rows)} files, mean {mean:.3f} s per file, {failed} outside the target")
     sys.exit(1 if failed else 0)

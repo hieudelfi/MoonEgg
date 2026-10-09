@@ -354,7 +354,7 @@ MVP nên chứng minh được một điều duy nhất: người học nhớ t�
 | Câu hỏi | Quyết định | Hệ quả |
 | --- | --- | --- |
 | Kho từ | 5.000 từ; xương sống NGSL 1.2 (2.809) + NAWL, bù bằng tần suất Wiktionary/kaikki; không dùng Oxford (bản quyền OUP) | Phát hành 5 đợt 1.000 từ theo tần suất; đợt 1 trước khi thử nghiệm |
-| Giọng đọc | Anh-Mỹ; người học chọn giọng Nam hoặc Nữ | Sinh audio 2 giọng, một tốc độ, cho mỗi từ và câu; tốc độ chậm bằng playbackRate 0,75 trên thiết bị; viseme dùng chung vì phoneme giống nhau |
+| Giọng đọc | Anh-Mỹ; người học chọn giọng Nam hoặc Nữ. Chốt 2026-10-09 (task P.4, Kokoro-82M): Nữ `af_heart`, Nam `am_adam` | Sinh audio 2 giọng, một tốc độ, cho mỗi từ và câu; tốc độ chậm bằng playbackRate 0,75 trên thiết bị; viseme dùng chung vì phoneme giống nhau |
 | Nhân vật đồng hành | Phi hành gia nhí nở từ vỏ trứng trên Mặt Trăng, nguyên bản, sinh bằng Stable Diffusion (xem 9.3) | Cần chuyển sang bản 2D phẳng có kính mở để lộ mặt; 4–6 biểu cảm, 12 khẩu hình, mặt cắt nghiêng cho lưỡi |
 | Đo lường | Ẩn danh, bật mặc định, có nút tắt trong cài đặt | Không thu ID thiết bị; sự kiện gộp theo ngày |
 | Ngân sách | Không có ngoài máy tính; toàn bộ bằng giờ công và công cụ miễn phí | Tự vẽ, tự sinh audio, tự biên soạn; không thuê ngoài |
