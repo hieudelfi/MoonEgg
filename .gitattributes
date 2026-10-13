@@ -1,0 +1,2 @@
+content/pack/**/*.csv text eol=lf
+content/pack/**/*.svg text eol=lf

@@ -1,0 +1,75 @@
+sense_id,item_id,order,def_en_simple,gloss_vi,collocations_json,chosen,source,license,gloss_source,gloss_license,review_status,reviewed_by,reviewed_at,second_by,second_at,source_checked_by,source_checked_at,note
+w:market#1/s1,w:market#1,1,the world of commercial activity where goods and services are bought and sold,thị trường,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:market#1/s2,w:market#1,2,the customers for a particular product or service,khách hàng của một sản phẩm,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:market#1/s3,w:market#1,3,a marketplace where groceries are sold,chợ,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:umbrella#1/s1,w:umbrella#1,1,a lightweight handheld collapsible canopy,"cái ô, cái dù",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:umbrella#1/s2,w:umbrella#1,2,a formation of military planes maintained over ground operations or targets,lực lượng máy bay yểm trợ,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:umbrella#1/s3,w:umbrella#1,3,having the function of uniting a group of similar things,bao trùm nhiều thứ,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:bargain#1/s1,w:bargain#1,1,an agreement between parties (usually arrived at after discussion) fixing obligations of each,thoả thuận,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:bargain#1/s2,w:bargain#1,2,an advantageous purchase,món hời,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:reluctant#1/s1,w:reluctant#1,1,unwillingness to do something contrary to your custom,miễn cưỡng,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:reluctant#1/s2,w:reluctant#1,2,disinclined to become involved,không muốn tham gia,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:reluctant#1/s3,w:reluctant#1,3,not eager,không hào hứng,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:think#1/s1,w:think#1,1,judge or regard; look upon; judge,"cho rằng, coi là",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:think#1/s2,w:think#1,2,"expect, believe, or suppose","nghĩ, tin rằng",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:think#1/s3,w:think#1,3,"use or exercise the mind or one's power of reason in order to make inferences, decisions, or arrive at a solution or judgments",suy nghĩ,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:sink#1/s1,w:sink#1,1,fall or descend to a lower place or level,chìm xuống,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:sink#1/s2,w:sink#1,2,cause to sink,làm chìm,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:sink#1/s3,w:sink#1,3,pass into a specified state or condition,rơi vào một trạng thái,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:wind#1/s1,w:wind#1,1,air moving (sometimes with considerable force) from an area of high pressure to an area of low pressure,gió,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:wind#1/s2,w:wind#1,2,a tendency or force that influences events,xu hướng tác động,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:wind#1/s3,w:wind#1,3,breath,hơi thở,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:wind#2/s1,w:wind#2,1,"to move or cause to move in a sinuous, spiral, or circular course","quấn, cuộn",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:wind#2/s2,w:wind#2,2,extend in curves and turns,uốn lượn,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:wind#2/s3,w:wind#2,3,arrange or or coil around,cuộn quanh,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:receipt#1/s1,w:receipt#1,1,the act of receiving,việc nhận,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:receipt#1/s2,w:receipt#1,2,an acknowledgment (usually tangible) that payment has been made,"biên lai, hoá đơn",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:go#1/s1,w:go#1,1,"change location; move, travel, or proceed, also metaphorically","đi, di chuyển",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:go#1/s2,w:go#1,2,follow a procedure or take a course,tiến hành theo cách,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:go#1/s3,w:go#1,3,move away from a place into another direction,rời đi,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:buy#1/s1,w:buy#1,1,obtain by purchase; acquire by means of a financial transaction,mua,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:buy#1/s2,w:buy#1,2,make illegal payments to in exchange for favors or influence,"hối lộ, mua chuộc",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:buy#1/s3,w:buy#1,3,be worth or be capable of buying,"mua được, đáng giá",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:yesterday#1/s1,w:yesterday#1,1,on the day preceding today,hôm qua,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:yesterday#1/s2,w:yesterday#1,2,in the recent past; only a short time ago,thời gian gần đây,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:cold#1/s1,w:cold#1,1,having a low or inadequate temperature or feeling a sensation of coldness or having been made cold by e.g. ice or refrigeration,lạnh,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:cold#1/s2,w:cold#1,2,extended meanings; especially of psychological coldness; without human warmth or emotion,"lạnh lùng, thiếu tình cảm",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:cold#1/s3,w:cold#1,3,having lost freshness through passage of time,,,0,https://wordnet.princeton.edu/,WordNet,,,pending,,,,,,,
+w:egg#1/s1,w:egg#1,1,animal reproductive body consisting of an ovum or embryo together with nutritive and protective envelopes; especially the thin-shelled reproductive body laid by e.g. female birds,trứng của động vật,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:egg#1/s2,w:egg#1,2,oval reproductive body of a fowl (especially a hen) used as food,trứng gà dùng làm thức ăn,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:egg#1/s3,w:egg#1,3,one of the two male reproductive glands that produce spermatozoa and secrete androgens,,,0,https://wordnet.princeton.edu/,WordNet,,,pending,,,,,,,
+w:leave#1/s1,w:leave#1,1,go away from a place,rời khỏi,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:leave#1/s2,w:leave#1,2,"go and leave behind, either intentionally or by neglect or forgetfulness","để lại, bỏ quên",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:leave#1/s3,w:leave#1,3,act or be so as to become in a specified state,để ở một trạng thái,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:budget#1/s1,w:budget#1,1,a sum of money allocated for a particular purpose,"ngân sách, khoản tiền dành riêng",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:budget#1/s2,w:budget#1,2,a summary of intended expenditures along with proposals for how to meet them,bản dự toán chi tiêu,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:approve#1/s1,w:approve#1,1,give sanction to,phê duyệt,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:approve#1/s2,w:approve#1,2,judge to be right or commendable; think well of,"tán thành, cho là đúng",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:boss#1/s1,w:boss#1,1,a person who exercises control over workers,"sếp, người quản lý",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:boss#1/s2,w:boss#1,2,a person responsible for hiring workers,người tuyển nhân viên,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:boss#1/s3,w:boss#1,3,a person who exercises control and makes decisions,người ra quyết định,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:thorough#1/s1,w:thorough#1,1,painstakingly careful and accurate,"kỹ lưỡng, cẩn thận",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:thorough#1/s2,w:thorough#1,2,performed comprehensively and completely,"toàn diện, đầy đủ",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:climb#1/s1,w:climb#1,1,go upward with gradual or continuous progress,leo lên dần,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:climb#1/s2,w:climb#1,2,"move with difficulty, by grasping","trèo, bám để leo",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:climb#1/s3,w:climb#1,3,go up or advance,tăng lên,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:kitchen#1/s1,w:kitchen#1,1,a room equipped for preparing meals,nhà bếp,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:kettle#1/s1,w:kettle#1,1,a metal pot for stewing or boiling; usually has a lid,cái ấm đun nước,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:kettle#1/s2,w:kettle#1,2,the quantity a kettle will hold,lượng nước một ấm,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:kettle#1/s3,w:kettle#1,3,(geology) a hollow (typically filled by a lake) that results from the melting of a mass of ice trapped in glacial deposits,,,0,https://wordnet.princeton.edu/,WordNet,,,pending,,,,,,,
+w:stove#1/s1,w:stove#1,1,a kitchen appliance used for cooking food,bếp nấu ăn,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:stove#1/s2,w:stove#1,2,any heating apparatus,lò sưởi,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:exhausted#1/s1,w:exhausted#1,1,drained of energy or effectiveness; extremely tired; completely exhausted,"kiệt sức, rất mệt",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:exhausted#1/s2,w:exhausted#1,2,"depleted of energy, force, or strength",cạn kiệt năng lượng,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:exhausted#1/s3,w:exhausted#1,3,drained physically,,,0,https://wordnet.princeton.edu/,WordNet,,,pending,,,,,,,
+w:energetic#1/s1,w:energetic#1,1,possessing or exerting or displaying energy,tràn đầy năng lượng,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:energetic#1/s2,w:energetic#1,2,working hard to promote an enterprise,"năng nổ, tích cực",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:decision#1/s1,w:decision#1,1,the act of making up your mind about something,việc quyết định,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:decision#1/s2,w:decision#1,2,a position or opinion or judgment reached after consideration,"quyết định, kết luận",,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:decision#1/s3,w:decision#1,3,(boxing) a victory won on points when no knockout has occurred,,,0,https://wordnet.princeton.edu/,WordNet,,,pending,,,,,,,
+w:rain#1/s1,w:rain#1,1,water falling in drops from vapor condensed in the atmosphere,mưa,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:rain#1/s2,w:rain#1,2,drops of fresh water that fall as precipitation from clouds,những giọt nước mưa,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:rain#1/s3,w:rain#1,3,anything happening rapidly or in quick successive,,,0,https://wordnet.princeton.edu/,WordNet,,,pending,,,,,,,
+w:mother#1/s1,w:mother#1,1,a woman who has given birth to a child (also used as a term of address to your mother),mẹ,,0,https://wordnet.princeton.edu/,WordNet,self,own,pending,,,,,,,draft
+w:mother#1/s2,w:mother#1,2,a stringy slimy substance consisting of yeast cells and bacteria; forms during fermentation and is added to cider or wine to produce vinegar,,,0,https://wordnet.princeton.edu/,WordNet,,,pending,,,,,,,
+w:mother#1/s3,w:mother#1,3,a term of address for an elderly woman,,,0,https://wordnet.princeton.edu/,WordNet,,,pending,,,,,,,

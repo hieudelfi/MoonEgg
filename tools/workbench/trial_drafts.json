@@ -1,0 +1,123 @@
+{
+  "_about": "Draft Vietnamese meanings and draft sentences for the 30 test words. Written by the build session for the workbench trial of task P.5. They are candidates for a reviewer, not approved content, and must never be packed. gloss[i] belongs to the i-th WordNet definition of the word.",
+  "w:hello#1": {"gloss": [], "examples": [
+    ["She said hello to everyone in the room.", "Cô ấy chào mọi người trong phòng."],
+    ["Say hello to your grandmother for me, please.", "Cho anh gửi lời chào bà em nhé."],
+    ["He waved and shouted hello across the street.", "Anh ấy vẫy tay và hét chào bên kia đường."]]},
+  "w:market#1": {"gloss": ["thị trường", "khách hàng của một sản phẩm", "chợ"], "examples": [
+    ["I went to the market yesterday.", "Hôm qua tôi đã đi chợ."],
+    ["My mother buys fresh fish at the market every morning.", "Mẹ tôi mua cá tươi ở chợ mỗi sáng."],
+    ["The market near my house is always very crowded and noisy on Sunday mornings.", "Cái chợ gần nhà tôi sáng chủ nhật lúc nào cũng đông và ồn."]]},
+  "w:umbrella#1": {"gloss": ["cái ô, cái dù", "lực lượng máy bay yểm trợ", "bao trùm nhiều thứ"], "examples": [
+    ["Take an umbrella because it may rain today.", "Mang ô đi vì hôm nay có thể mưa."],
+    ["I left my umbrella on the bus this morning.", "Sáng nay tôi để quên ô trên xe buýt."],
+    ["Bring an umbrella.", "Mang ô theo."]]},
+  "w:bargain#1": {"gloss": ["thoả thuận", "món hời"], "examples": [
+    ["This shirt was a real bargain at the market.", "Cái áo này mua ở chợ đúng là món hời."],
+    ["We made a bargain to share the work.", "Chúng tôi thoả thuận chia nhau công việc."],
+    ["She found a bargain on shoes last weekend.", "Cuối tuần trước cô ấy mua được giày giá hời."]]},
+  "w:reluctant#1": {"gloss": ["miễn cưỡng", "không muốn tham gia", "không hào hứng"], "examples": [
+    ["My mother was reluctant to approve the budget.", "Mẹ tôi miễn cưỡng duyệt khoản chi."],
+    ["He was reluctant to leave the party early.", "Anh ấy không muốn rời bữa tiệc sớm."],
+    ["The children were reluctant to go to bed.", "Bọn trẻ không muốn đi ngủ."]]},
+  "w:think#1": {"gloss": ["cho rằng, coi là", "nghĩ, tin rằng", "suy nghĩ"], "examples": [
+    ["Think it through before you make a decision.", "Hãy nghĩ kỹ trước khi quyết định."],
+    ["I think the kitchen is too cold today.", "Tôi nghĩ hôm nay bếp lạnh quá."],
+    ["What do you think about the new boss?", "Bạn nghĩ gì về sếp mới?"]]},
+  "w:sink#1": {"gloss": ["chìm xuống", "làm chìm", "rơi vào một trạng thái"], "examples": [
+    ["The small boat began to sink in the river.", "Chiếc thuyền nhỏ bắt đầu chìm xuống sông."],
+    ["The stone will sink if you drop it.", "Hòn đá sẽ chìm nếu bạn thả nó."],
+    ["Her heart began to sink when she heard the news.", "Cô ấy chùng lòng khi nghe tin."]]},
+  "w:wind#1": {"gloss": ["gió", "xu hướng tác động", "hơi thở"], "examples": [
+    ["The cold wind and rain left everyone exhausted.", "Gió lạnh và mưa làm mọi người kiệt sức."],
+    ["A strong wind blew my umbrella away yesterday.", "Hôm qua gió mạnh thổi bay ô của tôi."],
+    ["The wind is very cold near the river.", "Gió gần sông rất lạnh."]]},
+  "w:wind#2": {"gloss": ["quấn, cuộn", "uốn lượn", "cuộn quanh"], "examples": [
+    ["Please wind the clock before you leave the kitchen.", "Hãy lên dây đồng hồ trước khi rời bếp."],
+    ["The road winds through the hills to the village.", "Con đường uốn lượn qua đồi vào làng."],
+    ["She began to wind the wool into a ball.", "Cô ấy bắt đầu cuộn len thành cuộn."]]},
+  "w:receipt#1": {"gloss": ["việc nhận", "biên lai, hoá đơn"], "examples": [
+    ["Please keep the receipt after you buy something.", "Hãy giữ hoá đơn sau khi mua hàng."],
+    ["I lost the receipt for my new kettle.", "Tôi làm mất hoá đơn cái ấm mới."],
+    ["The shop gave me a receipt for the umbrella.", "Cửa hàng đưa tôi hoá đơn cái ô."]]},
+  "w:go#1": {"gloss": ["đi, di chuyển", "tiến hành theo cách", "rời đi"], "examples": [
+    ["We go to the market every Sunday morning.", "Sáng chủ nhật nào chúng tôi cũng đi chợ."],
+    ["I have to go to work very early.", "Tôi phải đi làm rất sớm."],
+    ["Let us go home before the rain starts.", "Mình về nhà trước khi mưa nhé."]]},
+  "w:buy#1": {"gloss": ["mua", "hối lộ, mua chuộc", "mua được, đáng giá"], "examples": [
+    ["I want to buy a new stove for the kitchen.", "Tôi muốn mua một cái bếp mới."],
+    ["She went out to buy eggs and rice.", "Cô ấy ra ngoài mua trứng và gạo."],
+    ["Where did you buy that beautiful umbrella?", "Bạn mua cái ô đẹp đó ở đâu?"]]},
+  "w:yesterday#1": {"gloss": ["hôm qua", "thời gian gần đây"], "examples": [
+    ["It was very cold yesterday in the morning.", "Sáng hôm qua trời rất lạnh."],
+    ["Yesterday my boss approved the new budget.", "Hôm qua sếp tôi đã duyệt ngân sách mới."],
+    ["I met my mother at the market yesterday.", "Hôm qua tôi gặp mẹ ở chợ."]]},
+  "w:cold#1": {"gloss": ["lạnh", "lạnh lùng, thiếu tình cảm"], "examples": [
+    ["The water in the kettle is still cold.", "Nước trong ấm vẫn còn lạnh."],
+    ["It is too cold to go out tonight.", "Tối nay lạnh quá không ra ngoài được."],
+    ["She gave him a cold look and left.", "Cô ấy nhìn anh lạnh lùng rồi bỏ đi."]]},
+  "w:egg#1": {"gloss": ["trứng của động vật", "trứng gà dùng làm thức ăn"], "examples": [
+    ["I eat one egg for breakfast every day.", "Mỗi ngày tôi ăn một quả trứng vào bữa sáng."],
+    ["She put the egg in the cold water.", "Cô ấy cho quả trứng vào nước lạnh."],
+    ["The bird left one egg in the nest.", "Con chim để lại một quả trứng trong tổ."]]},
+  "w:leave#1": {"gloss": ["rời khỏi", "để lại, bỏ quên", "để ở một trạng thái"], "examples": [
+    ["We have to leave the house before six.", "Chúng ta phải rời nhà trước sáu giờ."],
+    ["Do not leave the stove on when you go.", "Đừng để bếp bật khi bạn đi."],
+    ["I always leave my keys on the kitchen table.", "Tôi luôn để chìa khoá trên bàn bếp."]]},
+  "w:budget#1": {"gloss": ["ngân sách, khoản tiền dành riêng", "bản dự toán chi tiêu"], "examples": [
+    ["Our family has a small budget for food.", "Nhà tôi có ngân sách nhỏ cho tiền ăn."],
+    ["The boss will approve the budget next week.", "Sếp sẽ duyệt ngân sách vào tuần tới."],
+    ["We need a budget before we buy anything.", "Ta cần dự toán trước khi mua gì."]]},
+  "w:approve#1": {"gloss": ["phê duyệt", "tán thành, cho là đúng"], "examples": [
+    ["My boss did not approve my holiday request.", "Sếp tôi không duyệt đơn xin nghỉ."],
+    ["Her mother does not approve of the decision.", "Mẹ cô ấy không tán thành quyết định đó."],
+    ["They will approve the plan after the meeting.", "Họ sẽ duyệt kế hoạch sau cuộc họp."]]},
+  "w:boss#1": {"gloss": ["sếp, người quản lý", "người tuyển nhân viên", "người ra quyết định"], "examples": [
+    ["My boss is very energetic in the morning.", "Sếp tôi rất năng nổ vào buổi sáng."],
+    ["The boss asked me to stay late yesterday.", "Hôm qua sếp bảo tôi ở lại muộn."],
+    ["She is the boss of a small shop.", "Cô ấy là chủ một cửa hàng nhỏ."]]},
+  "w:thorough#1": {"gloss": ["kỹ lưỡng, cẩn thận", "toàn diện, đầy đủ"], "examples": [
+    ["The doctor gave me a thorough check yesterday.", "Hôm qua bác sĩ khám cho tôi rất kỹ."],
+    ["She is thorough when she cleans the kitchen.", "Cô ấy rất kỹ khi lau dọn bếp."],
+    ["We need a thorough plan before we go.", "Ta cần kế hoạch kỹ lưỡng trước khi đi."]]},
+  "w:through#1": {"gloss": [], "examples": [
+    ["We walked through the market to the river.", "Chúng tôi đi xuyên qua chợ ra sông."],
+    ["The cold wind came through the open window.", "Gió lạnh lùa qua cửa sổ mở."],
+    ["She read through the receipt very carefully.", "Cô ấy đọc kỹ hết tờ hoá đơn."]]},
+  "w:climb#1": {"gloss": ["leo lên dần", "trèo, bám để leo", "tăng lên"], "examples": [
+    ["The children like to climb the big tree.", "Bọn trẻ thích trèo cái cây to."],
+    ["We will climb the hill early tomorrow morning.", "Sáng sớm mai chúng tôi sẽ leo đồi."],
+    ["Prices climb every year before the holiday.", "Năm nào giá cũng tăng trước kỳ nghỉ."]]},
+  "w:kitchen#1": {"gloss": ["nhà bếp"], "examples": [
+    ["My mother is cooking rice in the kitchen.", "Mẹ tôi đang nấu cơm trong bếp."],
+    ["Our kitchen is small but very clean.", "Bếp nhà tôi nhỏ nhưng rất sạch."],
+    ["Please leave your shoes outside the kitchen door.", "Hãy để giày ngoài cửa bếp."]]},
+  "w:kettle#1": {"gloss": ["cái ấm đun nước", "lượng nước một ấm"], "examples": [
+    ["Put the kettle on the stove, please.", "Đặt ấm lên bếp giúp tôi."],
+    ["The kettle is hot, so be careful.", "Ấm đang nóng, cẩn thận nhé."],
+    ["I bought a new kettle at the market.", "Tôi mua một cái ấm mới ở chợ."]]},
+  "w:stove#1": {"gloss": ["bếp nấu ăn", "lò sưởi"], "examples": [
+    ["She forgot to turn off the stove again.", "Cô ấy lại quên tắt bếp."],
+    ["The soup is still on the stove.", "Nồi canh vẫn còn trên bếp."],
+    ["We sat near the stove because it was cold.", "Chúng tôi ngồi gần lò sưởi vì trời lạnh."]]},
+  "w:exhausted#1": {"gloss": ["kiệt sức, rất mệt", "cạn kiệt năng lượng"], "examples": [
+    ["I was exhausted after the long climb yesterday.", "Hôm qua tôi kiệt sức sau chuyến leo dài."],
+    ["My mother looks exhausted after work every day.", "Ngày nào đi làm về mẹ tôi cũng mệt lử."],
+    ["They were too exhausted to cook dinner.", "Họ mệt quá không nấu nổi bữa tối."]]},
+  "w:energetic#1": {"gloss": ["tràn đầy năng lượng", "năng nổ, tích cực"], "examples": [
+    ["My little brother is very energetic after lunch.", "Em trai tôi rất hiếu động sau bữa trưa."],
+    ["She is an energetic boss who works hard.", "Chị ấy là một người sếp năng nổ, chăm chỉ."],
+    ["I feel energetic when the weather is cold.", "Trời lạnh tôi thấy khoẻ khoắn hơn."]]},
+  "w:decision#1": {"gloss": ["việc quyết định", "quyết định, kết luận"], "examples": [
+    ["It was a hard decision to leave home.", "Rời nhà là một quyết định khó khăn."],
+    ["The boss will make a decision by Friday.", "Sếp sẽ quyết định trước thứ sáu."],
+    ["I think you made the right decision yesterday.", "Tôi nghĩ hôm qua bạn đã quyết định đúng."]]},
+  "w:rain#1": {"gloss": ["mưa", "những giọt nước mưa"], "examples": [
+    ["The rain started when we left the market.", "Mưa bắt đầu khi chúng tôi rời chợ."],
+    ["We stayed in the kitchen until the rain stopped.", "Chúng tôi ở trong bếp tới khi tạnh mưa."],
+    ["I like the sound of rain at night.", "Tôi thích tiếng mưa ban đêm."]]},
+  "w:mother#1": {"gloss": ["mẹ"], "examples": [
+    ["My mother goes to the market every morning.", "Sáng nào mẹ tôi cũng đi chợ."],
+    ["Her mother is a thorough and energetic teacher.", "Mẹ cô ấy là giáo viên kỹ tính và năng nổ."],
+    ["I called my mother yesterday after work.", "Hôm qua tan làm tôi gọi cho mẹ."]]}
+}

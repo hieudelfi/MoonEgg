@@ -1,0 +1,91 @@
+example_id,sense_id,item_id,en,vi,difficulty,audio_asset_f,audio_asset_m,checks,chosen,source,license,review_status,reviewed_by,reviewed_at,second_by,second_at,source_checked_by,source_checked_at,note
+w:hello#1/e1,,w:hello#1,She said hello to everyone in the room.,Cô ấy chào mọi người trong phòng.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:hello#1/e2,,w:hello#1,"Say hello to your grandmother for me, please.",Cho anh gửi lời chào bà em nhé.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:hello#1/e3,,w:hello#1,He waved and shouted hello across the street.,Anh ấy vẫy tay và hét chào bên kia đường.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:market#1/e1,w:market#1/s1,w:market#1,I went to the market yesterday.,Hôm qua tôi đã đi chợ.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:market#1/e2,w:market#1/s1,w:market#1,My mother buys fresh fish at the market every morning.,Mẹ tôi mua cá tươi ở chợ mỗi sáng.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:market#1/e3,w:market#1/s1,w:market#1,The market near my house is always very crowded and noisy on Sunday mornings.,Cái chợ gần nhà tôi sáng chủ nhật lúc nào cũng đông và ồn.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:umbrella#1/e1,w:umbrella#1/s1,w:umbrella#1,Take an umbrella because it may rain today.,Mang ô đi vì hôm nay có thể mưa.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:umbrella#1/e2,w:umbrella#1/s1,w:umbrella#1,I left my umbrella on the bus this morning.,Sáng nay tôi để quên ô trên xe buýt.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:umbrella#1/e3,w:umbrella#1/s1,w:umbrella#1,Bring an umbrella.,Mang ô theo.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:bargain#1/e1,w:bargain#1/s1,w:bargain#1,This shirt was a real bargain at the market.,Cái áo này mua ở chợ đúng là món hời.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:bargain#1/e2,w:bargain#1/s1,w:bargain#1,We made a bargain to share the work.,Chúng tôi thoả thuận chia nhau công việc.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:bargain#1/e3,w:bargain#1/s1,w:bargain#1,She found a bargain on shoes last weekend.,Cuối tuần trước cô ấy mua được giày giá hời.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:reluctant#1/e1,w:reluctant#1/s1,w:reluctant#1,My mother was reluctant to approve the budget.,Mẹ tôi miễn cưỡng duyệt khoản chi.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:reluctant#1/e2,w:reluctant#1/s1,w:reluctant#1,He was reluctant to leave the party early.,Anh ấy không muốn rời bữa tiệc sớm.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:reluctant#1/e3,w:reluctant#1/s1,w:reluctant#1,The children were reluctant to go to bed.,Bọn trẻ không muốn đi ngủ.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:think#1/e1,w:think#1/s1,w:think#1,Think it through before you make a decision.,Hãy nghĩ kỹ trước khi quyết định.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:think#1/e2,w:think#1/s1,w:think#1,I think the kitchen is too cold today.,Tôi nghĩ hôm nay bếp lạnh quá.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:think#1/e3,w:think#1/s1,w:think#1,What do you think about the new boss?,Bạn nghĩ gì về sếp mới?,1,,,00000,0,self,own,pending,,,,,,,draft
+w:sink#1/e1,w:sink#1/s1,w:sink#1,The small boat began to sink in the river.,Chiếc thuyền nhỏ bắt đầu chìm xuống sông.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:sink#1/e2,w:sink#1/s1,w:sink#1,The stone will sink if you drop it.,Hòn đá sẽ chìm nếu bạn thả nó.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:sink#1/e3,w:sink#1/s1,w:sink#1,Her heart began to sink when she heard the news.,Cô ấy chùng lòng khi nghe tin.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:wind#1/e1,w:wind#1/s1,w:wind#1,The cold wind and rain left everyone exhausted.,Gió lạnh và mưa làm mọi người kiệt sức.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:wind#1/e2,w:wind#1/s1,w:wind#1,A strong wind blew my umbrella away yesterday.,Hôm qua gió mạnh thổi bay ô của tôi.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:wind#1/e3,w:wind#1/s1,w:wind#1,The wind is very cold near the river.,Gió gần sông rất lạnh.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:wind#2/e1,w:wind#2/s1,w:wind#2,Please wind the clock before you leave the kitchen.,Hãy lên dây đồng hồ trước khi rời bếp.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:wind#2/e2,w:wind#2/s1,w:wind#2,The road winds through the hills to the village.,Con đường uốn lượn qua đồi vào làng.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:wind#2/e3,w:wind#2/s1,w:wind#2,She began to wind the wool into a ball.,Cô ấy bắt đầu cuộn len thành cuộn.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:receipt#1/e1,w:receipt#1/s1,w:receipt#1,Please keep the receipt after you buy something.,Hãy giữ hoá đơn sau khi mua hàng.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:receipt#1/e2,w:receipt#1/s1,w:receipt#1,I lost the receipt for my new kettle.,Tôi làm mất hoá đơn cái ấm mới.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:receipt#1/e3,w:receipt#1/s1,w:receipt#1,The shop gave me a receipt for the umbrella.,Cửa hàng đưa tôi hoá đơn cái ô.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:go#1/e1,w:go#1/s1,w:go#1,We go to the market every Sunday morning.,Sáng chủ nhật nào chúng tôi cũng đi chợ.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:go#1/e2,w:go#1/s1,w:go#1,I have to go to work very early.,Tôi phải đi làm rất sớm.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:go#1/e3,w:go#1/s1,w:go#1,Let us go home before the rain starts.,Mình về nhà trước khi mưa nhé.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:buy#1/e1,w:buy#1/s1,w:buy#1,I want to buy a new stove for the kitchen.,Tôi muốn mua một cái bếp mới.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:buy#1/e2,w:buy#1/s1,w:buy#1,She went out to buy eggs and rice.,Cô ấy ra ngoài mua trứng và gạo.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:buy#1/e3,w:buy#1/s1,w:buy#1,Where did you buy that beautiful umbrella?,Bạn mua cái ô đẹp đó ở đâu?,1,,,00000,0,self,own,pending,,,,,,,draft
+w:yesterday#1/e1,w:yesterday#1/s1,w:yesterday#1,It was very cold yesterday in the morning.,Sáng hôm qua trời rất lạnh.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:yesterday#1/e2,w:yesterday#1/s1,w:yesterday#1,Yesterday my boss approved the new budget.,Hôm qua sếp tôi đã duyệt ngân sách mới.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:yesterday#1/e3,w:yesterday#1/s1,w:yesterday#1,I met my mother at the market yesterday.,Hôm qua tôi gặp mẹ ở chợ.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:cold#1/e1,w:cold#1/s1,w:cold#1,The water in the kettle is still cold.,Nước trong ấm vẫn còn lạnh.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:cold#1/e2,w:cold#1/s1,w:cold#1,It is too cold to go out tonight.,Tối nay lạnh quá không ra ngoài được.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:cold#1/e3,w:cold#1/s1,w:cold#1,She gave him a cold look and left.,Cô ấy nhìn anh lạnh lùng rồi bỏ đi.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:egg#1/e1,w:egg#1/s1,w:egg#1,I eat one egg for breakfast every day.,Mỗi ngày tôi ăn một quả trứng vào bữa sáng.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:egg#1/e2,w:egg#1/s1,w:egg#1,She put the egg in the cold water.,Cô ấy cho quả trứng vào nước lạnh.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:egg#1/e3,w:egg#1/s1,w:egg#1,The bird left one egg in the nest.,Con chim để lại một quả trứng trong tổ.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:leave#1/e1,w:leave#1/s1,w:leave#1,We have to leave the house before six.,Chúng ta phải rời nhà trước sáu giờ.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:leave#1/e2,w:leave#1/s1,w:leave#1,Do not leave the stove on when you go.,Đừng để bếp bật khi bạn đi.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:leave#1/e3,w:leave#1/s1,w:leave#1,I always leave my keys on the kitchen table.,Tôi luôn để chìa khoá trên bàn bếp.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:budget#1/e1,w:budget#1/s1,w:budget#1,Our family has a small budget for food.,Nhà tôi có ngân sách nhỏ cho tiền ăn.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:budget#1/e2,w:budget#1/s1,w:budget#1,The boss will approve the budget next week.,Sếp sẽ duyệt ngân sách vào tuần tới.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:budget#1/e3,w:budget#1/s1,w:budget#1,We need a budget before we buy anything.,Ta cần dự toán trước khi mua gì.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:approve#1/e1,w:approve#1/s1,w:approve#1,My boss did not approve my holiday request.,Sếp tôi không duyệt đơn xin nghỉ.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:approve#1/e2,w:approve#1/s1,w:approve#1,Her mother does not approve of the decision.,Mẹ cô ấy không tán thành quyết định đó.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:approve#1/e3,w:approve#1/s1,w:approve#1,They will approve the plan after the meeting.,Họ sẽ duyệt kế hoạch sau cuộc họp.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:boss#1/e1,w:boss#1/s1,w:boss#1,My boss is very energetic in the morning.,Sếp tôi rất năng nổ vào buổi sáng.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:boss#1/e2,w:boss#1/s1,w:boss#1,The boss asked me to stay late yesterday.,Hôm qua sếp bảo tôi ở lại muộn.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:boss#1/e3,w:boss#1/s1,w:boss#1,She is the boss of a small shop.,Cô ấy là chủ một cửa hàng nhỏ.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:thorough#1/e1,w:thorough#1/s1,w:thorough#1,The doctor gave me a thorough check yesterday.,Hôm qua bác sĩ khám cho tôi rất kỹ.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:thorough#1/e2,w:thorough#1/s1,w:thorough#1,She is thorough when she cleans the kitchen.,Cô ấy rất kỹ khi lau dọn bếp.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:thorough#1/e3,w:thorough#1/s1,w:thorough#1,We need a thorough plan before we go.,Ta cần kế hoạch kỹ lưỡng trước khi đi.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:through#1/e1,,w:through#1,We walked through the market to the river.,Chúng tôi đi xuyên qua chợ ra sông.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:through#1/e2,,w:through#1,The cold wind came through the open window.,Gió lạnh lùa qua cửa sổ mở.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:through#1/e3,,w:through#1,She read through the receipt very carefully.,Cô ấy đọc kỹ hết tờ hoá đơn.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:climb#1/e1,w:climb#1/s1,w:climb#1,The children like to climb the big tree.,Bọn trẻ thích trèo cái cây to.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:climb#1/e2,w:climb#1/s1,w:climb#1,We will climb the hill early tomorrow morning.,Sáng sớm mai chúng tôi sẽ leo đồi.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:climb#1/e3,w:climb#1/s1,w:climb#1,Prices climb every year before the holiday.,Năm nào giá cũng tăng trước kỳ nghỉ.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:kitchen#1/e1,w:kitchen#1/s1,w:kitchen#1,My mother is cooking rice in the kitchen.,Mẹ tôi đang nấu cơm trong bếp.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:kitchen#1/e2,w:kitchen#1/s1,w:kitchen#1,Our kitchen is small but very clean.,Bếp nhà tôi nhỏ nhưng rất sạch.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:kitchen#1/e3,w:kitchen#1/s1,w:kitchen#1,Please leave your shoes outside the kitchen door.,Hãy để giày ngoài cửa bếp.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:kettle#1/e1,w:kettle#1/s1,w:kettle#1,"Put the kettle on the stove, please.",Đặt ấm lên bếp giúp tôi.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:kettle#1/e2,w:kettle#1/s1,w:kettle#1,"The kettle is hot, so be careful.","Ấm đang nóng, cẩn thận nhé.",1,,,00000,0,self,own,pending,,,,,,,draft
+w:kettle#1/e3,w:kettle#1/s1,w:kettle#1,I bought a new kettle at the market.,Tôi mua một cái ấm mới ở chợ.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:stove#1/e1,w:stove#1/s1,w:stove#1,She forgot to turn off the stove again.,Cô ấy lại quên tắt bếp.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:stove#1/e2,w:stove#1/s1,w:stove#1,The soup is still on the stove.,Nồi canh vẫn còn trên bếp.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:stove#1/e3,w:stove#1/s1,w:stove#1,We sat near the stove because it was cold.,Chúng tôi ngồi gần lò sưởi vì trời lạnh.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:exhausted#1/e1,w:exhausted#1/s1,w:exhausted#1,I was exhausted after the long climb yesterday.,Hôm qua tôi kiệt sức sau chuyến leo dài.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:exhausted#1/e2,w:exhausted#1/s1,w:exhausted#1,My mother looks exhausted after work every day.,Ngày nào đi làm về mẹ tôi cũng mệt lử.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:exhausted#1/e3,w:exhausted#1/s1,w:exhausted#1,They were too exhausted to cook dinner.,Họ mệt quá không nấu nổi bữa tối.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:energetic#1/e1,w:energetic#1/s1,w:energetic#1,My little brother is very energetic after lunch.,Em trai tôi rất hiếu động sau bữa trưa.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:energetic#1/e2,w:energetic#1/s1,w:energetic#1,She is an energetic boss who works hard.,"Chị ấy là một người sếp năng nổ, chăm chỉ.",1,,,00000,0,self,own,pending,,,,,,,draft
+w:energetic#1/e3,w:energetic#1/s1,w:energetic#1,I feel energetic when the weather is cold.,Trời lạnh tôi thấy khoẻ khoắn hơn.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:decision#1/e1,w:decision#1/s1,w:decision#1,It was a hard decision to leave home.,Rời nhà là một quyết định khó khăn.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:decision#1/e2,w:decision#1/s1,w:decision#1,The boss will make a decision by Friday.,Sếp sẽ quyết định trước thứ sáu.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:decision#1/e3,w:decision#1/s1,w:decision#1,I think you made the right decision yesterday.,Tôi nghĩ hôm qua bạn đã quyết định đúng.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:rain#1/e1,w:rain#1/s1,w:rain#1,The rain started when we left the market.,Mưa bắt đầu khi chúng tôi rời chợ.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:rain#1/e2,w:rain#1/s1,w:rain#1,We stayed in the kitchen until the rain stopped.,Chúng tôi ở trong bếp tới khi tạnh mưa.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:rain#1/e3,w:rain#1/s1,w:rain#1,I like the sound of rain at night.,Tôi thích tiếng mưa ban đêm.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:mother#1/e1,w:mother#1/s1,w:mother#1,My mother goes to the market every morning.,Sáng nào mẹ tôi cũng đi chợ.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:mother#1/e2,w:mother#1/s1,w:mother#1,Her mother is a thorough and energetic teacher.,Mẹ cô ấy là giáo viên kỹ tính và năng nổ.,1,,,00000,0,self,own,pending,,,,,,,draft
+w:mother#1/e3,w:mother#1/s1,w:mother#1,I called my mother yesterday after work.,Hôm qua tan làm tôi gọi cho mẹ.,1,,,00000,0,self,own,pending,,,,,,,draft
