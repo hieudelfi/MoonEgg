@@ -1,6 +1,6 @@
 # Plan - P.5 the content workbench: review one word per screen, by keyboard
 
-Status: **not started**, stopped at Gate A, waiting for review.
+Status: **in progress**. Gate A approved 2026-10-13. Gate B not reached.
 Task: `P.5` · Prompt: `prompts/phase-P/P.5.md` · Record: `records/P.5.md`
 Branch: `chore/p5-content-workbench`, cut from `main` at `b84c4fe`.
 Run with: `/task-lead P.5`. Lead: this session. Helpers: `evidence-scout`, `gate-reviewer`. No builder agent, decision 2.
@@ -52,6 +52,7 @@ no shipped table changes. The owner chose L2 for it. The shape goes into `docs/0
    - *Tests now have thresholds*; the rule tests are listed by name.
    - *Three things are stated as not done*: the frequency half of TC-CT-06, seconds per
      sentence, and a mouth picture per sound.
+4. 2026-10-13 - **Gate A approved by the owner**, on the rewritten plan and flow.
 
 Out of scope: downloading any source (P.7), joining sources (P.8), generating real images, a
 mouth picture for each sound (task 3.3), the frequency-rank half of TC-CT-06 (needs the word list

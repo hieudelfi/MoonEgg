@@ -8,7 +8,7 @@ Cập nhật mỗi thứ hai (trạng thái, thực tế) và mỗi lần đóng
 | P.2 | Supabase, R2, Pages | 1.5 | chưa đo | Xong | 2026-09-25 | 2026-10-08 | AU-04 | AU-04 Đạt, 11/11 dòng phép thử Đạt; web chạy trên Workers, không phải Pages | records/P.2.md | tự kiểm 2026-10-08 |
 | P.3 | Môi trường pipeline | 1.5 | chưa đo | Xong | 2026-10-08 | 2026-10-08 | — | 11/12 phép thử Đạt; so CMUdict 4/5 từ, `market` lệch, để P.10; SD bỏ vì không có GPU | records/P.3.md | tự kiểm 2026-10-08 |
 | P.4 | Chốt giọng đọc | 0.5 | chưa đo | Xong | 2026-10-09 | 2026-10-09 | — | Nữ `af_heart` 8,59 · Nam `am_adam` 7,45 (thang 10); 375 dòng, một người ba phiên; 12/12 phép thử Đạt | records/P.4.md | tự kiểm 2026-10-09 |
-| P.5 | Xưởng nội dung | 3 | | Chưa | | | — | | records/P.5.md | |
+| P.5 | Xưởng nội dung | 3 | | Đang làm | 2026-10-13 | | — | | records/P.5.md | |
 | P.6 | Đặc tả lõi + golden | 1.5 | | Chưa | | | — | | records/P.6.md | |
 | P.7 | Tải và ghi nhận nguồn | 1 | | Chưa | | | CT-07 | | records/P.7.md | |
 | P.8 | Chuẩn hoá, ghép nguồn | 2 | | Chưa | | | — | | records/P.8.md | |
