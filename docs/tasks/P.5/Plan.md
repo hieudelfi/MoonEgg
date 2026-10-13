@@ -53,6 +53,10 @@ no shipped table changes. The owner chose L2 for it. The shape goes into `docs/0
    - *Three things are stated as not done*: the frequency half of TC-CT-06, seconds per
      sentence, and a mouth picture per sound.
 4. 2026-10-13 - **Gate A approved by the owner**, on the rewritten plan and flow.
+5. 2026-10-13 - **One key added while building: Q switches between the two queues.** The plan
+   gave the queues as two buttons only. Test 3 asks for a full review with the mouse untouched,
+   and that includes one word through the second pass. Tab moves between records, so the
+   buttons could not be reached by keyboard. `Flow.md` section 3 has the key as well.
 
 Out of scope: downloading any source (P.7), joining sources (P.8), generating real images, a
 mouth picture for each sound (task 3.3), the frequency-rank half of TC-CT-06 (needs the word list
@@ -247,6 +251,7 @@ licence is not on the allowlist. `Flow.md` holds the behaviour.
 | Key | Does |
 | --- | --- |
 | **J**, **K** | next word, previous word |
+| **Q** | switch between **Duyệt lần 1** and **Duyệt lần 2** (decision 5) |
 | Tab, Shift+Tab | move focus from record to record. Text fields are not Tab stops |
 | Space | choose or drop the focused meaning or sentence |
 | **T** | tick all five checks of the focused sentence |

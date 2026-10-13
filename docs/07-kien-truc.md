@@ -316,6 +316,26 @@ flowchart TD
 
 Gói theo đợt 1.000 từ; manifest liệt kê gói, phiên bản, kích thước, hash. App tải gói cần thiết theo tiến độ, không tải cả 5.000 từ.
 
+**Tệp làm việc của bước duyệt tay** (chốt ở task P.5, 2026-10-13). Ô "Bảng duyệt tay" trong sơ đồ trên là một thư mục làm việc gồm các tệp CSV dưới đây; xưởng nội dung `tools/workbench/` đọc và ghi chúng, pipeline (P.8) sinh ứng viên vào chúng, bước đóng gói (1.7) đọc chúng. Đây là sổ sách của khâu duyệt, không phải bảng phát hành: các bảng ở mục 7.1 không đổi. UTF-8, một dòng tiêu đề, xuống dòng LF.
+
+| Tệp | Cột |
+| --- | --- |
+| `senses.csv` | `sense_id`, `item_id`, `order`, `def_en_simple`, `gloss_vi`, `collocations_json`, `chosen`, `source`, `license`, `gloss_source`, `gloss_license`, các trường duyệt, `note` |
+| `examples.csv` | `example_id`, `sense_id`, `item_id`, `en`, `vi`, `difficulty`, `audio_asset_f`, `audio_asset_m`, `checks`, `chosen`, `source`, `license`, các trường duyệt, `note` |
+| `images.csv` | `image_id`, `item_id`, `slot`, `path`, `chosen`, `reject_reason`, `source`, `license`, các trường duyệt, `note` |
+| `word_review.csv` | `item_id`, `review_status`, `reviewed_by`, `reviewed_at`, `second_by`, `second_at`, `reject_reason` |
+| `review_log.csv` | `at`, `reviewer`, `pass`, `item_id`, `action`, `target`, `seconds` — chỉ ghi thêm |
+
+- **Các trường duyệt**: `review_status` (`pending` · `approved` · `rejected` · `needs_second`), `reviewed_by`, `reviewed_at`, `second_by`, `second_at`, `source_checked_by`, `source_checked_at`.
+- `source` và `license` của một nghĩa nói về định nghĩa tiếng Anh; `gloss_source` và `gloss_license` nói về nghĩa Việt.
+- `checks` là 5 ký tự `0`/`1` theo thứ tự: đúng ngữ pháp, tự nhiên, không nhạy cảm, nghĩa Việt khớp, đúng dạng từ.
+- `chosen` là `1` khi người duyệt muốn bản ghi vào sản phẩm. Gói chỉ nhận bản ghi `approved`.
+- `note=draft` đánh dấu chữ nháp để thử công cụ. Bản nháp không bao giờ được đóng gói: `tools/workbench/export.py` và `tools/workbench/check_files.py --for-pack` từ chối.
+- Mã bản ghi đi theo từ: `w:market#1/s1`, `w:market#1/s1/e2`, `w:market#1/i3`.
+- `collocations_json`, `audio_asset_f`, `audio_asset_m` được mang theo, không sửa ở khâu duyệt; task 1.2 và 1.4 điền.
+- Ánh xạ sang mục 7.1: SENSE lấy từ `senses.csv`; EXAMPLE lấy từ `examples.csv`; `WORD.image_asset` là `path` của ảnh được duyệt trong `images.csv`.
+- Kiểm tra: `python tools/workbench/check_files.py <thư mục>` cho các tệp bản ghi; `tools/checks/verify_pack.py --strict` cho bản xuất mức từ (`export.py`).
+
 **5.6 Quản lý danh sách từ và chọn mục cho quiz**
 
 Danh sách từ là một khái niệm riêng, tách khỏi gói nội dung: gói chứa từ và nhãn, danh sách là cách nhìn vào gói; nhờ vậy thêm chủ đề hay danh sách người dùng không cần build lại gói.

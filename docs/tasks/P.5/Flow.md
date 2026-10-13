@@ -45,7 +45,7 @@ sentence unchosen rejects it. You can open the word again and choose it; the wor
 
 | Area | What you see | What you can do |
 | --- | --- | --- |
-| Top bar | position "7 / 30", the word's status, a running timer, the queue: **Duyệt lần 1** or **Duyệt lần 2** | **J** next word, **K** previous word |
+| Top bar | position "7 / 30", the word's status, a running timer, the queue: **Duyệt lần 1** or **Duyệt lần 2** | **J** next word, **K** previous word, **Q** switches the queue |
 | Word | the word, its part of speech, IPA, the sound list as text, **Bảng khẩu hình** | **Bảng khẩu hình** opens the sheet of mouth shapes beside the word |
 | Audio | **Nữ** and **Nam**, or **Chưa có audio** | **R** plays both, one after the other |
 | **Nghĩa** | each meaning in simple English, its **Nghĩa Việt**, a source link, a licence badge | Space chooses or drops it; **E** opens **Nghĩa Việt** |
