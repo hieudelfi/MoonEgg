@@ -3,7 +3,7 @@
 Status: **not started**, stopped at Gate A, waiting for review.
 Task: `P.5` · Prompt: `prompts/phase-P/P.5.md` · Record: `records/P.5.md`
 Branch: `chore/p5-content-workbench`, cut from `main` at `b84c4fe`.
-Run with: `/task-lead P.5`. Lead: this session. Helpers: `evidence-scout`, one builder, `gate-reviewer`.
+Run with: `/task-lead P.5`. Lead: this session. Helpers: `evidence-scout`, `gate-reviewer`. No builder agent, decision 2.
 Reviewer: `self`, plus the `gate-reviewer` agent before Gate B
 Type: **FEATURE** - a tool with a screen and review logic. Its user is the content reviewer, not a learner.
 Level: **L2** - new folder, logic branches, new working files. See the level note.
@@ -21,6 +21,16 @@ shape down in `docs/07` section 5.5. Question 2 asks the owner to confirm this r
 
 **Decisions log (2026-10-09):**
 1. 2026-10-09 - Plan written by the lead from the scout's table. No review round yet.
+2. 2026-10-13 - **The owner answered the six questions.** (1) Stack: Python standard library
+   server and one plain page. (2) Level: L2; the working-file shape is written here and added
+   to `docs/07` section 5.5. (3) Seed data: the session may write draft Vietnamese meanings and
+   draft sentences for the 30 test words, all `pending`, in `content/pack/trial/`. (4) Reviewer
+   name: the owner's own; `hieudelfi` is used, the name already in this repo's history. It is a
+   start-up argument and can change. The same name may close a second pass; the log shows it.
+   The owner did not answer that half, so the lead's recommendation stands until told otherwise.
+   (5) Evidence: two screenshots by the owner, not a video. (6) Tokens: the middle level. The
+   lead writes the code itself, with no builder agent. `gate-reviewer` reads this plan before
+   Gate A and reads the diff before Gate B.
 
 Out of scope: downloading any source (P.7), joining sources (P.8), generating real images, the
 static mouth pictures for each sound (task 3.3 draws them), a second human reviewer's 20 percent
@@ -195,10 +205,9 @@ never mixes with drafts. The workbench takes the folder as an argument.
 
 ### 4.7 Who builds what
 
-Per the `task-lead` skill: the lead writes the documents and runs the trial. A builder agent,
-`fullstack-developer`, writes the code step by step in its own worktree. A worktree has no
-audio and no Python environment, so the builder runs `pytest` only; the lead runs the server
-and the trial in the main tree. `gate-reviewer` reads the plan and the diff before Gate B.
+The lead writes the documents and the code, and runs the trial, all in the main tree. No
+builder agent (decision 2, point 6). `gate-reviewer` reads the plan before Gate A and the diff
+before Gate B.
 
 ### Options considered, not chosen
 
@@ -281,7 +290,7 @@ compare with, and no offline check, because the tool is not part of the app.
 - [ ] No approved record without `source` and an allowed `license`
 - [ ] A seconds-per-word report from real review, compared with the 3-minute target
 - [ ] The working-file shape is in `docs/07` section 5.5
-- [ ] A capture or short video of the workbench, made by the owner
+- [ ] Two screenshots of the workbench, made by the owner
 - [ ] `records/P.5.md` has a result line per step, the test table and the token line
 - [ ] The branch is merged into `main` with `gate.sh merge`, and deleted
 
