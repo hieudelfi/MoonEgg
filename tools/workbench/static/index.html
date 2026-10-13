@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MoonEgg - Xưởng nội dung</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <div class="queues" role="group" aria-label="Hàng đợi">
+    <button id="queue1" aria-pressed="true">Duyệt lần 1</button>
+    <button id="queue2" aria-pressed="false">Duyệt lần 2</button>
+  </div>
+  <div class="where"><span id="position">0 / 0</span> <span id="status" class="tag"></span></div>
+  <div class="clock"><span class="label">Thời gian</span> <span id="timer">0:00</span></div>
+  <div class="who"><span class="label">Người duyệt</span> <span id="reviewer"></span></div>
+</header>
+
+<main id="main" hidden>
+  <section class="word" aria-labelledby="headword">
+    <h1 id="headword"></h1>
+    <p class="facts"><span id="pos"></span> <span id="ipa"></span></p>
+    <p class="sounds"><span class="label">Khẩu hình</span> <span id="sounds"></span>
+      <button id="sheetToggle" aria-expanded="false" aria-controls="sheet">Bảng khẩu hình</button></p>
+    <img id="sheet" src="/files/pack/viseme-sheet.svg" alt="Bảng mười hai khẩu hình" hidden>
+    <p class="audio"><span class="label">Audio</span> <span id="audio"></span></p>
+    <p id="rejected" class="notice" hidden></p>
+  </section>
+
+  <section aria-labelledby="sensesTitle">
+    <h2 id="sensesTitle">Nghĩa</h2>
+    <ol id="senses" class="records"></ol>
+  </section>
+
+  <section aria-labelledby="examplesTitle">
+    <h2 id="examplesTitle">Câu ví dụ</h2>
+    <ol id="examples" class="records"></ol>
+  </section>
+
+  <section aria-labelledby="imagesTitle">
+    <h2 id="imagesTitle">Ảnh</h2>
+    <div id="images" class="images"></div>
+  </section>
+</main>
+
+<p id="empty" class="notice" hidden></p>
+
+<footer>
+  <p id="message" role="status" aria-live="polite"></p>
+  <p id="ask" hidden><label for="reason" id="askLabel"></label>
+    <input id="reason" type="text" autocomplete="off"> <span class="hint">Enter ghi, Esc bỏ</span></p>
+  <p class="keys">
+    <kbd>J</kbd><kbd>K</kbd> từ kế, từ trước ·
+    <kbd>Q</kbd> đổi hàng đợi ·
+    <kbd>Tab</kbd> sang bản ghi kế ·
+    <kbd>Space</kbd> chọn ·
+    <kbd>T</kbd> đủ 5 mục ·
+    <kbd>Shift</kbd>+<kbd>1</kbd>…<kbd>5</kbd> từng mục ·
+    <kbd>E</kbd> sửa ·
+    <kbd>1</kbd>…<kbd>4</kbd> ảnh, <kbd>0</kbd> không ảnh nào ·
+    <kbd>O</kbd> nguồn ·
+    <kbd>R</kbd> nghe ·
+    <kbd>A</kbd> duyệt ·
+    <kbd>X</kbd> loại ·
+    <kbd>U</kbd> hoàn tác loại
+  </p>
+</footer>
+<script src="/static/app.js"></script>
+</body>
+</html>
