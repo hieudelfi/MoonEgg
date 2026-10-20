@@ -20,14 +20,14 @@ Mockup: https://claude.ai/artifact/BJJpsvciECNVUK4VocwWUq (15 màn). Tài liệu
 
 1. **Mở** `prompts/<phase>/<task-id>.md`. Đọc mục tài liệu được tham chiếu. Kiểm tra phụ thuộc đã Xong trong `records/TRACKING.md`. Phân loại Type / Level / Repro theo mục 7.1. Level `L3` → dừng, viết báo cáo, mở task riêng, không code. Có thể chạy task bằng `/task-lead <task-id>` (kỹ năng toàn cục, thêm ba trợ thủ: dò bằng chứng, dựng mã trong worktree, review nguội); cổng, đường dẫn và cờ đẩy hub không đổi khi dùng nó.
 2. **Cắt nhánh** `feature|fix|chore/<task-id>-<slug>` từ `main`. Không làm task trên `main`.
-3. **CỔNG A** (mục 7.3). Viết `docs/tasks/<task-id>/Plan.md`, và `Flow.md` nếu không thuộc diện bỏ ở mục 7.2. Đọc lại nguội 4 câu. Đẩy lên yawasa. Báo link. **DỪNG, chờ duyệt.** Chưa duyệt thì chưa chạm vào mã, chưa tải tệp dữ liệu nào.
+3. **CỔNG A** (mục 7.3). Viết `docs/tasks/<task-id>/Plan.md`, và `Flow.md` nếu không thuộc diện bỏ ở mục 7.2. Đọc lại nguội 4 câu. Báo đường dẫn tệp trên máy. **DỪNG, chờ duyệt.** Chưa duyệt thì chưa chạm vào mã, chưa tải tệp dữ liệu nào, chưa đẩy lên yawasa. Được duyệt mới đẩy Plan/Flow lên yawasa (mục 7.5) và báo link.
 4. **Tạo bản ghi** `records/<task-id>.md` từ `records/TEMPLATE.md`; ghi ngày bắt đầu, nhánh, link Plan và Flow. Đổi trạng thái trong `records/TRACKING.md` thành "Đang làm".
-5. **Làm theo checklist**; sau MỖI bước ghi một dòng "kết quả: <cái gì được tạo, ở đâu>" vào bản ghi. Không gộp nhiều bước thành một dòng. Kế hoạch đổi giữa chừng → sửa `Plan.md`, ghi vào Decisions log, đẩy lại `--update`, nói rõ chỗ đổi; không lặng lẽ đi hướng khác.
+5. **Làm theo checklist**; sau MỖI bước ghi một dòng "kết quả: <cái gì được tạo, ở đâu>" vào bản ghi. Không gộp nhiều bước thành một dòng. Kế hoạch đổi giữa chừng → sửa `Plan.md`, ghi vào Decisions log, nói rõ chỗ đổi cho người duyệt; chỉ đẩy lại `--update` khi người duyệt đồng ý; không lặng lẽ đi hướng khác.
 6. **Kiểm tra**: chạy test đối chiếu (ID trong prompt). Ghi bảng Test | Cách chạy | Input | Output thật | Đạt? với số thật, không ghi "OK".
 7. **Xác minh output trước khi đóng** (mục 3 dưới). Không đạt → ghi lý do, sửa, chạy lại; không đóng task.
 8. **Tài liệu**: nếu task thay đổi một quyết định, sửa đúng mục trong `docs/` và ghi "đã cập nhật docs/xx §y" vào bản ghi.
-9. **CỔNG B** (mục 7.4). Viết `docs/tasks/<task-id>/Result.md`, đẩy lên yawasa. Dựng `docs/Delivery/<ngày>_<task-id>/`, quét bằng chứng tìm khoá và dữ liệu người thật. Trình bày câu lệnh commit dự định. Báo link. **DỪNG, chờ nghiệm thu.**
-10. Được duyệt mới commit, gộp nhánh vào `main` bằng `gate.sh merge`, đẩy Delivery, cập nhật `records/TRACKING.md` (trạng thái, thực tế nđ, kết quả test, người kiểm, ngày). Chỉ khi 1–9 xong mới báo "Xong". Nếu chỉ có một người, ghi "tự kiểm" và ngày.
+9. **CỔNG B** (mục 7.4). Viết `docs/tasks/<task-id>/Result.md` (chưa đẩy). Dựng `docs/Delivery/<ngày>_<task-id>/`, quét bằng chứng tìm khoá và dữ liệu người thật. Trình bày câu lệnh commit dự định và đường dẫn `Result.md` trên máy. **DỪNG, chờ nghiệm thu.**
+10. Được duyệt mới commit, gộp nhánh vào `main` bằng `gate.sh merge`, đẩy `Result.md` và Delivery lên yawasa (mục 7.5), cập nhật `records/TRACKING.md` (trạng thái, thực tế nđ, kết quả test, người kiểm, ngày). Chỉ khi 1–9 xong mới báo "Xong". Nếu chỉ có một người, ghi "tự kiểm" và ngày.
 
 ## 3. Xác minh output — không đóng gói khi chưa qua
 
@@ -119,22 +119,22 @@ ISSUE có đổi màn hình** — nửa người học nhìn thấy chính là p
    không? giả định đã ghi ra hay đang giấu? điều nhỏ nhất có thể hỏng mà chưa nhắc là gì?
    **Khi `Reviewer: self`: viết xong không đọc lại ngay.** Chờ ít nhất 15 phút hoặc làm việc khác
    rồi mới đọc. Đọc ngay thì chỉ đang nhớ lại lý do mình vừa viết, không phải đang review.
-3. Đẩy `Plan.md` lên yawasa. Có `Flow.md` thì đẩy thành một drop riêng.
-4. Báo: tóm tắt, đường dẫn tệp, link hub, câu hỏi mở. **DỪNG.** Chờ người review.
+3. Báo: tóm tắt, đường dẫn tệp trên máy, câu hỏi mở. **DỪNG.** Chờ người review. Chưa đẩy gì lên yawasa.
+4. Được duyệt mới đẩy `Plan.md` lên yawasa (mục 7.5). Có `Flow.md` thì đẩy thành một drop riêng. Báo link.
 
 **Vòng sửa khi chưa được duyệt:** sửa cho `Plan.md` và `Flow.md` khớp nhau, không để tệp này nói A
 tệp kia nói B. Ghi dòng quyết định kèm ngày vào khối "Decisions log" ở đầu `Plan.md`, không xoá
-dòng cũ. Đẩy lại kèm `--update` để giữ nguyên link. Vẫn chưa được code.
+dòng cũ. Chưa duyệt thì không đẩy. Drop đã có từ trước thì khi được duyệt đẩy kèm `--update` để giữ nguyên link. Vẫn chưa được code.
 
 **7.4 Cổng B**
 
-1. Test đạt → viết `Result.md`, đẩy lên hub ngay (trong đó không có tệp bằng chứng nên không phải
+1. Test đạt → viết `Result.md`, chưa đẩy (trong đó không có tệp bằng chứng nên không phải
    quét gì).
 2. Dựng `docs/Delivery/<YYYY-MM-DD>_<task-id>/` cho người kiểm: bằng chứng, log, ảnh, mẫu audio.
    **Quét `evidence/` tìm token, khoá, số máy, dữ liệu người thật TRƯỚC khi đẩy** — bản delivery là
    HTML đóng băng, đẩy rồi không rút lại được.
 3. Trình bày câu lệnh commit dự định và ghi chú cho bản ghi. **DỪNG.** Chờ duyệt.
-4. Được duyệt mới đẩy Delivery, commit, cập nhật `records/<task-id>.md` và `records/TRACKING.md`.
+4. Được duyệt mới đẩy `Result.md` và Delivery, commit, cập nhật `records/<task-id>.md` và `records/TRACKING.md`.
 5. **Chạy cổng, gộp vào `main` tại máy, xoá nhánh** (mục 7.8). Nhánh chưa gộp thì task chưa đóng; không sang task kế tiếp khi nhánh còn mở.
 
 **7.5 Hub của dự án**
@@ -149,6 +149,10 @@ dòng cũ. Đẩy lại kèm `--update` để giữ nguyên link. Vẫn chưa đ
     không gửi trường `share_with_project` và hub áp mặc định chia sẻ của nó.
   - `--visibility private` chốt lại quyền xem. Hub tự lật visibility sang `shared` khi có bất kỳ
     nhóm hay audience nào được gắn, nên phải nói rõ.
+- Kèm thêm `--skill exp-publish --skill-version <bản trong exp-publish/SKILL.md> --prompt "<yêu cầu
+  của Hugh, nguyên văn>"` để hub tính là drop qua skill chung. Không dùng expraw ở đây:
+  `publish-raw.sh` không có `--visibility private` và `--no-share-project`.
+- Chỉ đẩy sau khi người duyệt đồng ý (Cổng A, Cổng B). Không tự đẩy ở bất kỳ bước nào khác.
 - **Mặc định của dự án này là riêng tư, chỉ chủ sở hữu.** Muốn ai đó xem thì chia sẻ tay trên giao
   diện hub, từng bản một, có chủ đích. Không bao giờ để mặc định của công cụ quyết định việc này.
 - API của hub **không có endpoint đọc trạng thái chia sẻ**. Chỉ `/api/upload`, `/api/drop/<slug>/md`
@@ -168,7 +172,9 @@ bash ~/.claude/skills/exp-publish/scripts/exp-publish.sh \
   --slug "moonegg-<task-id>-plan" \
   --title "MoonEgg <task-id> - <ten task> - plan" \
   --tags "moonegg,plan,<phase>,<task-id>" \
-  --project "moonegg" --no-share-project --visibility private
+  --project "moonegg" --no-share-project --visibility private \
+  --skill exp-publish --skill-version <ban trong exp-publish/SKILL.md> \
+  --prompt "<yeu cau cua Hugh, nguyen van>"
 ```
 
 Flow và Result đổi `plan` thành `flow` / `result` ở cả ba chỗ. Sửa một drop đã đẩy: thêm `--update`
